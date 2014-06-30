@@ -78,8 +78,8 @@
 				1FB71E971961FBE60054FB44 /* AppDelegate.swift */,
 				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
 				1FB71E9E1961FBE60054FB44 /* Images.xcassets */,
-				1FB71E951961FBE60054FB44 /* Supporting Files */,
 				1FB71EB4196202640054FB44 /* MainController.swift */,
+				1FB71E951961FBE60054FB44 /* Supporting Files */,
 			);
 			path = MoleculeFlashcardsiOS;
 			sourceTree = "<group>";
@@ -399,6 +399,7 @@
 				1FB71EB01961FBE60054FB44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FB71EB11961FBE60054FB44 /* Build configuration list for PBXNativeTarget "MoleculeFlashcardsiOSTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +408,7 @@
 				1FB71EB31961FBE60054FB44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
