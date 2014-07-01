@@ -25,16 +25,16 @@ class User {
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            if error { //Failed
-                println(error.description)
-            } else if response["success"] as Int == 0 { //Failed
-                println("Could not log on: invalid username or password")
-            } else { //Success
+            if error {
+                EventLogger.logError("Failed to log in, \(error.description)")
+            } else if response["success"] as Int == 0 {
+                EventLogger.logError("Failed to log in,  invalid username or password")
+            } else {
+                EventLogger.log("Logged in successfully")
                 self.name = response["username"] as NSString
                 self.id = response["auth"] as NSString
             }
         })
-
     }
     
     func register(#url: String, username: String, password: String, email: String) {
@@ -46,11 +46,12 @@ class User {
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            if error { //Failed
-                println(error.description)
-            } else if response["success"] as Int == 0 { //Failed
-                println("Could not log on: invalid username or password")
-            } else { //Success
+            if error {
+                EventLogger.logError("Failed to register, \(error.description)")
+            } else if response["success"] as Int == 0 {
+                EventLogger.logError("Failed to register")
+            } else {
+                EventLogger.logError("registered successfully")
                 self.name = response["username"] as NSString
                 self.id = response["auth"] as NSString
             }

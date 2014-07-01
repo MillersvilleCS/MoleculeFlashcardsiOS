@@ -88,10 +88,10 @@ class Game {
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             
             var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            if error != nil {
-                
+            if error {
+                EventLogger.logError("Failed to end Game \(error)")
             } else {
-                
+                EventLogger.log("game \(self.sessionId) has ended")
             }
         })
 
@@ -115,6 +115,7 @@ class Game {
                 var isCorrect = response["correct"] as String
                 var score = response["score"] as Int
                 if isCorrect == "true" {
+                    EventLogger.log("submitted answer \(answer.text) was correct")
                     if self.questionIndex < self.getNumberOfQuestions() - 1 {
                         ++self.questionIndex
                     } else {
@@ -122,6 +123,7 @@ class Game {
                     }
                     onComplete(isCorrect: true, scoreModifier: score)
                 } else {
+                    EventLogger.log("submitted answer \(answer.text) was incorrect")
                     onComplete(isCorrect: false, scoreModifier: score)
                 }
             }

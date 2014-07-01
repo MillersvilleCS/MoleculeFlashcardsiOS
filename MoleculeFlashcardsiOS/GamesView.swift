@@ -55,6 +55,7 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
     func getGames(#url: String, user: User) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "get_avail_flashcard_games")
@@ -67,7 +68,6 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
             } else {
                 var newGames = Game[]()
                 var gamesJSON : AnyObject = response["available_games"]!
-                println(gamesJSON)
                 for gameJSON : AnyObject in gamesJSON as AnyObject[] {
                     var id = gameJSON["id"]! as String
                     var name = gameJSON["name"]! as String
@@ -80,6 +80,6 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
                     self.games = newGames
                 }
             }
-            })
+        })
     }
 }
