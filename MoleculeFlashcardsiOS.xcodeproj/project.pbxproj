@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1F0D92B0196312630098EB6C /* GamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AE196312630098EB6C /* GamesView.swift */; };
+		1F0D92B9196326680098EB6C /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0D92B7196326680098EB6C /* CustomTableViewCell.xib */; };
+		1F0D92BA196326680098EB6C /* TableViewGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92B8196326680098EB6C /* TableViewGameCell.swift */; };
 		1F17A49D1963015200A9D50F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4981963015200A9D50F /* Request.swift */; };
 		1F17A49E1963015200A9D50F /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4991963015200A9D50F /* Answer.swift */; };
 		1F17A49F1963015200A9D50F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A49A1963015200A9D50F /* Question.swift */; };
@@ -21,7 +23,6 @@
 		1F17A4B0196303F900A9D50F /* VecOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4AF196303F900A9D50F /* VecOp.swift */; };
 		1F17A4B31963040400A9D50F /* MoleculeGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4B11963040400A9D50F /* MoleculeGeometry.swift */; };
 		1F17A4B41963040400A9D50F /* SDFParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4B21963040400A9D50F /* SDFParser.swift */; };
-		1F7B1A1D196321F4006E8DE5 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F7B1A1C196321F4006E8DE5 /* CategoriesView.swift */; };
 		1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71E971961FBE60054FB44 /* AppDelegate.swift */; };
 		1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9B1961FBE60054FB44 /* Main.storyboard */; };
 		1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9E1961FBE60054FB44 /* Images.xcassets */; };
@@ -40,7 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F0D92AE196312630098EB6C /* GamesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamesView.swift; path = MoleculeFlashcardsiOS/GamesView.swift; sourceTree = "<group>"; };
+		1F0D92AE196312630098EB6C /* GamesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesView.swift; sourceTree = "<group>"; };
+		1F0D92B7196326680098EB6C /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		1F0D92B8196326680098EB6C /* TableViewGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewGameCell.swift; sourceTree = "<group>"; };
 		1F17A4981963015200A9D50F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = ../Request.swift; sourceTree = "<group>"; };
 		1F17A4991963015200A9D50F /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Answer.swift; path = ../Answer.swift; sourceTree = "<group>"; };
 		1F17A49A1963015200A9D50F /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = ../Question.swift; sourceTree = "<group>"; };
@@ -54,7 +57,6 @@
 		1F17A4AF196303F900A9D50F /* VecOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VecOp.swift; sourceTree = "<group>"; };
 		1F17A4B11963040400A9D50F /* MoleculeGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleculeGeometry.swift; sourceTree = "<group>"; };
 		1F17A4B21963040400A9D50F /* SDFParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDFParser.swift; sourceTree = "<group>"; };
-		1F7B1A1C196321F4006E8DE5 /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesView.swift; path = MoleculeFlashcardsIOS/CategoriesView.swift; sourceTree = "<group>"; };
 		1FB71E921961FBE60054FB44 /* MoleculeFlashcardsiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoleculeFlashcardsiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB71E961961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71E971961FBE60054FB44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,8 +111,6 @@
 		1FB71E891961FBE60054FB44 = {
 			isa = PBXGroup;
 			children = (
-				1F0D92AE196312630098EB6C /* GamesView.swift */,
-				1F7B1A1C196321F4006E8DE5 /* CategoriesView.swift */,
 				1FB71E941961FBE60054FB44 /* MoleculeFlashcardsiOS */,
 				1FB71EA71961FBE60054FB44 /* MoleculeFlashcardsiOSTests */,
 				1FB71E931961FBE60054FB44 /* Products */,
@@ -129,6 +129,7 @@
 		1FB71E941961FBE60054FB44 /* MoleculeFlashcardsiOS */ = {
 			isa = PBXGroup;
 			children = (
+				1F0D92AE196312630098EB6C /* GamesView.swift */,
 				1F17A4B11963040400A9D50F /* MoleculeGeometry.swift */,
 				1F17A4B21963040400A9D50F /* SDFParser.swift */,
 				1F17A4AA196303A900A9D50F /* util */,
@@ -140,6 +141,8 @@
 				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
 				1FB71E9E1961FBE60054FB44 /* Images.xcassets */,
 				1FB71EB4196202640054FB44 /* MainController.swift */,
+				1F0D92B7196326680098EB6C /* CustomTableViewCell.xib */,
+				1F0D92B8196326680098EB6C /* TableViewGameCell.swift */,
 				1FB71E951961FBE60054FB44 /* Supporting Files */,
 			);
 			path = MoleculeFlashcardsiOS;
@@ -252,6 +255,7 @@
 			files = (
 				1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */,
 				1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */,
+				1F0D92B9196326680098EB6C /* CustomTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,12 +274,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F17A49F1963015200A9D50F /* Question.swift in Sources */,
+				1F0D92BA196326680098EB6C /* TableViewGameCell.swift in Sources */,
 				1F17A4B31963040400A9D50F /* MoleculeGeometry.swift in Sources */,
 				1FB71EB5196202640054FB44 /* MainController.swift in Sources */,
 				1F17A4B0196303F900A9D50F /* VecOp.swift in Sources */,
 				1F17A4AE196303BB00A9D50F /* ImageLoader.swift in Sources */,
 				1F17A4AD196303BB00A9D50F /* EventLogger.swift in Sources */,
-				1F7B1A1D196321F4006E8DE5 /* CategoriesView.swift in Sources */,
 				1F17A4A11963015200A9D50F /* Game.swift in Sources */,
 				1F17A4B41963040400A9D50F /* SDFParser.swift in Sources */,
 				1F17A4A01963015200A9D50F /* User.swift in Sources */,
