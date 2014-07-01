@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F17A49D1963015200A9D50F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4981963015200A9D50F /* Request.swift */; };
+		1F17A49E1963015200A9D50F /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4991963015200A9D50F /* Answer.swift */; };
+		1F17A49F1963015200A9D50F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A49A1963015200A9D50F /* Question.swift */; };
+		1F17A4A01963015200A9D50F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A49B1963015200A9D50F /* User.swift */; };
+		1F17A4A11963015200A9D50F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A49C1963015200A9D50F /* Game.swift */; };
+		1F17A4A51963019B00A9D50F /* Atom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4A21963019B00A9D50F /* Atom.swift */; };
+		1F17A4A61963019B00A9D50F /* Bond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4A31963019B00A9D50F /* Bond.swift */; };
+		1F17A4A71963019B00A9D50F /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4A41963019B00A9D50F /* Molecule.swift */; };
+		1F17A4AD196303BB00A9D50F /* EventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4AB196303BB00A9D50F /* EventLogger.swift */; };
+		1F17A4AE196303BB00A9D50F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4AC196303BB00A9D50F /* ImageLoader.swift */; };
+		1F17A4B0196303F900A9D50F /* VecOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4AF196303F900A9D50F /* VecOp.swift */; };
+		1F17A4B31963040400A9D50F /* MoleculeGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4B11963040400A9D50F /* MoleculeGeometry.swift */; };
+		1F17A4B41963040400A9D50F /* SDFParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4B21963040400A9D50F /* SDFParser.swift */; };
 		1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71E971961FBE60054FB44 /* AppDelegate.swift */; };
 		1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9B1961FBE60054FB44 /* Main.storyboard */; };
 		1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9E1961FBE60054FB44 /* Images.xcassets */; };
@@ -25,6 +38,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F17A4981963015200A9D50F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = ../Request.swift; sourceTree = "<group>"; };
+		1F17A4991963015200A9D50F /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Answer.swift; path = ../Answer.swift; sourceTree = "<group>"; };
+		1F17A49A1963015200A9D50F /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = ../Question.swift; sourceTree = "<group>"; };
+		1F17A49B1963015200A9D50F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
+		1F17A49C1963015200A9D50F /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = ../Game.swift; sourceTree = "<group>"; };
+		1F17A4A21963019B00A9D50F /* Atom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atom.swift; path = ../Atom.swift; sourceTree = "<group>"; };
+		1F17A4A31963019B00A9D50F /* Bond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bond.swift; path = ../Bond.swift; sourceTree = "<group>"; };
+		1F17A4A41963019B00A9D50F /* Molecule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Molecule.swift; path = ../Molecule.swift; sourceTree = "<group>"; };
+		1F17A4AB196303BB00A9D50F /* EventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogger.swift; sourceTree = "<group>"; };
+		1F17A4AC196303BB00A9D50F /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		1F17A4AF196303F900A9D50F /* VecOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VecOp.swift; sourceTree = "<group>"; };
+		1F17A4B11963040400A9D50F /* MoleculeGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleculeGeometry.swift; sourceTree = "<group>"; };
+		1F17A4B21963040400A9D50F /* SDFParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDFParser.swift; sourceTree = "<group>"; };
 		1FB71E921961FBE60054FB44 /* MoleculeFlashcardsiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoleculeFlashcardsiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB71E961961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71E971961FBE60054FB44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +80,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F17A4971963010300A9D50F /* communication */ = {
+			isa = PBXGroup;
+			children = (
+				1F17A4981963015200A9D50F /* Request.swift */,
+				1F17A4991963015200A9D50F /* Answer.swift */,
+				1F17A49A1963015200A9D50F /* Question.swift */,
+				1F17A49B1963015200A9D50F /* User.swift */,
+				1F17A49C1963015200A9D50F /* Game.swift */,
+			);
+			name = communication;
+			sourceTree = "<group>";
+		};
+		1F17A4AA196303A900A9D50F /* util */ = {
+			isa = PBXGroup;
+			children = (
+				1F17A4AF196303F900A9D50F /* VecOp.swift */,
+				1F17A4AB196303BB00A9D50F /* EventLogger.swift */,
+				1F17A4AC196303BB00A9D50F /* ImageLoader.swift */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
 		1FB71E891961FBE60054FB44 = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +123,13 @@
 		1FB71E941961FBE60054FB44 /* MoleculeFlashcardsiOS */ = {
 			isa = PBXGroup;
 			children = (
+				1F17A4B11963040400A9D50F /* MoleculeGeometry.swift */,
+				1F17A4B21963040400A9D50F /* SDFParser.swift */,
+				1F17A4AA196303A900A9D50F /* util */,
+				1F17A4A21963019B00A9D50F /* Atom.swift */,
+				1F17A4A31963019B00A9D50F /* Bond.swift */,
+				1F17A4A41963019B00A9D50F /* Molecule.swift */,
+				1F17A4971963010300A9D50F /* communication */,
 				1FB71E971961FBE60054FB44 /* AppDelegate.swift */,
 				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
 				1FB71E9E1961FBE60054FB44 /* Images.xcassets */,
@@ -208,8 +263,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F17A49F1963015200A9D50F /* Question.swift in Sources */,
+				1F17A4B31963040400A9D50F /* MoleculeGeometry.swift in Sources */,
 				1FB71EB5196202640054FB44 /* MainController.swift in Sources */,
+				1F17A4B0196303F900A9D50F /* VecOp.swift in Sources */,
+				1F17A4AE196303BB00A9D50F /* ImageLoader.swift in Sources */,
+				1F17A4AD196303BB00A9D50F /* EventLogger.swift in Sources */,
+				1F17A4A11963015200A9D50F /* Game.swift in Sources */,
+				1F17A4B41963040400A9D50F /* SDFParser.swift in Sources */,
+				1F17A4A01963015200A9D50F /* User.swift in Sources */,
+				1F17A49D1963015200A9D50F /* Request.swift in Sources */,
+				1F17A4A61963019B00A9D50F /* Bond.swift in Sources */,
 				1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */,
+				1F17A4A71963019B00A9D50F /* Molecule.swift in Sources */,
+				1F17A4A51963019B00A9D50F /* Atom.swift in Sources */,
+				1F17A49E1963015200A9D50F /* Answer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
