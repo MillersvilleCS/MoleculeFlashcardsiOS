@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F0D92AF196312630098EB6C /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AD196312630098EB6C /* CategoriesView.swift */; };
 		1F0D92B0196312630098EB6C /* GamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AE196312630098EB6C /* GamesView.swift */; };
 		1F17A49D1963015200A9D50F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4981963015200A9D50F /* Request.swift */; };
 		1F17A49E1963015200A9D50F /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4991963015200A9D50F /* Answer.swift */; };
@@ -40,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F0D92AD196312630098EB6C /* CategoriesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoriesView.swift; path = MoleculeFlashcardsiOS/CategoriesView.swift; sourceTree = "<group>"; };
 		1F0D92AE196312630098EB6C /* GamesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GamesView.swift; path = MoleculeFlashcardsiOS/GamesView.swift; sourceTree = "<group>"; };
 		1F17A4981963015200A9D50F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = ../Request.swift; sourceTree = "<group>"; };
 		1F17A4991963015200A9D50F /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Answer.swift; path = ../Answer.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 		1FB71E891961FBE60054FB44 = {
 			isa = PBXGroup;
 			children = (
-				1F0D92AD196312630098EB6C /* CategoriesView.swift */,
 				1F0D92AE196312630098EB6C /* GamesView.swift */,
 				1FB71E941961FBE60054FB44 /* MoleculeFlashcardsiOS */,
 				1FB71EA71961FBE60054FB44 /* MoleculeFlashcardsiOSTests */,
@@ -269,7 +266,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F0D92AF196312630098EB6C /* CategoriesView.swift in Sources */,
 				1F17A49F1963015200A9D50F /* Question.swift in Sources */,
 				1F17A4B31963040400A9D50F /* MoleculeGeometry.swift in Sources */,
 				1FB71EB5196202640054FB44 /* MainController.swift in Sources */,
