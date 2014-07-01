@@ -134,10 +134,14 @@
                             <outlet property="delegate" destination="OiO-XI-6XP" id="NHg-UW-hy9"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="kYr-hy-5jM" id="j8I-jK-e9E"/>
+                        <outlet property="view" destination="kYr-hy-5jM" id="GEw-mB-pVW"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6L-IG-iVd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="619" y="27"/>
+            <point key="canvasLocation" x="602" y="-27"/>
         </scene>
         <!--Games View-->
         <scene sceneID="cnO-0m-Tfl">
@@ -160,10 +164,14 @@
                             <outlet property="delegate" destination="Anc-wc-NLv" id="bZa-Gy-nS5"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="tableView" destination="tax-Us-X6l" id="c6I-ss-MGF"/>
+                        <outlet property="view" destination="tax-Us-X6l" id="790-mL-nOQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1TI-RU-ASD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="998" y="24"/>
+            <point key="canvasLocation" x="988" y="-27"/>
         </scene>
     </scenes>
     <resources>
