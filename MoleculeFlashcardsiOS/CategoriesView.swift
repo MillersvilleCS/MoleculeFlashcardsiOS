@@ -19,6 +19,12 @@ class CategoriesView : UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let REQUEST_HANDLER_URL = "https://exscitech.org/request_handler.php"
+        let GET_MEDIA_URL = "https://exscitech.org/get_media.php"
+        var will = User()
+        will.login(url: REQUEST_HANDLER_URL, username: "wpgervasio@gmail.com", password: "lol12345")
+        getGames(url: REQUEST_HANDLER_URL, user: will)
+
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
 
@@ -58,18 +64,19 @@ class CategoriesView : UIViewController, UITableViewDelegate, UITableViewDataSou
             if error {
                 
             } else {
-                
-                var gamesJSON : AnyObject = response["questions"]!
+                var newGames = Game[]()
+                var gamesJSON : AnyObject = response["available_games"]!
+                println(gamesJSON)
                 for gameJSON : AnyObject in gamesJSON as AnyObject[] {
-                    var gameData = response["available_games"]![0]
-                    var id = gameData!["id"]! as String
-                    var name = gameData!["name"]! as String
-                    var description = gameData!["description"] as String
-                    var questionCount = gameData!["mol_count"] as Int
-                    var timeLimit = gameData!["time_limit"] as String
-                    var imageURL = "https://exscitech.org" + gameData!["image"].description
+                    var id = gameJSON["id"]! as String
+                    var name = gameJSON["name"]! as String
+                    var description = gameJSON["description"] as String
+                    var questionCount = gameJSON["mol_count"] as Int
+                    var timeLimit = gameJSON["time_limit"] as String
+                    var imageURL = "https://exscitech.org" + gameJSON["image"].description
                     
-                    self.game = Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, imageURL: imageURL)
+                    newGames.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, imageURL: imageURL))
+                    self.games = newGames
                 }
             }
         })
