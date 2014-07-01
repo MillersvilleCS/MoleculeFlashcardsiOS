@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.21" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="ngw-OE-5Zt">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -37,19 +38,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="08G-Te-gUE">
-                                <rect key="frame" x="-8" y="64" width="344" height="266"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="tutorialButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ht-mx-Ama">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="tutorialButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ht-mx-Ama">
                                 <rect key="frame" x="20" y="478" width="115" height="70"/>
                                 <color key="backgroundColor" red="0.35294117650000001" green="0.4039215686" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="LGR-eM-wjy"/>
+                                    <constraint firstAttribute="height" constant="70" id="Q4L-H4-8hh"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Tutorial">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" placeholderIntrinsicWidth="175" placeholderIntrinsicHeight="infinite" restorationIdentifier="creditsButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFz-fE-4Wa">
+                            <button opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="175" placeholderIntrinsicHeight="infinite" restorationIdentifier="creditsButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZFz-fE-4Wa">
                                 <rect key="frame" x="185" y="478" width="115" height="70"/>
                                 <color key="backgroundColor" red="0.35294117650000001" green="0.4039215686" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
@@ -58,9 +60,12 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="playButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4W-kB-5qe">
+                            <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="playButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V4W-kB-5qe">
                                 <rect key="frame" x="20" y="358" width="280" height="80"/>
                                 <color key="backgroundColor" red="0.53725490200000003" green="0.7843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="gmP-6o-BmY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <state key="normal" title="Play">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,19 +75,48 @@
                                     <action selector="buttonClicked:" destination="rgg-OW-ODY" eventType="touchUpInside" id="Rfd-8V-aZM"/>
                                 </connections>
                             </button>
+                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Welcome to ExSciTecH!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="174" translatesAutoresizingMaskIntoConstraints="NO" id="nCc-lc-dGe">
+                                <rect key="frame" x="26" y="219" width="174" height="90"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="08G-Te-gUE">
+                                <rect key="frame" x="0.0" y="64" width="320" height="269"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3ht-mx-Ama" firstAttribute="width" secondItem="ZFz-fE-4Wa" secondAttribute="height" multiplier="23:14" id="0Tf-oa-tQ5"/>
+                            <constraint firstItem="nCc-lc-dGe" firstAttribute="width" secondItem="UtH-uX-Z39" secondAttribute="height" multiplier="87:284" id="2kY-gE-myf"/>
+                            <constraint firstItem="ZFz-fE-4Wa" firstAttribute="top" secondItem="3ht-mx-Ama" secondAttribute="top" id="33w-qD-Z6Z"/>
+                            <constraint firstAttribute="bottom" secondItem="3ht-mx-Ama" secondAttribute="bottom" constant="20" symbolic="YES" id="4eN-Gf-giQ"/>
+                            <constraint firstItem="V4W-kB-5qe" firstAttribute="leading" secondItem="UtH-uX-Z39" secondAttribute="leading" constant="20" symbolic="YES" id="5cB-A5-qyp"/>
+                            <constraint firstItem="3ht-mx-Ama" firstAttribute="top" secondItem="V4W-kB-5qe" secondAttribute="bottom" constant="40" id="6Rz-4B-pAz"/>
+                            <constraint firstItem="3ht-mx-Ama" firstAttribute="leading" secondItem="V4W-kB-5qe" secondAttribute="leading" id="AxM-fa-fMD"/>
+                            <constraint firstItem="V4W-kB-5qe" firstAttribute="width" secondItem="3ht-mx-Ama" secondAttribute="height" multiplier="4:1" id="BVL-CW-hz6"/>
+                            <constraint firstItem="V4W-kB-5qe" firstAttribute="centerX" secondItem="08G-Te-gUE" secondAttribute="centerX" id="Hef-td-pV8"/>
+                            <constraint firstItem="3ht-mx-Ama" firstAttribute="baseline" secondItem="ZFz-fE-4Wa" secondAttribute="baseline" id="KLh-Iu-Y4N"/>
+                            <constraint firstItem="08G-Te-gUE" firstAttribute="leading" secondItem="UtH-uX-Z39" secondAttribute="leading" id="RDw-Tf-VEy"/>
+                            <constraint firstItem="ZFz-fE-4Wa" firstAttribute="leading" secondItem="3ht-mx-Ama" secondAttribute="trailing" constant="50" id="YMB-w1-6Ew"/>
+                            <constraint firstAttribute="trailing" secondItem="V4W-kB-5qe" secondAttribute="trailing" constant="20" symbolic="YES" id="fTH-5m-tO2"/>
+                            <constraint firstItem="08G-Te-gUE" firstAttribute="width" secondItem="nCc-lc-dGe" secondAttribute="height" multiplier="32:9" id="if2-SX-5k4"/>
+                            <constraint firstItem="08G-Te-gUE" firstAttribute="top" secondItem="xn8-Hi-twl" secondAttribute="bottom" id="jps-XF-07J"/>
+                            <constraint firstItem="V4W-kB-5qe" firstAttribute="top" secondItem="08G-Te-gUE" secondAttribute="bottom" constant="25" id="oQS-E6-5Uy"/>
+                            <constraint firstItem="V4W-kB-5qe" firstAttribute="trailing" secondItem="ZFz-fE-4Wa" secondAttribute="trailing" id="xAc-lr-QJ7"/>
+                            <constraint firstItem="V4W-kB-5qe" firstAttribute="width" secondItem="ZFz-fE-4Wa" secondAttribute="height" multiplier="4:1" id="yzr-Tz-SMV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Molecule Flashcards" id="RXp-sb-tki"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHz-Cl-Om6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="225" y="27"/>
+            <point key="canvasLocation" x="236" y="-27"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Categories View-->
         <scene sceneID="oDt-Ao-E3m">
             <objects>
-                <tableViewController storyboardIdentifier="Categories" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OiO-XI-6XP" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Categories" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OiO-XI-6XP" customClass="CategoriesView" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kYr-hy-5jM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="619" y="27"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Games View-->
         <scene sceneID="cnO-0m-Tfl">
             <objects>
-                <tableViewController id="Anc-wc-NLv" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Games" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Anc-wc-NLv" customClass="GamesView" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tax-Us-X6l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
