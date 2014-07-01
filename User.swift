@@ -25,7 +25,7 @@ class User {
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            if error != nil { //Failed
+            if error { //Failed
                 println(error.description)
             } else if response["success"] as Int == 0 { //Failed
                 println("Could not log on: invalid username or password")
@@ -46,7 +46,7 @@ class User {
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            if error != nil { //Failed
+            if error { //Failed
                 println(error.description)
             } else if response["success"] as Int == 0 { //Failed
                 println("Could not log on: invalid username or password")
