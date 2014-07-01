@@ -28,6 +28,11 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
         while !games {
             
         }
+        println(games!.count)
+        for game in games! {
+            var image = ImageLoader.load(url: game.imageURL)
+            println(image.debugDescription)
+        }
     }
     
     override func prepareForSegue (segue: UIStoryboardSegue!, sender: AnyObject!) {
@@ -52,6 +57,7 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
         var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
         cell.textLabel.text = self.games![indexPath.row].name
+        cell.image = ImageLoader.load(url: self.games![indexPath.row].imageURL)
         
         return cell
     }
@@ -77,8 +83,9 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
                     var imageURL = "https://exscitech.org" + gameJSON["image"].description
                     
                     newGames.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, imageURL: imageURL))
-                    self.games = newGames
+                    
                 }
+                self.games = newGames
             }
         })
     }
