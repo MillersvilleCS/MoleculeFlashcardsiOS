@@ -7,22 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F0D92B0196312630098EB6C /* GamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AE196312630098EB6C /* GamesView.swift */; };
-		1F0D92B9196326680098EB6C /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F0D92B7196326680098EB6C /* CustomTableViewCell.xib */; };
-		1F0D92BA196326680098EB6C /* TableViewGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92B8196326680098EB6C /* TableViewGameCell.swift */; };
-		1F17A49D1963015200A9D50F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4981963015200A9D50F /* Request.swift */; };
-		1F17A49E1963015200A9D50F /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4991963015200A9D50F /* Answer.swift */; };
-		1F17A49F1963015200A9D50F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A49A1963015200A9D50F /* Question.swift */; };
-		1F17A4A01963015200A9D50F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A49B1963015200A9D50F /* User.swift */; };
-		1F17A4A11963015200A9D50F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A49C1963015200A9D50F /* Game.swift */; };
-		1F17A4A51963019B00A9D50F /* Atom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4A21963019B00A9D50F /* Atom.swift */; };
-		1F17A4A61963019B00A9D50F /* Bond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4A31963019B00A9D50F /* Bond.swift */; };
-		1F17A4A71963019B00A9D50F /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4A41963019B00A9D50F /* Molecule.swift */; };
-		1F17A4AD196303BB00A9D50F /* EventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4AB196303BB00A9D50F /* EventLogger.swift */; };
-		1F17A4AE196303BB00A9D50F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4AC196303BB00A9D50F /* ImageLoader.swift */; };
-		1F17A4B0196303F900A9D50F /* VecOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4AF196303F900A9D50F /* VecOp.swift */; };
-		1F17A4B31963040400A9D50F /* MoleculeGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4B11963040400A9D50F /* MoleculeGeometry.swift */; };
-		1F17A4B41963040400A9D50F /* SDFParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F17A4B21963040400A9D50F /* SDFParser.swift */; };
+		1F0D92B0196312630098EB6C /* GamesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AE196312630098EB6C /* GamesController.swift */; };
+		1F2AF5D21964376400107698 /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D11964376400107698 /* DescriptionController.swift */; };
+		1F2AF5E61964411B00107698 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D41964411B00107698 /* Answer.swift */; };
+		1F2AF5E71964411B00107698 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D51964411B00107698 /* Game.swift */; };
+		1F2AF5E81964411B00107698 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D61964411B00107698 /* Question.swift */; };
+		1F2AF5E91964411B00107698 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D71964411B00107698 /* Request.swift */; };
+		1F2AF5EA1964411B00107698 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D81964411B00107698 /* User.swift */; };
+		1F2AF5EB1964411B00107698 /* Atom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5DA1964411B00107698 /* Atom.swift */; };
+		1F2AF5EC1964411B00107698 /* Bond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5DB1964411B00107698 /* Bond.swift */; };
+		1F2AF5ED1964411B00107698 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5DC1964411B00107698 /* Molecule.swift */; };
+		1F2AF5EE1964411B00107698 /* SDFParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5DD1964411B00107698 /* SDFParser.swift */; };
+		1F2AF5EF1964411B00107698 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F2AF5DF1964411B00107698 /* CustomTableViewCell.xib */; };
+		1F2AF5F01964411B00107698 /* TableViewGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E01964411B00107698 /* TableViewGameCell.swift */; };
+		1F2AF5F11964411B00107698 /* EventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E21964411B00107698 /* EventLogger.swift */; };
+		1F2AF5F21964411B00107698 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E31964411B00107698 /* ImageLoader.swift */; };
+		1F2AF5F31964411B00107698 /* MoleculeGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E41964411B00107698 /* MoleculeGeometry.swift */; };
+		1F2AF5F41964411B00107698 /* VecOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E51964411B00107698 /* VecOp.swift */; };
 		1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71E971961FBE60054FB44 /* AppDelegate.swift */; };
 		1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9B1961FBE60054FB44 /* Main.storyboard */; };
 		1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9E1961FBE60054FB44 /* Images.xcassets */; };
@@ -41,22 +42,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F0D92AE196312630098EB6C /* GamesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesView.swift; sourceTree = "<group>"; };
-		1F0D92B7196326680098EB6C /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
-		1F0D92B8196326680098EB6C /* TableViewGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewGameCell.swift; sourceTree = "<group>"; };
-		1F17A4981963015200A9D50F /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Request.swift; path = ../Request.swift; sourceTree = "<group>"; };
-		1F17A4991963015200A9D50F /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Answer.swift; path = ../Answer.swift; sourceTree = "<group>"; };
-		1F17A49A1963015200A9D50F /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Question.swift; path = ../Question.swift; sourceTree = "<group>"; };
-		1F17A49B1963015200A9D50F /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../User.swift; sourceTree = "<group>"; };
-		1F17A49C1963015200A9D50F /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Game.swift; path = ../Game.swift; sourceTree = "<group>"; };
-		1F17A4A21963019B00A9D50F /* Atom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Atom.swift; path = ../Atom.swift; sourceTree = "<group>"; };
-		1F17A4A31963019B00A9D50F /* Bond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bond.swift; path = ../Bond.swift; sourceTree = "<group>"; };
-		1F17A4A41963019B00A9D50F /* Molecule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Molecule.swift; path = ../Molecule.swift; sourceTree = "<group>"; };
-		1F17A4AB196303BB00A9D50F /* EventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogger.swift; sourceTree = "<group>"; };
-		1F17A4AC196303BB00A9D50F /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		1F17A4AF196303F900A9D50F /* VecOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VecOp.swift; sourceTree = "<group>"; };
-		1F17A4B11963040400A9D50F /* MoleculeGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleculeGeometry.swift; sourceTree = "<group>"; };
-		1F17A4B21963040400A9D50F /* SDFParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDFParser.swift; sourceTree = "<group>"; };
+		1F0D92AE196312630098EB6C /* GamesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesController.swift; sourceTree = "<group>"; };
+		1F2AF5D11964376400107698 /* DescriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
+		1F2AF5D41964411B00107698 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		1F2AF5D51964411B00107698 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		1F2AF5D61964411B00107698 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		1F2AF5D71964411B00107698 /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		1F2AF5D81964411B00107698 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1F2AF5DA1964411B00107698 /* Atom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atom.swift; sourceTree = "<group>"; };
+		1F2AF5DB1964411B00107698 /* Bond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bond.swift; sourceTree = "<group>"; };
+		1F2AF5DC1964411B00107698 /* Molecule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Molecule.swift; sourceTree = "<group>"; };
+		1F2AF5DD1964411B00107698 /* SDFParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDFParser.swift; sourceTree = "<group>"; };
+		1F2AF5DF1964411B00107698 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		1F2AF5E01964411B00107698 /* TableViewGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewGameCell.swift; sourceTree = "<group>"; };
+		1F2AF5E21964411B00107698 /* EventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogger.swift; sourceTree = "<group>"; };
+		1F2AF5E31964411B00107698 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		1F2AF5E41964411B00107698 /* MoleculeGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleculeGeometry.swift; sourceTree = "<group>"; };
+		1F2AF5E51964411B00107698 /* VecOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VecOp.swift; sourceTree = "<group>"; };
 		1FB71E921961FBE60054FB44 /* MoleculeFlashcardsiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoleculeFlashcardsiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB71E961961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71E971961FBE60054FB44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,26 +88,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F17A4971963010300A9D50F /* communication */ = {
+		1F2AF5D31964411B00107698 /* communication */ = {
 			isa = PBXGroup;
 			children = (
-				1F17A4981963015200A9D50F /* Request.swift */,
-				1F17A4991963015200A9D50F /* Answer.swift */,
-				1F17A49A1963015200A9D50F /* Question.swift */,
-				1F17A49B1963015200A9D50F /* User.swift */,
-				1F17A49C1963015200A9D50F /* Game.swift */,
+				1F2AF5D41964411B00107698 /* Answer.swift */,
+				1F2AF5D51964411B00107698 /* Game.swift */,
+				1F2AF5D61964411B00107698 /* Question.swift */,
+				1F2AF5D71964411B00107698 /* Request.swift */,
+				1F2AF5D81964411B00107698 /* User.swift */,
 			);
-			name = communication;
+			path = communication;
 			sourceTree = "<group>";
 		};
-		1F17A4AA196303A900A9D50F /* util */ = {
+		1F2AF5D91964411B00107698 /* parser */ = {
 			isa = PBXGroup;
 			children = (
-				1F17A4AF196303F900A9D50F /* VecOp.swift */,
-				1F17A4AB196303BB00A9D50F /* EventLogger.swift */,
-				1F17A4AC196303BB00A9D50F /* ImageLoader.swift */,
+				1F2AF5DA1964411B00107698 /* Atom.swift */,
+				1F2AF5DB1964411B00107698 /* Bond.swift */,
+				1F2AF5DC1964411B00107698 /* Molecule.swift */,
+				1F2AF5DD1964411B00107698 /* SDFParser.swift */,
 			);
-			name = util;
+			path = parser;
+			sourceTree = "<group>";
+		};
+		1F2AF5DE1964411B00107698 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				1F2AF5DF1964411B00107698 /* CustomTableViewCell.xib */,
+				1F2AF5E01964411B00107698 /* TableViewGameCell.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		1F2AF5E11964411B00107698 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				1F2AF5E21964411B00107698 /* EventLogger.swift */,
+				1F2AF5E31964411B00107698 /* ImageLoader.swift */,
+				1F2AF5E41964411B00107698 /* MoleculeGeometry.swift */,
+				1F2AF5E51964411B00107698 /* VecOp.swift */,
+			);
+			path = util;
 			sourceTree = "<group>";
 		};
 		1FB71E891961FBE60054FB44 = {
@@ -129,20 +152,16 @@
 		1FB71E941961FBE60054FB44 /* MoleculeFlashcardsiOS */ = {
 			isa = PBXGroup;
 			children = (
-				1F0D92AE196312630098EB6C /* GamesView.swift */,
-				1F17A4B11963040400A9D50F /* MoleculeGeometry.swift */,
-				1F17A4B21963040400A9D50F /* SDFParser.swift */,
-				1F17A4AA196303A900A9D50F /* util */,
-				1F17A4A21963019B00A9D50F /* Atom.swift */,
-				1F17A4A31963019B00A9D50F /* Bond.swift */,
-				1F17A4A41963019B00A9D50F /* Molecule.swift */,
-				1F17A4971963010300A9D50F /* communication */,
+				1F0D92AE196312630098EB6C /* GamesController.swift */,
+				1F2AF5D11964376400107698 /* DescriptionController.swift */,
+				1F2AF5D31964411B00107698 /* communication */,
+				1F2AF5D91964411B00107698 /* parser */,
+				1F2AF5DE1964411B00107698 /* ui */,
+				1F2AF5E11964411B00107698 /* util */,
 				1FB71E971961FBE60054FB44 /* AppDelegate.swift */,
 				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
 				1FB71E9E1961FBE60054FB44 /* Images.xcassets */,
 				1FB71EB4196202640054FB44 /* MainController.swift */,
-				1F0D92B7196326680098EB6C /* CustomTableViewCell.xib */,
-				1F0D92B8196326680098EB6C /* TableViewGameCell.swift */,
 				1FB71E951961FBE60054FB44 /* Supporting Files */,
 			);
 			path = MoleculeFlashcardsiOS;
@@ -255,7 +274,7 @@
 			files = (
 				1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */,
 				1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */,
-				1F0D92B9196326680098EB6C /* CustomTableViewCell.xib in Resources */,
+				1F2AF5EF1964411B00107698 /* CustomTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,23 +292,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F17A49F1963015200A9D50F /* Question.swift in Sources */,
-				1F0D92BA196326680098EB6C /* TableViewGameCell.swift in Sources */,
-				1F17A4B31963040400A9D50F /* MoleculeGeometry.swift in Sources */,
+				1F2AF5F21964411B00107698 /* ImageLoader.swift in Sources */,
+				1F2AF5F41964411B00107698 /* VecOp.swift in Sources */,
+				1F2AF5F01964411B00107698 /* TableViewGameCell.swift in Sources */,
 				1FB71EB5196202640054FB44 /* MainController.swift in Sources */,
-				1F17A4B0196303F900A9D50F /* VecOp.swift in Sources */,
-				1F17A4AE196303BB00A9D50F /* ImageLoader.swift in Sources */,
-				1F17A4AD196303BB00A9D50F /* EventLogger.swift in Sources */,
-				1F17A4A11963015200A9D50F /* Game.swift in Sources */,
-				1F17A4B41963040400A9D50F /* SDFParser.swift in Sources */,
-				1F17A4A01963015200A9D50F /* User.swift in Sources */,
-				1F17A49D1963015200A9D50F /* Request.swift in Sources */,
-				1F17A4A61963019B00A9D50F /* Bond.swift in Sources */,
+				1F2AF5D21964376400107698 /* DescriptionController.swift in Sources */,
+				1F2AF5E71964411B00107698 /* Game.swift in Sources */,
+				1F2AF5E81964411B00107698 /* Question.swift in Sources */,
+				1F2AF5F31964411B00107698 /* MoleculeGeometry.swift in Sources */,
+				1F2AF5ED1964411B00107698 /* Molecule.swift in Sources */,
+				1F2AF5EE1964411B00107698 /* SDFParser.swift in Sources */,
+				1F2AF5F11964411B00107698 /* EventLogger.swift in Sources */,
+				1F2AF5E91964411B00107698 /* Request.swift in Sources */,
 				1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */,
-				1F17A4A71963019B00A9D50F /* Molecule.swift in Sources */,
-				1F17A4A51963019B00A9D50F /* Atom.swift in Sources */,
-				1F17A49E1963015200A9D50F /* Answer.swift in Sources */,
-				1F0D92B0196312630098EB6C /* GamesView.swift in Sources */,
+				1F2AF5E61964411B00107698 /* Answer.swift in Sources */,
+				1F2AF5EC1964411B00107698 /* Bond.swift in Sources */,
+				1F0D92B0196312630098EB6C /* GamesController.swift in Sources */,
+				1F2AF5EB1964411B00107698 /* Atom.swift in Sources */,
+				1F2AF5EA1964411B00107698 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GamesController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView : UITableView
     
