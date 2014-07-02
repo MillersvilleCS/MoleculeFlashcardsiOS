@@ -1,5 +1,5 @@
 //
-//  Description.swift
+//  DescriptionController.swift
 //  MoleculeFlashcardsiOS
 //
 //  Created by exscitech on 7/2/14.
@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+class DescriptionController : UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+
+}

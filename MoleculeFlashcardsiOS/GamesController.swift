@@ -1,5 +1,5 @@
 //
-//  GamesView.swift
+//  GamesController.swift
 //  MoleculeFlashcardsiOS
 //
 //  Created by exscitech on 7/1/14.

@@ -152,17 +152,17 @@
 		1FB71E941961FBE60054FB44 /* MoleculeFlashcardsiOS */ = {
 			isa = PBXGroup;
 			children = (
+				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
+				1FB71E971961FBE60054FB44 /* AppDelegate.swift */,
+				1FB71EB4196202640054FB44 /* MainController.swift */,
 				1F0D92AE196312630098EB6C /* GamesController.swift */,
 				1F2AF5D11964376400107698 /* DescriptionController.swift */,
 				1F2AF5D31964411B00107698 /* communication */,
 				1F2AF5D91964411B00107698 /* parser */,
 				1F2AF5DE1964411B00107698 /* ui */,
 				1F2AF5E11964411B00107698 /* util */,
-				1FB71E971961FBE60054FB44 /* AppDelegate.swift */,
-				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
-				1FB71E9E1961FBE60054FB44 /* Images.xcassets */,
-				1FB71EB4196202640054FB44 /* MainController.swift */,
 				1FB71E951961FBE60054FB44 /* Supporting Files */,
+				1FB71E9E1961FBE60054FB44 /* Images.xcassets */,
 			);
 			path = MoleculeFlashcardsiOS;
 			sourceTree = "<group>";
