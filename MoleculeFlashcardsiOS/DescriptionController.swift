@@ -10,14 +10,30 @@ import UIKit
 
 class DescriptionController : UIViewController {
     
+    @IBOutlet var timeLabel: UILabel
+    @IBOutlet var questionCountLabel: UILabel
+    @IBOutlet var playButton: UIButton
+    @IBOutlet var highScoresButton: UIButton
+    @IBOutlet var descriptionTextView: UITextView
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        timeLabel.text = "30:00"
+        questionCountLabel.text = "5"
+        descriptionTextView.text = "game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test"
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
-        var gameTitle = navigationController.topViewController.title
+        if sender.isEqual(playButton)
+        {
+            var gameTitle = navigationController.topViewController.title
         
-        self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Game") as UIViewController, animated: true)
-        self.navigationController.topViewController.title = gameTitle
+            self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Game") as UIViewController, animated: true)
+            self.navigationController.topViewController.title = gameTitle
+        }
+        else if sender.isEqual(highScoresButton)
+        {
+            println("high scores clicked")
+        }
     }
 }
