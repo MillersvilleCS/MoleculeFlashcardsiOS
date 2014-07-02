@@ -122,7 +122,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" id="YQF-Kx-WOd">
+                            <tableViewCell contentMode="scaleAspectFit" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameCell" rowHeight="44" id="YQF-Kx-WOd" customClass="TableViewGameCell" customModule="MoleculeFlashcardsiOS" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YQF-Kx-WOd" id="tO2-Je-UQg">
                                     <autoresizingMask key="autoresizingMask"/>

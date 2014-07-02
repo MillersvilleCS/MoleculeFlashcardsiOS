@@ -10,8 +10,13 @@ import Foundation
 import UIKit
 
 class TableViewGameCell : UITableViewCell {
-    @IBOutlet var gameImage : UIImageView
-    @IBOutlet var gameButton : UILabel
     
+    @IBOutlet var cellImageView : UIImageView
+    @IBOutlet var cellLabel: UILabel
     
+    func loadItem(#text: String, image: UIImage) {
+        println(self.description)
+        cellImageView.image = image
+        cellLabel.text = text
+    }
 }

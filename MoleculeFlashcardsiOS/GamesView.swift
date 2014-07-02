@@ -10,16 +10,18 @@ import Foundation
 import UIKit
 
 class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
-
     
     @IBOutlet var tableView : UITableView
     
     var games: Game[]?
+    var nib = UINib(nibName: "TableViewGameCell", bundle: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.registerNib(nib, forCellReuseIdentifier: "gameCell")
+        self.tableView.registerClass(TableViewGameCell.self, forCellReuseIdentifier: "gameCell")
+        
         let REQUEST_HANDLER_URL = "https://exscitech.org/request_handler.php"
         let GET_MEDIA_URL = "https://exscitech.org/get_media.php"
         var will = User()
@@ -27,11 +29,6 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
         getGames(url: REQUEST_HANDLER_URL, user: will)
         while !games {
             
-        }
-        println(games!.count)
-        for game in games! {
-            var image = ImageLoader.load(url: game.imageURL)
-            println(image.debugDescription)
         }
     }
     
@@ -43,8 +40,10 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // Load the selected game.
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        println("You selected cell #\(indexPath.row)!")
     }
     
     // Set the number of cells
@@ -52,12 +51,22 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
         return self.games!.count;
     }
     
+    func numberOfSectionsInTableView(tableView: UITableView!, numberOfSectionsInTable: Int) -> Int {
+        return 1;
+    }
+    
     // Create the cells
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell
         
-        cell.textLabel.text = self.games![indexPath.row].name
-        cell.image = ImageLoader.load(url: self.games![indexPath.row].imageURL)
+        var cell:TableViewGameCell = self.tableView.dequeueReusableCellWithIdentifier("gameCell") as TableViewGameCell
+        
+        var game = self.games![indexPath.row]
+        var cellText = game.name
+        var cellImage = ImageLoader.load(url: game.imageURL)
+
+        cell.textLabel!.text = cellText
+        cell.imageView!.image = cellImage
+        //cell.loadItem(text: cellText, image: cellImage)
         
         return cell
     }
@@ -83,7 +92,6 @@ class GamesView : UIViewController, UITableViewDelegate, UITableViewDataSource {
                     var imageURL = "https://exscitech.org" + gameJSON["image"].description
                     
                     newGames.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, imageURL: imageURL))
-                    
                 }
                 self.games = newGames
             }
