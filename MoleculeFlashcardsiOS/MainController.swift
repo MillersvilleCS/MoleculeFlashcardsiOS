@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MainController : UIViewController {
@@ -18,6 +17,6 @@ class MainController : UIViewController {
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
-        self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Games") as UIViewController, animated: true)
+        self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("GameSelection") as UIViewController, animated: true)
     }
 }

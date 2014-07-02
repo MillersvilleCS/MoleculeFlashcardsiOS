@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F0D92B0196312630098EB6C /* GamesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AE196312630098EB6C /* GamesController.swift */; };
-		1F2AF5D21964376400107698 /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D11964376400107698 /* DescriptionController.swift */; };
+		1F0D92B0196312630098EB6C /* GameSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AE196312630098EB6C /* GameSelectionController.swift */; };
+		1F16AC0619645793008BAF6F /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F16AC0519645793008BAF6F /* DescriptionController.swift */; };
+		1F16AC0819645967008BAF6F /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F16AC0719645967008BAF6F /* GameController.swift */; };
 		1F2AF5E61964411B00107698 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D41964411B00107698 /* Answer.swift */; };
 		1F2AF5E71964411B00107698 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D51964411B00107698 /* Game.swift */; };
 		1F2AF5E81964411B00107698 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D61964411B00107698 /* Question.swift */; };
@@ -42,8 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F0D92AE196312630098EB6C /* GamesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesController.swift; sourceTree = "<group>"; };
-		1F2AF5D11964376400107698 /* DescriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
+		1F0D92AE196312630098EB6C /* GameSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSelectionController.swift; sourceTree = "<group>"; };
+		1F16AC0519645793008BAF6F /* DescriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
+		1F16AC0719645967008BAF6F /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
 		1F2AF5D41964411B00107698 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		1F2AF5D51964411B00107698 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		1F2AF5D61964411B00107698 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -155,8 +157,9 @@
 				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
 				1FB71E971961FBE60054FB44 /* AppDelegate.swift */,
 				1FB71EB4196202640054FB44 /* MainController.swift */,
-				1F0D92AE196312630098EB6C /* GamesController.swift */,
-				1F2AF5D11964376400107698 /* DescriptionController.swift */,
+				1F0D92AE196312630098EB6C /* GameSelectionController.swift */,
+				1F16AC0519645793008BAF6F /* DescriptionController.swift */,
+				1F16AC0719645967008BAF6F /* GameController.swift */,
 				1F2AF5D31964411B00107698 /* communication */,
 				1F2AF5D91964411B00107698 /* parser */,
 				1F2AF5DE1964411B00107698 /* ui */,
@@ -293,10 +296,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F2AF5F21964411B00107698 /* ImageLoader.swift in Sources */,
+				1F16AC0819645967008BAF6F /* GameController.swift in Sources */,
 				1F2AF5F41964411B00107698 /* VecOp.swift in Sources */,
+				1F16AC0619645793008BAF6F /* DescriptionController.swift in Sources */,
 				1F2AF5F01964411B00107698 /* TableViewGameCell.swift in Sources */,
 				1FB71EB5196202640054FB44 /* MainController.swift in Sources */,
-				1F2AF5D21964376400107698 /* DescriptionController.swift in Sources */,
 				1F2AF5E71964411B00107698 /* Game.swift in Sources */,
 				1F2AF5E81964411B00107698 /* Question.swift in Sources */,
 				1F2AF5F31964411B00107698 /* MoleculeGeometry.swift in Sources */,
@@ -307,7 +311,7 @@
 				1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */,
 				1F2AF5E61964411B00107698 /* Answer.swift in Sources */,
 				1F2AF5EC1964411B00107698 /* Bond.swift in Sources */,
-				1F0D92B0196312630098EB6C /* GamesController.swift in Sources */,
+				1F0D92B0196312630098EB6C /* GameSelectionController.swift in Sources */,
 				1F2AF5EB1964411B00107698 /* Atom.swift in Sources */,
 				1F2AF5EA1964411B00107698 /* User.swift in Sources */,
 			);

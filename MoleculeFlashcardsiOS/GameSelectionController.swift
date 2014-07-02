@@ -1,15 +1,14 @@
 //
-//  GamesController.swift
+//  GameSelectionController.swift
 //  MoleculeFlashcardsiOS
 //
 //  Created by exscitech on 7/1/14.
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class GamesController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class GameSelectionController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var tableView : UITableView
     
@@ -33,17 +32,26 @@ class GamesController: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     override func prepareForSegue (segue: UIStoryboardSegue!, sender: AnyObject!) {
+        println("Segue Identifier:" + segue.identifier)
         if segue.identifier == "Load View" {
             
             // Pass data to the next view
             
+            println("in pass data")
         }
+        
+        self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Description") as UIViewController, animated: true)
     }
     
     // Load the selected game.
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
         println("You selected cell #\(indexPath.row)!")
+        self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Description") as UIViewController, animated: true)
+
+        // Update the navigation bar's title to the selected game
+        navigationController.topViewController.title = tableView.cellForRowAtIndexPath(indexPath).textLabel.text
     }
     
     // Set the number of cells
