@@ -48,7 +48,7 @@
                 </textView>
             </subviews>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="475" y="539"/>
+            <point key="canvasLocation" x="609" y="530"/>
         </scrollView>
     </objects>
 </document>

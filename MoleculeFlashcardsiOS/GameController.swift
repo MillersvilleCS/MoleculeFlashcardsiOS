@@ -9,15 +9,9 @@
 import UIKit
 
 class GameController : UIViewController {
-    //@IBOutlet strong var gameView: UIView
-    @IBOutlet var scrollView: UIScrollView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationItem.hidesBackButton = true
-        
-        //self.scrollView.scrollEnabled = true
-        
-        
+        self.navigationItem.hidesBackButton = true        
     }
 }
