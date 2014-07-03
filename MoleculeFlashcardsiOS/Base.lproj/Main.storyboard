@@ -160,7 +160,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="highScoresButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="59C-Po-Wy7">
-                                <rect key="frame" x="87" y="443" width="132" height="23"/>
+                                <rect key="frame" x="87" y="451" width="132" height="23"/>
                                 <color key="backgroundColor" red="0.35294117650000001" green="0.4039215686" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                 <state key="normal" title="High Scores">
@@ -168,7 +168,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonClicked:" destination="gyN-EB-Igm" eventType="touchUpInside" id="VF5-s2-L5s"/>
+                                    <action selector="buttonClicked:" destination="gyN-EB-Igm" eventType="touchUpInside" id="3SN-X8-qAv"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKw-eX-kzR">
@@ -204,16 +204,16 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tu7-S1-Naw">
-                                        <rect key="frame" x="11" y="121" width="293" height="78"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="?" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="237" translatesAutoresizingMaskIntoConstraints="NO" id="l8X-VE-wtc">
+                                        <rect key="frame" x="45" y="124" width="237" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="descriptionPlayButton" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4i-o5-5CX">
-                                <rect key="frame" x="20" y="474" width="280" height="80"/>
+                                <rect key="frame" x="20" y="468" width="280" height="80"/>
                                 <color key="backgroundColor" red="0.53725490200000003" green="0.7843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="40"/>
                                 <state key="normal" title="Play">
@@ -221,7 +221,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="buttonClicked:" destination="gyN-EB-Igm" eventType="touchUpInside" id="lnh-ci-rMh"/>
+                                    <action selector="buttonClicked:" destination="gyN-EB-Igm" eventType="touchUpInside" id="hdh-al-oZ2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -232,11 +232,12 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="descriptionTextView" destination="tu7-S1-Naw" id="8Js-gK-Cs5"/>
-                        <outlet property="highScoresButton" destination="59C-Po-Wy7" id="9wB-0R-gJJ"/>
-                        <outlet property="playButton" destination="t4i-o5-5CX" id="wJB-JX-mQX"/>
-                        <outlet property="questionCountLabel" destination="cAE-ly-n8E" id="SCe-Jl-tBh"/>
-                        <outlet property="timeLabel" destination="dI4-Ve-YkI" id="L8g-v4-OP1"/>
+                        <outlet property="gameDescription" destination="l8X-VE-wtc" id="VqP-Yy-Evu"/>
+                        <outlet property="highScoresButton" destination="59C-Po-Wy7" id="5UI-dY-L9M"/>
+                        <outlet property="numberOfQuestions" destination="cAE-ly-n8E" id="TTv-WI-DEB"/>
+                        <outlet property="playButton" destination="t4i-o5-5CX" id="VDn-Ey-y9S"/>
+                        <outlet property="scroller" destination="hKw-eX-kzR" id="xVA-ao-uVR"/>
+                        <outlet property="timeLimit" destination="dI4-Ve-YkI" id="WNO-Fu-F1w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6aU-Oo-dtp" userLabel="First Responder" sceneMemberID="firstResponder"/>

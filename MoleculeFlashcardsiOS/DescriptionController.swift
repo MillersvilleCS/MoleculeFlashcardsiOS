@@ -7,21 +7,38 @@
 //
 
 import UIKit
+import Foundation
 
 class DescriptionController : UIViewController {
     
-    @IBOutlet var timeLabel: UILabel
-    @IBOutlet var questionCountLabel: UILabel
-    @IBOutlet var playButton: UIButton
     @IBOutlet var highScoresButton: UIButton
-    @IBOutlet var descriptionTextView: UITextView
+    @IBOutlet var playButton: UIButton
+    
+    @IBOutlet var timeLimit: UILabel
+    @IBOutlet var numberOfQuestions: UILabel
+    @IBOutlet var gameDescription: UILabel
+    
+    @IBOutlet var scroller: UIScrollView
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test")
         
-        timeLabel.text = "30:00"
-        questionCountLabel.text = "5"
-        descriptionTextView.text = "game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test"
+        scroller.scrollEnabled = true
+        scroller.contentSize.height = 420
+        scroller.contentSize.width = 209
     }
+    
+    func setGameData(#timeLimitText: String, numberOfQuestionsText: String,gameDescriptionText: String) {
+        
+        self.timeLimit.text = timeLimitText
+        self.numberOfQuestions.text = numberOfQuestionsText
+        self.gameDescription.text = gameDescriptionText
+    
+
+    }
+    
     
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton)
