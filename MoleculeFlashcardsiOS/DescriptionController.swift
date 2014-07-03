@@ -23,9 +23,9 @@ class DescriptionController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "*****game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test ******")
+        //setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "*****game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test ******")
         
-        //setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "a little text")
+        setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "a little text")
         
         scroller.scrollEnabled = true
         scroller.contentSize.height = 320
