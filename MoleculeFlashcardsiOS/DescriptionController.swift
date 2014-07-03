@@ -14,29 +14,29 @@ class DescriptionController : UIViewController {
     @IBOutlet var highScoresButton: UIButton
     @IBOutlet var playButton: UIButton
     
-    @IBOutlet var timeLimit: UILabel
-    @IBOutlet var numberOfQuestions: UILabel
-    @IBOutlet var gameDescription: UILabel
+    @IBOutlet var timeLimitLabel: UILabel
+    @IBOutlet var numberOfQuestionsLabel: UILabel
+    @IBOutlet var gameDescriptionLabel: UILabel
     
     @IBOutlet var scroller: UIScrollView
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test")
+        setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "*****game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test ******")
+        
+        //setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "a little text")
         
         scroller.scrollEnabled = true
-        scroller.contentSize.height = 420
-        scroller.contentSize.width = 209
+        scroller.contentSize.height = 320
+        scroller.contentSize.width = 200
     }
     
     func setGameData(#timeLimitText: String, numberOfQuestionsText: String,gameDescriptionText: String) {
         
-        self.timeLimit.text = timeLimitText
-        self.numberOfQuestions.text = numberOfQuestionsText
-        self.gameDescription.text = gameDescriptionText
-    
-
+        self.timeLimitLabel.text = timeLimitText
+        self.numberOfQuestionsLabel.text = numberOfQuestionsText
+        self.gameDescriptionLabel.text = gameDescriptionText
     }
     
     
