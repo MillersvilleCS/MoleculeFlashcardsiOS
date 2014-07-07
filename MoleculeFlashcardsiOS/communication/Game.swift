@@ -19,6 +19,7 @@ class Game {
     var name: String
     var description: String
     var timeLimit: Int
+    var questionCount : Int
     var imageURL: String
     
     var questionIndex: Int = 0
@@ -27,11 +28,12 @@ class Game {
     
     var state: GameState
     
-    init(id: String, name: String, description: String, timeLimit: Int, imageURL: String) {
+    init(id: String, name: String, description: String, timeLimit: Int, questionCount: Int, imageURL: String) {
         self.id = id
         self.name = name
         self.description = description
         self.timeLimit = timeLimit
+        self.questionCount = questionCount
         self.imageURL = imageURL
         self.state = GameState.WAITING_TO_START
     }
@@ -169,6 +171,6 @@ class Game {
     }
     
     func getNumberOfQuestions() -> Int {
-        return questions!.count
+        return questionCount
     }
 }

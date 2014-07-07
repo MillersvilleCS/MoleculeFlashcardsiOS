@@ -15,40 +15,38 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     var games: Game[]?
     var nib = UINib(nibName: "TableViewGameCell", bundle: nil)
     
+    let REQUEST_HANDLER_URL = "https://exscitech.org/request_handler.php"
+    let GET_MEDIA_URL = "https://exscitech.org/get_media.php"
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.registerNib(nib, forCellReuseIdentifier: "gameCell")
         self.tableView.registerClass(TableViewGameCell.self, forCellReuseIdentifier: "gameCell")
         
-        let REQUEST_HANDLER_URL = "https://exscitech.org/request_handler.php"
-        let GET_MEDIA_URL = "https://exscitech.org/get_media.php"
-        var will = User()
-        will.login(url: REQUEST_HANDLER_URL, username: "wpgervasio@gmail.com", password: "lol12345")
-        getGames(url: REQUEST_HANDLER_URL, user: will)
+        
+        user = User()
+        user!.login(url: REQUEST_HANDLER_URL, username: "wpgervasio@gmail.com", password: "lol12345")
+        getGames(url: REQUEST_HANDLER_URL, user: user!)
         while !games {
             
         }
-    }
-    
-    override func prepareForSegue (segue: UIStoryboardSegue!, sender: AnyObject!) {
-        println("Segue Identifier:" + segue.identifier)
-        if segue.identifier == "Load View" {
-            
-            // Pass data to the next view
-            
-            println("in pass data")
-        }
-        
-        self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Description") as UIViewController, animated: true)
     }
     
     // Load the selected game.
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
-        println("You selected cell #\(indexPath.row)!")
-        self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Description") as UIViewController, animated: true)
+      //  println("You selected cell #\(indexPath.row)!")
+        var controller = self.storyboard.instantiateViewControllerWithIdentifier("Description") as DescriptionController
+        var game = self.games![indexPath.row]
+
+        controller.game = game
+        controller.user = user
+        controller.requestURL = REQUEST_HANDLER_URL
+        controller.mediaURL = GET_MEDIA_URL
+        self.navigationController.pushViewController(controller, animated: true)
 
         // Update the navigation bar's title to the selected game
         navigationController.topViewController.title = tableView.cellForRowAtIndexPath(indexPath).textLabel.text
@@ -74,7 +72,6 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
 
         cell.textLabel!.text = cellText
         cell.imageView!.image = cellImage
-        //cell.loadItem(text: cellText, image: cellImage)
         
         return cell
     }
@@ -99,7 +96,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
                     var timeLimit = gameJSON["time_limit"] as String
                     var imageURL = "https://exscitech.org" + gameJSON["image"].description
                     
-                    newGames.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, imageURL: imageURL))
+                    newGames.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, questionCount: questionCount, imageURL: imageURL))
                 }
                 self.games = newGames
             }
