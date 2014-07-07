@@ -72,7 +72,6 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
 
         cell.textLabel!.text = cellText
         cell.imageView!.image = cellImage
-        //cell.loadItem(text: cellText, image: cellImage)
         
         return cell
     }
@@ -90,7 +89,6 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
                 var newGames = Game[]()
                 var gamesJSON : AnyObject = response["available_games"]!
                 for gameJSON : AnyObject in gamesJSON as AnyObject[] {
-                    println(gameJSON.description)
                     var id = gameJSON["id"]! as String
                     var name = gameJSON["name"]! as String
                     var description = gameJSON["description"] as String

@@ -27,11 +27,10 @@ class GameController : UIViewController {
                     
                     // var content:String = NSString(bytes:responseData, length: encoding:NSUTF8StringEncoding)
                     var content:String =  NSString(bytes: responseData.bytes, length: responseData.length, encoding: NSUTF8StringEncoding)
-                    println(content)
                     if error != nil {
                         // println("error: \(error.description)")
                     } else {
-                        //  println("success")
+                        // println("success")
                     }
                 })
             }
