@@ -14,7 +14,7 @@ struct SDFParser {
     static let HEADER_INDEX = 4
     
     //Note: Input passed here should only contain text before "M  END"
-    static func parse(sdfFileLines content: String[]) -> Molecule {
+    static func parse(sdfFileLines content: [String]) -> Molecule {
         var index = HEADER_INDEX
         var molecule = Molecule()
         

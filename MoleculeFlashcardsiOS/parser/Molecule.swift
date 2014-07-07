@@ -8,8 +8,8 @@
 
 class Molecule {
     
-    var atoms = Atom[]()
-    var bonds = Bond[]()
+    var atoms = [Atom]()
+    var bonds = [Bond]()
     
     init() {
     

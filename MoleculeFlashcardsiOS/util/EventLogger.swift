@@ -10,7 +10,7 @@ import Foundation
 
 struct EventLogger {
     
-    static var events = String[]()
+    static var events = [String]()
     
     static func log(event: String) {
         events.append(event)

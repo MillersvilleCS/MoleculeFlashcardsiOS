@@ -12,9 +12,9 @@ struct Question {
     
     var id: Int
     var text: String
-    var answers: Answer[]
+    var answers: [Answer]
     
-    init(id: Int, text: String, answers: Answer[]) {
+    init(id: Int, text: String, answers: [Answer]) {
         self.id = id
         self.text = text
         self.answers = answers

@@ -28,10 +28,10 @@ class DescriptionController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if !game || !user || !requestURL || !mediaURL {
-            println("a game, user, media url, and request url must be passed to Description view")
-            exit(EXIT_FAILURE)
-        }
+        assert(game)
+        assert(user)
+        assert(requestURL)
+        assert(mediaURL)
         
         self.timeLimitLabel.text = "\(game!.timeLimit)"
         self.numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"

@@ -15,22 +15,36 @@ class GameController : UIViewController {
     var requestURL: String?
     var mediaURL: String?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true
         
-        game!.start(url: requestURL!, user: user!,{(questions: Question[]) in
+        assert(game)
+        assert(user)
+        assert(requestURL)
+        assert(mediaURL)
+        
+       // start()
+        
+        self.navigationItem.hidesBackButton = true
+
+    }
+    
+    func start() {
+        game!.start(url: requestURL!, user: user!,{(questions: [Question]) in
             for question in questions {
                 var request = Request(url: "\(self.requestURL!)?gsi=\(self.game!.sessionId!)&mt=0&qid=\(question.id)")
-                // println("\(self.GET_MEDIA_URL)?gsi=\(game.sessionId!)&mt=0&qid=\(question.id)")
+                
                 request.performGet(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
                     
-                    // var content:String = NSString(bytes:responseData, length: encoding:NSUTF8StringEncoding)
-                    var content:String =  NSString(bytes: responseData.bytes, length: responseData.length, encoding: NSUTF8StringEncoding)
-                    if error != nil {
-                        // println("error: \(error.description)")
+                    var response: String =  NSString(bytes: responseData.bytes, length: responseData.length, encoding: NSUTF8StringEncoding)
+                    if error {
+                        
                     } else {
-                        // println("success")
+                        println(response)
+                        println(response.componentsSeparatedByString("\n"))
+                        var molecule = SDFParser.parse(sdfFileLines: response.componentsSeparatedByString("\n"))
+                        println(molecule.atoms)
                     }
                 })
             }

@@ -38,7 +38,7 @@ struct MoleculeGeometry {
     
     static func _buildAtom(atom: Atom, withColors colors: NSDictionary, withSizes sizes: NSDictionary) -> SCNNode {
         let sphereNode = SCNNode()
-        var color = colors[atom.type] as CGFloat[]
+        var color = colors[atom.type] as [CGFloat]
         var size = sizes[atom.type] as CGFloat
         
         var sphere = SCNSphere(radius: (size * 0.25))
@@ -47,13 +47,17 @@ struct MoleculeGeometry {
         sphereNode.position = atom.position
         
         let material = SCNMaterial()
-        material.diffuse.contents = CGColorCreateGenericRGB(color[0], color[1], color[2], 1.0)
+        
+        var rgb = CGColorSpaceCreateDeviceRGB()
+        var colors: [CGFloat] = [color[0], color[1], color[2], 1.0]
+        material.diffuse.contents = CGColorCreate(rgb, colors)
+        CGColorSpaceRelease(rgb)
         sphereNode.geometry.firstMaterial = material
         
         return sphereNode
     }
     
-    static func _buildBond(bond: Bond, withAtoms atoms: Atom[], withColors colors: NSDictionary, xOffset: Float)-> SCNNode {
+    static func _buildBond(bond: Bond, withAtoms atoms: [Atom], withColors colors: NSDictionary, xOffset: Float)-> SCNNode {
         let bondNode = SCNNode()
         let cylinder = SCNCylinder(radius: 0.07, height: 1.0)
         cylinder.radialSegmentCount = 6
@@ -79,11 +83,16 @@ struct MoleculeGeometry {
         bondNode.transform  = SCNMatrix4Mult(rMatrix, bondNode.transform)
         
         //temporarily set all bonds to the color of the atom they are going towards
-        var color1 = colors[fromAtom.type] as Float[]
-        var color2 = colors[toAtom.type] as Float[]
-        var materials = SCNMaterial[]()
+        var color1 = colors[fromAtom.type] as [Float]
+        var color2 = colors[toAtom.type] as [Float]
+        var materials = [SCNMaterial]()
         materials.append(SCNMaterial())
-        materials[0].diffuse.contents = CGColorCreateGenericRGB(color2[0], color2[1], color2[2], 1.0)
+        
+        var rgb = CGColorSpaceCreateDeviceRGB()
+        var colors: [CGFloat] = [color2[0], color2[1], color2[2], 1.0]
+        materials[0].diffuse.contents = CGColorCreate(rgb, colors)
+        CGColorSpaceRelease(rgb)
+      //  materials[0].diffuse.contents = CGColorCreateGenericRGB(color2[0], color2[1], color2[2], 1.0)
         
         bondNode.geometry.materials = materials
         
@@ -95,13 +104,13 @@ struct MoleculeGeometry {
         var moleculeText: String = NSString.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
         
         var lines = moleculeText.componentsSeparatedByString("\n")
-        var keys = String[]()
-        var colors = Float[][]()
-        var sizes = Float[]()
+        var keys = [String]()
+        var colors = [[Float]]()
+        var sizes = [Float]()
         
         for line in lines {
             var item = line.componentsSeparatedByString(":")
-            var values: NSString[] = item[1].componentsSeparatedByString(",")
+            var values: [NSString] = item[1].componentsSeparatedByString(",")
             
             var r    = values[0].floatValue / 255
             var g    = values[1].floatValue / 255
