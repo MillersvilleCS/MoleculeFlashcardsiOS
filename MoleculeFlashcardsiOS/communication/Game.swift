@@ -24,7 +24,7 @@ class Game {
     
     var questionIndex: Int = 0
     var sessionId: String?
-    var questions: Question[]?
+    var questions: [Question]?
     
     var state: GameState
     
@@ -38,7 +38,7 @@ class Game {
         self.state = GameState.WAITING_TO_START
     }
     
-    func start(#url: String, user: User, onComplete: (questions: Question[]) -> Void) {
+    func start(#url: String, user: User, onComplete: (questions: [Question]) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "load_flashcard_game")
         request.addParameter(key: "authenticator", value: !user.id)
@@ -55,16 +55,16 @@ class Game {
                 self.questionIndex = 0
                 self.sessionId = response["game_session_id"]! as? String
                 //load questions
-                var newQuestions = Question[]()
+                var newQuestions = [Question]()
                 var questionsJSON : AnyObject = response["questions"]!
-                for questionJSON : AnyObject in questionsJSON as AnyObject[] {
+                for questionJSON : AnyObject in questionsJSON as [AnyObject] {
                     var questionId: Int = questionJSON["id"] as Int
                     var questionText: String = questionJSON["text"] as String
                     var answersJSON : AnyObject! = questionJSON["answers"]!
                     
-                    var answerList = Answer[]()
+                    var answerList = [Answer]()
                     //load answers
-                    for answerJSON : AnyObject in answersJSON as AnyObject[] {
+                    for answerJSON : AnyObject in answersJSON as [AnyObject] {
                         var answerId: Int = answerJSON["id"] as Int
                         var answerText: String = answerJSON["text"] as String
                         answerList.append(Answer(id: answerId, text: answerText))
@@ -166,7 +166,7 @@ class Game {
         return molecule
     }
     
-    func getAvailableAnswers() -> Answer[] {
+    func getAvailableAnswers() -> [Answer] {
         return questions![questionIndex].answers
     }
     

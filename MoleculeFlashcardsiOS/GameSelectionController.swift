@@ -12,7 +12,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet var tableView : UITableView
     
-    var games: Game[]?
+    var games: [Game]?
     var nib = UINib(nibName: "TableViewGameCell", bundle: nil)
     
     let REQUEST_HANDLER_URL = "https://exscitech.org/request_handler.php"
@@ -86,9 +86,9 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
             if error {
                 
             } else {
-                var newGames = Game[]()
+                var newGames = [Game]()
                 var gamesJSON : AnyObject = response["available_games"]!
-                for gameJSON : AnyObject in gamesJSON as AnyObject[] {
+                for gameJSON : AnyObject in gamesJSON as [AnyObject] {
                     var id = gameJSON["id"]! as String
                     var name = gameJSON["name"]! as String
                     var description = gameJSON["description"] as String
