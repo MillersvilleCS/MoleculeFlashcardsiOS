@@ -20,32 +20,41 @@ class DescriptionController : UIViewController {
     
     @IBOutlet var scroller: UIScrollView
     
+    var game: Game?
+    var user: User?
+    var requestURL: String?
+    var mediaURL: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "*****game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test game description text test ******")
+        if !game || !user || !requestURL || !mediaURL {
+            println("a game, user, media url, and request url must be passed to Description view")
+            exit(EXIT_FAILURE)
+        }
         
-        setGameData(timeLimitText: "30:00", numberOfQuestionsText: "5", gameDescriptionText: "a little text")
+        self.timeLimitLabel.text = "\(game!.timeLimit)"
+        self.numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"
+        self.gameDescriptionLabel.text = game!.description
         
         scroller.scrollEnabled = true
         scroller.contentSize.height = 320
         scroller.contentSize.width = 200
     }
     
-    func setGameData(#timeLimitText: String, numberOfQuestionsText: String,gameDescriptionText: String) {
-        
-        self.timeLimitLabel.text = timeLimitText
-        self.numberOfQuestionsLabel.text = numberOfQuestionsText
-        self.gameDescriptionLabel.text = gameDescriptionText
-    }
-    
-    
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton)
         {
             var gameTitle = navigationController.topViewController.title
-        
-            self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Game") as UIViewController, animated: true)
+            var controller = self.storyboard.instantiateViewControllerWithIdentifier("Game") as GameController
+            
+            controller.game = game!
+            controller.user = user!
+            controller.requestURL = requestURL!
+            controller.mediaURL = mediaURL!
+            self.navigationController.pushViewController(controller, animated: true)
+
+            //self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Game") as UIViewController, animated: true)
             self.navigationController.topViewController.title = gameTitle
         }
         else if sender.isEqual(highScoresButton)
