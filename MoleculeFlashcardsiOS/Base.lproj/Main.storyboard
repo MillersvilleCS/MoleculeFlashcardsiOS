@@ -674,15 +674,16 @@
             </objects>
             <point key="canvasLocation" x="341" y="-36"/>
         </scene>
-        <!--View Controller-->
+        <!--Molecule Controller-->
         <scene sceneID="gto-IT-FJ1">
             <objects>
-                <viewController id="WoN-34-A0X" sceneMemberID="viewController">
+                <viewController id="WoN-34-A0X" customClass="MoleculeController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B5R-ni-Ku2"/>
                         <viewControllerLayoutGuide type="bottom" id="z5d-dy-n2P"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="BAu-7U-RfQ">
+                    <view key="view" contentMode="scaleToFill" id="BAu-7U-RfQ" customClass="SCNView">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

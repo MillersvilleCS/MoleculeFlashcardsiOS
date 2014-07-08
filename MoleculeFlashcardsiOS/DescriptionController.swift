@@ -34,6 +34,7 @@ class DescriptionController : UIViewController {
         assert(mediaURL)
         
         self.timeLimitLabel.text = "\(game!.timeLimit)"
+       // self. = "\(game!.timeLimit)"
         self.numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"
         self.gameDescriptionLabel.text = game!.description
         

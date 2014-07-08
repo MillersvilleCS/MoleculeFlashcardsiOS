@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SceneKit
 
 class GameController : UIViewController {
     
@@ -15,6 +16,7 @@ class GameController : UIViewController {
     var requestURL: String?
     var mediaURL: String?
     
+    var molecules: [SCNNode]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,19 +36,21 @@ class GameController : UIViewController {
         game!.start(url: requestURL!, user: user!,{(questions: [Question]) in
             for question in questions {
                 var request = Request(url: "\(self.mediaURL!)?gsi=\(self.game!.sessionId!)&mt=0&qid=\(question.id)")
-                
+                var nodeList = [SCNNode]()
                 request.performGet(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
                     
                     var response: String =  NSString(bytes: responseData.bytes, length: responseData.length, encoding: NSUTF8StringEncoding)
                     if error {
                         
                     } else {
-                        println(response)
-                        println(response.componentsSeparatedByString("\n"))
                         var molecule = SDFParser.parse(sdfFileLines: response.componentsSeparatedByString("\n"))
-                        println(molecule.atoms)
+                        var node = SCNNode()
+                        node = MoleculeGeometry.constructWith(molecule, attachTo: node)
+                        nodeList.append(node)
                     }
                 })
+                
+                self.molecules = nodeList
             }
         })
     }

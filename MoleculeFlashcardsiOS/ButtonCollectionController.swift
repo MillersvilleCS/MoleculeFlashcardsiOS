@@ -16,8 +16,7 @@ class ButtonCollectionController: UICollectionViewController {
     var buttonGrayPressed = UIColor(red: CGFloat(158/255.0), green: CGFloat(158/255.0), blue: CGFloat(158/255.0), alpha: CGFloat(1.0))
     var buttonGrayDefault = UIColor(red: CGFloat(209/255.0), green: CGFloat(209/255.0), blue: CGFloat(209/255.0), alpha: CGFloat(1.0))
     var buttonCorrectDefault = UIColor(red: CGFloat(0/255.0), green: CGFloat(153/255.0), blue: CGFloat(0/255.0), alpha: CGFloat(1.0))
-    
-    
+
 
 
     init(coder aDecoder: NSCoder!) {
@@ -62,6 +61,14 @@ class ButtonCollectionController: UICollectionViewController {
         
         myCell.addSubview(button)
         return myCell
+    }
+    
+    func setButtonText(answerChoices: [String]) {
+        //for var tagIndex = 0; tagIndex < 6; ++tagIndex {
+         //   var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: tagIndex) as UICollectionViewCell
+          //  cell.setTitle(answerChoices[tagIndex], forState: UIControlState.Normal)
+          //  cell.backgroundColor = buttonGrayDefault
+        //}
     }
     
     @IBAction func buttonClicked(sender: UIButton) {

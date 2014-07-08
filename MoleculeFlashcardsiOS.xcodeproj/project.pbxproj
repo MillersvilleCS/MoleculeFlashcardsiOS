@@ -27,6 +27,7 @@
 		1F2AF5F31964411B00107698 /* MoleculeGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E41964411B00107698 /* MoleculeGeometry.swift */; };
 		1F2AF5F41964411B00107698 /* VecOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E51964411B00107698 /* VecOp.swift */; };
 		1F2E9258196B32B900549BC0 /* ButtonCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */; };
+		1F2E925C196C264C00549BC0 /* MoleculeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E925B196C264C00549BC0 /* MoleculeController.swift */; };
 		1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71E971961FBE60054FB44 /* AppDelegate.swift */; };
 		1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9B1961FBE60054FB44 /* Main.storyboard */; };
 		1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9E1961FBE60054FB44 /* Images.xcassets */; };
@@ -65,6 +66,7 @@
 		1F2AF5E41964411B00107698 /* MoleculeGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleculeGeometry.swift; sourceTree = "<group>"; };
 		1F2AF5E51964411B00107698 /* VecOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VecOp.swift; sourceTree = "<group>"; };
 		1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCollectionController.swift; sourceTree = "<group>"; };
+		1F2E925B196C264C00549BC0 /* MoleculeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleculeController.swift; sourceTree = "<group>"; };
 		1FB71E921961FBE60054FB44 /* MoleculeFlashcardsiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoleculeFlashcardsiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB71E961961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71E971961FBE60054FB44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				1F16AC0519645793008BAF6F /* DescriptionController.swift */,
 				1F16AC0719645967008BAF6F /* GameController.swift */,
 				1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */,
+				1F2E925B196C264C00549BC0 /* MoleculeController.swift */,
 				1F2AF5D31964411B00107698 /* communication */,
 				1F2AF5D91964411B00107698 /* parser */,
 				1F2AF5DE1964411B00107698 /* ui */,
@@ -321,6 +324,7 @@
 				1F2AF5EC1964411B00107698 /* Bond.swift in Sources */,
 				1F0D92B0196312630098EB6C /* GameSelectionController.swift in Sources */,
 				1F2AF5EB1964411B00107698 /* Atom.swift in Sources */,
+				1F2E925C196C264C00549BC0 /* MoleculeController.swift in Sources */,
 				1F2AF5EA1964411B00107698 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
