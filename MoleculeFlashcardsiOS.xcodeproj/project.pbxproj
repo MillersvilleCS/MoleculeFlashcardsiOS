@@ -28,12 +28,12 @@
 		1F2AF5F41964411B00107698 /* VecOp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E51964411B00107698 /* VecOp.swift */; };
 		1F2E9258196B32B900549BC0 /* ButtonCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */; };
 		1F2E925C196C264C00549BC0 /* MoleculeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E925B196C264C00549BC0 /* MoleculeController.swift */; };
+		1F7DCF65196C686C00035854 /* moleculeData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F7DCF64196C686C00035854 /* moleculeData.txt */; };
 		1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71E971961FBE60054FB44 /* AppDelegate.swift */; };
 		1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9B1961FBE60054FB44 /* Main.storyboard */; };
 		1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9E1961FBE60054FB44 /* Images.xcassets */; };
 		1FB71EAB1961FBE60054FB44 /* MoleculeFlashcardsiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71EAA1961FBE60054FB44 /* MoleculeFlashcardsiOSTests.swift */; };
 		1FB71EB5196202640054FB44 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71EB4196202640054FB44 /* MainController.swift */; };
-		1FC27201196C42EA008C3CD3 /* moleculeData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1FC27200196C42EA008C3CD3 /* moleculeData.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +68,7 @@
 		1F2AF5E51964411B00107698 /* VecOp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VecOp.swift; sourceTree = "<group>"; };
 		1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCollectionController.swift; sourceTree = "<group>"; };
 		1F2E925B196C264C00549BC0 /* MoleculeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleculeController.swift; sourceTree = "<group>"; };
+		1F7DCF64196C686C00035854 /* moleculeData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = moleculeData.txt; path = assets/moleculeData.txt; sourceTree = "<group>"; };
 		1FB71E921961FBE60054FB44 /* MoleculeFlashcardsiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoleculeFlashcardsiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB71E961961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71E971961FBE60054FB44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +78,6 @@
 		1FB71EA91961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71EAA1961FBE60054FB44 /* MoleculeFlashcardsiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoleculeFlashcardsiOSTests.swift; sourceTree = "<group>"; };
 		1FB71EB4196202640054FB44 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
-		1FC27200196C42EA008C3CD3 /* moleculeData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = moleculeData.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,9 +169,9 @@
 				1F0D92AE196312630098EB6C /* GameSelectionController.swift */,
 				1F16AC0519645793008BAF6F /* DescriptionController.swift */,
 				1F16AC0719645967008BAF6F /* GameController.swift */,
-				1FC27200196C42EA008C3CD3 /* moleculeData.txt */,
 				1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */,
 				1F2E925B196C264C00549BC0 /* MoleculeController.swift */,
+				1F7DCF64196C686C00035854 /* moleculeData.txt */,
 				1F2AF5D31964411B00107698 /* communication */,
 				1F2AF5D91964411B00107698 /* parser */,
 				1F2AF5DE1964411B00107698 /* ui */,
@@ -290,7 +290,7 @@
 				1F16AC0A19648BBE008BAF6F /* DescriptionScrollView.xib in Resources */,
 				1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */,
 				1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */,
-				1FC27201196C42EA008C3CD3 /* moleculeData.txt in Resources */,
+				1F7DCF65196C686C00035854 /* moleculeData.txt in Resources */,
 				1F2AF5EF1964411B00107698 /* CustomTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

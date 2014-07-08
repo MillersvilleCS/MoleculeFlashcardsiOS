@@ -39,7 +39,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
 
       //  println("You selected cell #\(indexPath.row)!")
-        var controller = self.storyboard.instantiateViewControllerWithIdentifier("Description") as DescriptionController
+        var controller = self.storyboard.instantiateViewControllerWithIdentifier("DescriptionController") as DescriptionController
         var game = self.games![indexPath.row]
 
         controller.game = game

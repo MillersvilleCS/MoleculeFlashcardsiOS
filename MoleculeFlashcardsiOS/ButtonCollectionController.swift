@@ -10,14 +10,15 @@ import UIKit
 
 class ButtonCollectionController: UICollectionViewController {
     
-    var numbers = ["1","2","3","4","5","6"]
     var reuseIdentifier = "ButtonCell"
     
     var buttonGrayPressed = UIColor(red: CGFloat(158/255.0), green: CGFloat(158/255.0), blue: CGFloat(158/255.0), alpha: CGFloat(1.0))
     var buttonGrayDefault = UIColor(red: CGFloat(209/255.0), green: CGFloat(209/255.0), blue: CGFloat(209/255.0), alpha: CGFloat(1.0))
     var buttonCorrectDefault = UIColor(red: CGFloat(0/255.0), green: CGFloat(153/255.0), blue: CGFloat(0/255.0), alpha: CGFloat(1.0))
 
-
+    var buttons = [UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50))]
+    
+    var answerChoices = [String](count: 6, repeatedValue: "")
 
     init(coder aDecoder: NSCoder!) {
         super.init(coder:aDecoder)
@@ -40,8 +41,9 @@ class ButtonCollectionController: UICollectionViewController {
         return 1
     }
     
+    // Set the initial cell display to the maximum number of answers
     override func collectionView(collectionView: UICollectionView?, numberOfItemsInSection section: Int) -> Int {
-        return numbers.count
+        return buttons.count
     }
     
     override func collectionView(collectionView: UICollectionView?, cellForItemAtIndexPath indexPath: NSIndexPath?) -> UICollectionViewCell? {
@@ -49,26 +51,17 @@ class ButtonCollectionController: UICollectionViewController {
         
         // Configure the cell
         let row = indexPath?.row
-        let testString = numbers[row!]
+        let answerChoice = self.answerChoices[row!]
         
-        var button = UIButton(frame: CGRectMake(0, 0, myCell.frame.width, myCell.frame.height))
+        //buttons[row!].frame.width = myCell.frame.width
+        buttons[row!].setTitle(answerChoice, forState: UIControlState.Normal)
+        buttons[row!].backgroundColor = buttonGrayDefault
         
-        button.setTitle(testString, forState: UIControlState.Normal)
-        button.backgroundColor = buttonGrayDefault
+        buttons[row!].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
+        buttons[row!].tag = row!
         
-        button.addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
-        button.tag = row!
-        
-        myCell.addSubview(button)
+        myCell.addSubview(buttons[row!])
         return myCell
-    }
-    
-    func setButtonText(answerChoices: [String]) {
-        //for var tagIndex = 0; tagIndex < 6; ++tagIndex {
-         //   var cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: tagIndex) as UICollectionViewCell
-          //  cell.setTitle(answerChoices[tagIndex], forState: UIControlState.Normal)
-          //  cell.backgroundColor = buttonGrayDefault
-        //}
     }
     
     @IBAction func buttonClicked(sender: UIButton) {

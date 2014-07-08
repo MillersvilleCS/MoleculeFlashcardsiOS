@@ -17,6 +17,6 @@ class MainController : UIViewController {
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
-        self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("GameSelection") as UIViewController, animated: true)
+        self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as UIViewController, animated: true)
     }
 }

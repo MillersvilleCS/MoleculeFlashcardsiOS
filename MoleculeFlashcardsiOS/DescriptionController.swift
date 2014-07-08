@@ -50,7 +50,7 @@ class DescriptionController : UIViewController {
         if sender.isEqual(playButton)
         {
             var gameTitle = navigationController.topViewController.title
-            var controller = self.storyboard.instantiateViewControllerWithIdentifier("Game") as GameController
+            var controller = self.storyboard.instantiateViewControllerWithIdentifier("GameController") as GameController
             
             controller.game = game!
             controller.user = user!
