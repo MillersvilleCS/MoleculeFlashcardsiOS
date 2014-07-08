@@ -12,7 +12,12 @@ class ButtonCollectionController: UICollectionViewController {
     
     var numbers = ["1","2","3","4","5","6"]
     var reuseIdentifier = "ButtonCell"
-    var buttonGrayColor = UIColor(red: CGFloat(158/255.0), green: CGFloat(158/255.0), blue: CGFloat(158/255.0), alpha: CGFloat(1.0))
+    
+    var buttonGrayPressed = UIColor(red: CGFloat(158/255.0), green: CGFloat(158/255.0), blue: CGFloat(158/255.0), alpha: CGFloat(1.0))
+    var buttonGrayDefault = UIColor(red: CGFloat(209/255.0), green: CGFloat(209/255.0), blue: CGFloat(209/255.0), alpha: CGFloat(1.0))
+    var buttonCorrectDefault = UIColor(red: CGFloat(0/255.0), green: CGFloat(153/255.0), blue: CGFloat(0/255.0), alpha: CGFloat(1.0))
+    
+    
 
 
     init(coder aDecoder: NSCoder!) {
@@ -50,7 +55,7 @@ class ButtonCollectionController: UICollectionViewController {
         var button = UIButton(frame: CGRectMake(0, 0, myCell.frame.width, myCell.frame.height))
         
         button.setTitle(testString, forState: UIControlState.Normal)
-        button.backgroundColor = buttonGrayColor
+        button.backgroundColor = buttonGrayDefault
         
         button.addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
         button.tag = row!
