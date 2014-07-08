@@ -24,7 +24,7 @@ class GameController : UIViewController {
         assert(requestURL)
         assert(mediaURL)
         
-       // start()
+        start()
         
         self.navigationItem.hidesBackButton = true
 
@@ -33,7 +33,7 @@ class GameController : UIViewController {
     func start() {
         game!.start(url: requestURL!, user: user!,{(questions: [Question]) in
             for question in questions {
-                var request = Request(url: "\(self.requestURL!)?gsi=\(self.game!.sessionId!)&mt=0&qid=\(question.id)")
+                var request = Request(url: "\(self.mediaURL!)?gsi=\(self.game!.sessionId!)&mt=0&qid=\(question.id)")
                 
                 request.performGet(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
                     
