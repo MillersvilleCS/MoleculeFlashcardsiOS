@@ -29,21 +29,26 @@ class DescriptionController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         assert(game)
         assert(user)
         assert(requestURL)
         assert(mediaURL)
         
         self.timeLimitLabel.text = "\(game!.timeLimit)"
-       // self. = "\(game!.timeLimit)"
+        // self. = "\(game!.timeLimit)"
         self.numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"
         self.gameDescriptionLabel.text = game!.description
         self.imageView.image = ImageLoader.load(url: game!.imageURL)
         
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
         scroller.scrollEnabled = true
-        scroller.contentSize.height = 320
-        scroller.contentSize.width = 200
+        scroller.contentSize.width = scroller.frame.width
+        scroller.contentSize.height = 1000
+        //TO FIX TEXT POSITION LATER: http://stackoverflow.com/questions/1054558/vertically-align-text-within-a-uilabel
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
@@ -57,7 +62,7 @@ class DescriptionController : UIViewController {
             controller.requestURL = requestURL!
             controller.mediaURL = mediaURL!
             self.navigationController.pushViewController(controller, animated: true)
-
+            
             //self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Game") as UIViewController, animated: true)
             self.navigationController.topViewController.title = gameTitle
         }
