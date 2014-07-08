@@ -25,7 +25,7 @@ struct SDFParser {
             line = content[index]
         }
         
-        while(index < content.count) {
+        while(index < content.count  && content[index] !=  "M  END") {
             line = content[index]
             molecule.add(parseBond(line))
             index++

@@ -11,8 +11,9 @@ import SceneKit
 
 struct MoleculeGeometry {
     
-    static func constructWith(molecule: Molecule, attachTo rootMolecule: SCNNode) -> SCNNode {
+    static func constructWith(molecule: Molecule) -> SCNNode {
         var moleculeData = _loadMoleculeData()
+        var rootMolecule = SCNNode()
         var add = rootMolecule.addChildNode //shorthand
         
         for atom in molecule.atoms {
@@ -51,7 +52,7 @@ struct MoleculeGeometry {
         var rgb = CGColorSpaceCreateDeviceRGB()
         var colors: [CGFloat] = [color[0], color[1], color[2], 1.0]
         material.diffuse.contents = CGColorCreate(rgb, colors)
-        CGColorSpaceRelease(rgb)
+        //CGColorSpaceRelease(rgb)
         sphereNode.geometry.firstMaterial = material
         
         return sphereNode

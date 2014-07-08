@@ -33,6 +33,7 @@
 		1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9E1961FBE60054FB44 /* Images.xcassets */; };
 		1FB71EAB1961FBE60054FB44 /* MoleculeFlashcardsiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71EAA1961FBE60054FB44 /* MoleculeFlashcardsiOSTests.swift */; };
 		1FB71EB5196202640054FB44 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71EB4196202640054FB44 /* MainController.swift */; };
+		1FC27201196C42EA008C3CD3 /* moleculeData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1FC27200196C42EA008C3CD3 /* moleculeData.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		1FB71EA91961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71EAA1961FBE60054FB44 /* MoleculeFlashcardsiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoleculeFlashcardsiOSTests.swift; sourceTree = "<group>"; };
 		1FB71EB4196202640054FB44 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		1FC27200196C42EA008C3CD3 /* moleculeData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = moleculeData.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				1F0D92AE196312630098EB6C /* GameSelectionController.swift */,
 				1F16AC0519645793008BAF6F /* DescriptionController.swift */,
 				1F16AC0719645967008BAF6F /* GameController.swift */,
+				1FC27200196C42EA008C3CD3 /* moleculeData.txt */,
 				1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */,
 				1F2E925B196C264C00549BC0 /* MoleculeController.swift */,
 				1F2AF5D31964411B00107698 /* communication */,
@@ -287,6 +290,7 @@
 				1F16AC0A19648BBE008BAF6F /* DescriptionScrollView.xib in Resources */,
 				1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */,
 				1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */,
+				1FC27201196C42EA008C3CD3 /* moleculeData.txt in Resources */,
 				1F2AF5EF1964411B00107698 /* CustomTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

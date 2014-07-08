@@ -45,7 +45,7 @@ class GameController : UIViewController {
                     } else {
                         var molecule = SDFParser.parse(sdfFileLines: response.componentsSeparatedByString("\n"))
                         var node = SCNNode()
-                        node = MoleculeGeometry.constructWith(molecule, attachTo: node)
+                        node = MoleculeGeometry.constructWith(molecule)
                         nodeList.append(node)
                     }
                 })
