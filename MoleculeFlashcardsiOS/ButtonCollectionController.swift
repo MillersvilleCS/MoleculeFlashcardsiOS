@@ -12,6 +12,7 @@ class ButtonCollectionController: UICollectionViewController {
     
     var reuseIdentifier = "ButtonCell"
     
+    // Custom colors
     var buttonGrayPressed = UIColor(red: CGFloat(158/255.0), green: CGFloat(158/255.0), blue: CGFloat(158/255.0), alpha: CGFloat(1.0))
     var buttonGrayDefault = UIColor(red: CGFloat(209/255.0), green: CGFloat(209/255.0), blue: CGFloat(209/255.0), alpha: CGFloat(1.0))
     var buttonCorrectDefault = UIColor(red: CGFloat(0/255.0), green: CGFloat(153/255.0), blue: CGFloat(0/255.0), alpha: CGFloat(1.0))

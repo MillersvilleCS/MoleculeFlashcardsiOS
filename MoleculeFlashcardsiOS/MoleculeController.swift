@@ -15,6 +15,10 @@ class MoleculeController: UIViewController {
     let cameraNode = SCNNode()
     var molecule: SCNNode?
     
+    @IBOutlet var scoreLabel: UILabel?
+    @IBOutlet var timerLabel: UILabel?
+    @IBOutlet var questionLabel: UILabel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
   
@@ -78,7 +82,16 @@ class MoleculeController: UIViewController {
         self.molecule = molecule
         scene.rootNode.addChildNode(molecule)
     }
-
+    
+    func setQuestion (question: String) {
+        if question == nil {
+            self.questionLabel!.text = ""
+        }
+        else {
+            self.questionLabel!.text = question
+        }
+    }
+    
     func handleZoom(gestureRecognize: UIPinchGestureRecognizer) {
         var pos = self.cameraNode.position
         
