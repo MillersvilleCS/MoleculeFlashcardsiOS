@@ -11,6 +11,8 @@ import Foundation
 
 class DescriptionController : UIViewController {
     
+    @IBOutlet var imageView: UIImageView
+    
     @IBOutlet var highScoresButton: UIButton
     @IBOutlet var playButton: UIButton
     
@@ -37,6 +39,7 @@ class DescriptionController : UIViewController {
        // self. = "\(game!.timeLimit)"
         self.numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"
         self.gameDescriptionLabel.text = game!.description
+        self.imageView.image = ImageLoader.load(url: game!.imageURL)
         
         scroller.scrollEnabled = true
         scroller.contentSize.height = 320

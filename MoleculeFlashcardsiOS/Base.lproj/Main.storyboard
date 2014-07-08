@@ -348,6 +348,7 @@
                     <connections>
                         <outlet property="gameDescriptionLabel" destination="l8X-VE-wtc" id="4XT-vw-V4k"/>
                         <outlet property="highScoresButton" destination="59C-Po-Wy7" id="5UI-dY-L9M"/>
+                        <outlet property="imageView" destination="hWr-Hg-Xn4" id="vCU-Y7-Kok"/>
                         <outlet property="numberOfQuestionsLabel" destination="cAE-ly-n8E" id="2ZE-7S-9al"/>
                         <outlet property="playButton" destination="t4i-o5-5CX" id="VDn-Ey-y9S"/>
                         <outlet property="scroller" destination="hKw-eX-kzR" id="xVA-ao-uVR"/>
