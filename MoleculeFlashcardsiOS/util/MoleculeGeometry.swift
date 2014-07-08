@@ -92,8 +92,8 @@ struct MoleculeGeometry {
         var rgb = CGColorSpaceCreateDeviceRGB()
         var colors: [CGFloat] = [color2[0], color2[1], color2[2], 1.0]
         materials[0].diffuse.contents = CGColorCreate(rgb, colors)
-        CGColorSpaceRelease(rgb)
-      //  materials[0].diffuse.contents = CGColorCreateGenericRGB(color2[0], color2[1], color2[2], 1.0)
+        //  CGColorSpaceRelease(rgb)
+        //  materials[0].diffuse.contents = CGColorCreateGenericRGB(color2[0], color2[1], color2[2], 1.0)
         
         bondNode.geometry.materials = materials
         

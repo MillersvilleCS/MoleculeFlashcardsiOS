@@ -30,12 +30,18 @@ class Request {
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:onComplete)
     }
     
-    func performGet(#onComplete: (response:NSURLResponse!, responseData:NSData!, error: NSError!) -> Void) {
+    func performGet() -> (NSURLResponse, NSErrorPointer) {
         var request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
-        var queue: NSOperationQueue = NSOperationQueue()
+        var data = NSData()
+        request.HTTPBody = data
+        var response: NSURLResponse?
+        var error: NSErrorPointer = nil
         
-        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler:onComplete)
+        NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: error)
+        var dataString = NSString(data: data, encoding: NSUTF8StringEncoding)
+        println("Data: \(dataString)")
+        return (response!, error)
     }
     
     func addParameter(#key: String, value: NSObject) {
