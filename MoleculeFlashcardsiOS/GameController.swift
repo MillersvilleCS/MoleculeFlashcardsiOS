@@ -19,10 +19,9 @@ class GameController : UIViewController {
     var questions: [Question]?
     var molecules: [SCNNode]?
     
-    @IBOutlet var buttonController: ButtonCollectionController
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         
         assert(game)
         assert(user)
@@ -30,10 +29,6 @@ class GameController : UIViewController {
         assert(mediaURL)
         
         start()
-        
-        // Set the answer choices
-        var buttonController = self.childViewControllers[1] as ButtonCollectionController
-        buttonController.answerChoices = ["1", "2", "3", "4", "5", "6"]
     }
     
     func start() {
@@ -60,20 +55,35 @@ class GameController : UIViewController {
     
     func startQuestions() {
         
+        // Set the molecule to display
         var moleculeController = self.childViewControllers[0] as MoleculeController
         moleculeController.setQuestion(self.questions![0].text)
-        println(moleculeController.questionLabel!.text)
-
+        moleculeController.setMolecule(molecules![0])
+        moleculeController.view.setNeedsDisplay()
+        moleculeController.view.setNeedsDisplayInRect(moleculeController.view.frame)
+        
+        // Set the answer choices
+        var buttonController = self.childViewControllers[1] as ButtonCollectionController
+        buttonController.setButtonAnswers(self.questions![0].answers)
+        buttonController.view.setNeedsDisplay()
+        buttonController.view.setNeedsDisplayInRect(buttonController.view.frame)
+        
         println("number of controllers: \(self.childViewControllers.count)")
         println("controller: \(moleculeController.description)")
         println("number of molecules: \(molecules!.count)")
         
-        moleculeController.setMolecule(molecules![0])
-       // println(controller.questionLabel!.text)
+        buttonController.becomeFirstResponder()
+        buttonController.collectionView.becomeFirstResponder()
+        println("collection view first responder? \(buttonController.isFirstResponder())")
+        println("collection view first responder? \(buttonController.collectionView.isFirstResponder())")
         
-        moleculeController.view.setNeedsDisplay()
-        moleculeController.view.setNeedsDisplayInRect(moleculeController.view.frame)
-    
+        buttonController.reloadInputViews()
+        buttonController.collectionView.becomeFirstResponder()
+        buttonController.collectionView.reloadInputViews()
+        buttonController.collectionView.reloadData()
+        buttonController.collectionView.reloadItemsAtIndexPaths(buttonController.collectionView.indexPathsForVisibleItems())
+
+
         /*
         
         Right now updating is delayed. This might help later:
@@ -88,7 +98,5 @@ class GameController : UIViewController {
 
         If you don't think things are getting drawn, put a breakpoint in -drawRect: and see when you're getting called. If you're calling -setNeedsDisplay, but -drawRect: isn't getting called in the next event loop, then dig into your view hierarchy and make sure you're not trying to outsmart is somewhere. Over-cleverness is the #1 cause of bad drawing in my experience. When you think you know best how to trick the system into doing what you want, you usually get it doing exactly what you don't want.
         */
-
-        self.navigationItem.hidesBackButton = true
     }
 }

@@ -11,10 +11,7 @@ import UIKit
 class ButtonCollectionController: UICollectionViewController {
     
     var reuseIdentifier = "ButtonCell"
-    
-    var buttons = [UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50)), UIButton(frame: CGRectMake(0, 0, 152, 50))]
-    
-    var answerChoices = [String](count: 6, repeatedValue: "")
+    var buttons = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
     
     // Custom colors
     var buttonGrayPressed = UIColor(red: CGFloat(158/255.0), green: CGFloat(158/255.0), blue: CGFloat(158/255.0), alpha: CGFloat(1.0))
@@ -51,25 +48,42 @@ class ButtonCollectionController: UICollectionViewController {
     }
     
     override func collectionView(collectionView: UICollectionView?, cellForItemAtIndexPath indexPath: NSIndexPath?) -> UICollectionViewCell? {
+        
         var myCell = self.collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as UICollectionViewCell
+        let cellRow = indexPath?.row
         
-        // Configure the cell
-        let row = indexPath?.row
-        let answerChoice = self.answerChoices[row!]
+        // Construct a cell with a button
+        buttons[cellRow!].frame = CGRect(x: 0, y: 0, width: myCell.frame.width, height: myCell.frame.height)
+        buttons[cellRow!].backgroundColor = buttonGrayDefault
+        buttons[cellRow!].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
+        myCell.addSubview(buttons[cellRow!])
         
-        //buttons[row!].frame.width = myCell.frame.width
-        buttons[row!].setTitle(answerChoice, forState: UIControlState.Normal)
-        buttons[row!].backgroundColor = buttonGrayDefault
-        
-        buttons[row!].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
-        buttons[row!].tag = row!
-        
-        myCell.addSubview(buttons[row!])
         return myCell
     }
     
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    func setButtonAnswers (answerSet: [Answer]) {
+        
+        for var index = 0; index < answerSet.count; ++index {
+            buttons[index].setTitle(answerSet[index].text, forState: UIControlState.Normal)
+            buttons[index].tag = answerSet[index].id
+            buttons[index].enabled = true;
+            buttons[index].hidden = false;
+        }
+        
+        // Hide extra buttons
+        for var indexToHide = answerSet.count; indexToHide < buttons.count; ++indexToHide {
+            buttons[indexToHide].enabled = false
+            buttons[indexToHide].hidden = true;
+        }
+    }
+    
     @IBAction func buttonClicked(sender: UIButton) {
-        let answerIndex = sender.tag.description
-        println(answerIndex)
+        let answerIndex = sender.tag.description.toInt()
+        let answerId = sender.tag
+        println(buttons[answerIndex!].titleLabel)
     }
 }
