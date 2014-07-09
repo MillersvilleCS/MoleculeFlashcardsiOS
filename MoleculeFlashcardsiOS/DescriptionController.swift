@@ -40,8 +40,6 @@ class DescriptionController : UIViewController {
         self.numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"
         self.gameDescriptionLabel.text = game!.description
         self.imageView.image = ImageLoader.load(url: game!.imageURL)
-        
-        
     }
     
     override func viewDidLayoutSubviews() {

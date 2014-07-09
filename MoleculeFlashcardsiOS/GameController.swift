@@ -68,13 +68,12 @@ class GameController : UIViewController {
         println("controller: \(moleculeController.description)")
         println("number of molecules: \(molecules!.count)")
         
-        //var controller = self.storyboard.instantiateViewControllerWithIdentifier("MoleculeController") as MoleculeController
-        
         moleculeController.setMolecule(molecules![0])
        // println(controller.questionLabel!.text)
         
         moleculeController.view.setNeedsDisplay()
         moleculeController.view.setNeedsDisplayInRect(moleculeController.view.frame)
+    
         /*
         
         Right now updating is delayed. This might help later:

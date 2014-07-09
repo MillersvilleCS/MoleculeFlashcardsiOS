@@ -19,6 +19,10 @@ class MoleculeController: UIViewController {
     @IBOutlet var timerLabel: UILabel?
     @IBOutlet var questionLabel: UILabel?
     
+    // Custom colors
+    var scoreColor = UIColor(red: CGFloat(0), green: CGFloat(180/255.0), blue: CGFloat(0), alpha: CGFloat(1.0))
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
   

@@ -358,19 +358,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-T8-HzQ">
-                                <rect key="frame" x="12" y="334" width="207" height="37"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="20" y="340" width="207" height="37"/>
-                                </variation>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbm-NT-mDh">
                                 <rect key="frame" x="12" y="20" width="30" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.70588235294117641" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="20" y="83" width="30" height="21"/>
@@ -385,20 +376,29 @@
                                     <rect key="frame" x="255" y="83" width="45" height="21"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-T8-HzQ">
+                                <rect key="frame" x="12" y="334" width="207" height="37"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="315" width="280" height="62"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="gJb-T8-HzQ"/>
                                 <exclude reference="nbm-NT-mDh"/>
                                 <exclude reference="zuL-GP-3lG"/>
+                                <exclude reference="gJb-T8-HzQ"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="gJb-T8-HzQ"/>
                                 <include reference="nbm-NT-mDh"/>
                                 <include reference="zuL-GP-3lG"/>
+                                <include reference="gJb-T8-HzQ"/>
                             </mask>
                         </variation>
                     </view>
@@ -410,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Se-sZ-TwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2676.75" y="-91.875"/>
+            <point key="canvasLocation" x="2676" y="-91.875"/>
         </scene>
         <!--Button Collection Controller-->
         <scene sceneID="9L1-Iq-9Ur">
@@ -644,9 +644,6 @@
                                         <exclude reference="ocl-Ka-F6G"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=compact">
-                                    <rect key="frame" x="240" y="30" width="240" height="320"/>
-                                </variation>
                                 <variation key="heightClass=compact" ambiguous="YES">
                                     <mask key="constraints">
                                         <include reference="Ead-GJ-tCg"/>
@@ -665,10 +662,8 @@
                                         <include reference="KTi-JI-M1L"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="subviews">
-                                        <include reference="Mdc-is-NeA"/>
-                                    </mask>
+                                <variation key="heightClass=compact">
+                                    <rect key="frame" x="240" y="30" width="240" height="320"/>
                                 </variation>
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
@@ -687,6 +682,11 @@
                                         <include reference="OcA-hO-MRy"/>
                                         <include reference="bgL-2R-ABC"/>
                                         <include reference="ocl-Ka-F6G"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="Mdc-is-NeA"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
