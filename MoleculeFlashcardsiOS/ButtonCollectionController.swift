@@ -12,15 +12,13 @@ class ButtonCollectionController: UICollectionViewController {
     
     var reuseIdentifier = "ButtonCell"
     var buttons = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
+    var answerSet : [Answer]?
     
     // Custom colors
     var buttonGrayPressed = UIColor(red: CGFloat(158/255.0), green: CGFloat(158/255.0), blue: CGFloat(158/255.0), alpha: CGFloat(1.0))
     var buttonGrayDefault = UIColor(red: CGFloat(209/255.0), green: CGFloat(209/255.0), blue: CGFloat(209/255.0), alpha: CGFloat(1.0))
     var buttonCorrectDefault = UIColor(red: CGFloat(0), green: CGFloat(153/255.0), blue: CGFloat(0), alpha: CGFloat(1.0))
-    var buttonWrongColor = UIColor(red: CGFloat(1.0), green: CGFloat(0), blue: CGFloat(0), alpha: CGFloat(1.0))
-    var buttonGreenStartColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
-    var buttonGreenEndColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
-
+    
     init(coder aDecoder: NSCoder!) {
         super.init(coder:aDecoder)
     }
@@ -56,6 +54,8 @@ class ButtonCollectionController: UICollectionViewController {
         buttons[cellRow!].frame = CGRect(x: 0, y: 0, width: myCell.frame.width, height: myCell.frame.height)
         buttons[cellRow!].backgroundColor = buttonGrayDefault
         buttons[cellRow!].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
+        buttons[cellRow!].enabled = false
+        buttons[cellRow!].hidden = true
         myCell.addSubview(buttons[cellRow!])
         
         return myCell
@@ -66,7 +66,7 @@ class ButtonCollectionController: UICollectionViewController {
     }
     
     func setButtonAnswers (answerSet: [Answer]) {
-        
+        self.answerSet = answerSet
         for var index = 0; index < answerSet.count; ++index {
             buttons[index].setTitle(answerSet[index].text, forState: UIControlState.Normal)
             buttons[index].tag = answerSet[index].id
@@ -84,6 +84,7 @@ class ButtonCollectionController: UICollectionViewController {
     @IBAction func buttonClicked(sender: UIButton) {
         let answerIndex = sender.tag.description.toInt()
         let answerId = sender.tag
-        println(buttons[answerIndex!].titleLabel)
+        buttons[answerId].titleLabel        
+        (navigationController.topViewController as GameController).submitAnswer(answerSet![answerId], buttonId: answerId)
     }
 }

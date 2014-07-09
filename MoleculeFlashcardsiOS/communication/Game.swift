@@ -105,11 +105,10 @@ class Game {
         request.addParameter(key: "authenticator", value: !user.id)
         request.addParameter(key: "game_session_id", value: sessionId!)
         request.addParameter(key: "question_id", value: id)
-        request.addParameter(key: "answer", value: answer.text)
+        request.addParameter(key: "answer", value: answer.id)
         request.addParameter(key: "game_time", value: time)
         
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
-            
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
             if error != nil {
                 EventLogger.logError("Could not submit answer '\(answer.text)': \(error.description)")

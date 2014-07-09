@@ -25,7 +25,6 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.registerNib(nib, forCellReuseIdentifier: "gameCell")
         self.tableView.registerClass(TableViewGameCell.self, forCellReuseIdentifier: "gameCell")
         
-        
         user = User()
         user!.login(url: REQUEST_HANDLER_URL, username: "wpgervasio@gmail.com", password: "lol12345")
         getGames(url: REQUEST_HANDLER_URL, user: user!)

@@ -10,7 +10,7 @@ import UIKit
 import SceneKit
 
 class GameController : UIViewController {
-    
+        
     var game: Game?
     var user: User?
     var requestURL: String?
@@ -18,7 +18,14 @@ class GameController : UIViewController {
     
     var questions: [Question]?
     var molecules: [SCNNode]?
+    var answerSet: [Answer]?
+    var responseCorrect = false
     
+    // Custom colors
+    var buttonWrongColor = UIColor(red: CGFloat(1.0), green: CGFloat(0), blue: CGFloat(0), alpha: CGFloat(1.0))
+    var buttonGreenStartColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
+    var buttonGreenEndColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
@@ -62,10 +69,9 @@ class GameController : UIViewController {
         moleculeController.view.setNeedsDisplayInRect(moleculeController.view.frame)
         
         // Set the answer choices
+        answerSet = self.questions![0].answers
         var buttonController = self.childViewControllers[1] as ButtonCollectionController
-        buttonController.setButtonAnswers(self.questions![0].answers)
-        buttonController.view.setNeedsDisplay()
-        buttonController.view.setNeedsDisplayInRect(buttonController.view.frame)
+        buttonController.setButtonAnswers(answerSet!)
         
         println("number of controllers: \(self.childViewControllers.count)")
         println("controller: \(moleculeController.description)")
@@ -73,14 +79,17 @@ class GameController : UIViewController {
         
         buttonController.becomeFirstResponder()
         buttonController.collectionView.becomeFirstResponder()
-        println("collection view first responder? \(buttonController.isFirstResponder())")
+        println("button controller first responder? \(buttonController.isFirstResponder())")
         println("collection view first responder? \(buttonController.collectionView.isFirstResponder())")
         
-        buttonController.reloadInputViews()
-        buttonController.collectionView.becomeFirstResponder()
-        buttonController.collectionView.reloadInputViews()
-        buttonController.collectionView.reloadData()
-        buttonController.collectionView.reloadItemsAtIndexPaths(buttonController.collectionView.indexPathsForVisibleItems())
+        buttonController.view.setNeedsDisplay()
+        buttonController.view.setNeedsDisplayInRect(buttonController.view.frame)
+        buttonController.view.reloadInputViews()
+        
+        //buttonController.collectionView.becomeFirstResponder()
+        //buttonController.collectionView.reloadInputViews()
+        //buttonController.collectionView.reloadData()
+        //buttonController.collectionView.reloadItemsAtIndexPaths(buttonController.collectionView.indexPathsForVisibleItems())
 
 
         /*
@@ -97,5 +106,25 @@ class GameController : UIViewController {
 
         If you don't think things are getting drawn, put a breakpoint in -drawRect: and see when you're getting called. If you're calling -setNeedsDisplay, but -drawRect: isn't getting called in the next event loop, then dig into your view hierarchy and make sure you're not trying to outsmart is somewhere. Over-cleverness is the #1 cause of bad drawing in my experience. When you think you know best how to trick the system into doing what you want, you usually get it doing exactly what you don't want.
         */
+    }
+
+    
+    func submitAnswer (response: Answer, buttonId: Int) -> Bool {
+        println("response is \(response.text)")
+        self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: 0, {(isCorrect: Bool, scoreModifier: Int) in
+            self.responseCorrect = isCorrect
+            println(isCorrect)
+            println(scoreModifier)
+            
+            // Update the buttons to reflect correct/incorrect responses
+            var buttonController = self.childViewControllers[1] as ButtonCollectionController
+            if !isCorrect {
+                buttonController.buttons[buttonId].backgroundColor = self.buttonWrongColor
+            }
+            else {
+                buttonController.buttons[buttonId].backgroundColor = self.buttonGreenStartColor
+            }
+        })
+        return responseCorrect
     }
 }

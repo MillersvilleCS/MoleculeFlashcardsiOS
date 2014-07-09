@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ife-tV-EbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2109" y="-31.5"/>
+            <point key="canvasLocation" x="2073" y="-36"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ocq-b9-JVI">
@@ -406,6 +406,7 @@
                         <outlet property="questionLabel" destination="gJb-T8-HzQ" id="MRk-LC-9vB"/>
                         <outlet property="scoreLabel" destination="nbm-NT-mDh" id="W4O-fo-ybg"/>
                         <outlet property="timerLabel" destination="zuL-GP-3lG" id="6fh-2B-W5w"/>
+                        <outlet property="view" destination="BAu-7U-RfQ" id="Sc3-VW-hXu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Se-sZ-TwU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -447,6 +448,9 @@
                             <outlet property="delegate" destination="55i-gY-1NE" id="mJi-AG-j6w"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <outlet property="collectionView" destination="jv5-gz-MsI" id="8Su-is-nhe"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cB9-ap-NM4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -644,7 +648,7 @@
                                         <exclude reference="ocl-Ka-F6G"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=compact" ambiguous="YES">
+                                <variation key="heightClass=compact">
                                     <mask key="constraints">
                                         <include reference="Ead-GJ-tCg"/>
                                         <include reference="HGi-Nm-7R8"/>
@@ -662,8 +666,10 @@
                                         <include reference="KTi-JI-M1L"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=compact">
-                                    <rect key="frame" x="240" y="30" width="240" height="320"/>
+                                <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="Mdc-is-NeA"/>
+                                    </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
@@ -682,11 +688,6 @@
                                         <include reference="OcA-hO-MRy"/>
                                         <include reference="bgL-2R-ABC"/>
                                         <include reference="ocl-Ka-F6G"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="subviews">
-                                        <include reference="Mdc-is-NeA"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
