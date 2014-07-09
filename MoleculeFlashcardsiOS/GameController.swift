@@ -57,8 +57,7 @@ class GameController : UIViewController {
         
         // Set the molecule to display
         var moleculeController = self.childViewControllers[0] as MoleculeController
-        moleculeController.setQuestion(self.questions![0].text)
-        moleculeController.setMolecule(molecules![0])
+        moleculeController.setQuestion(self.questions![0].text, molecule: molecules![0])
         moleculeController.view.setNeedsDisplay()
         moleculeController.view.setNeedsDisplayInRect(moleculeController.view.frame)
         

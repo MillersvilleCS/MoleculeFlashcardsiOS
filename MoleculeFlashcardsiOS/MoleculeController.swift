@@ -79,21 +79,18 @@ class MoleculeController: UIViewController {
         }
     }
     
-    func setMolecule(molecule: SCNNode) {
-        if self.molecule {
-            self.molecule!.removeFromParentNode()
-        }
-        self.molecule = molecule
-        scene.rootNode.addChildNode(molecule)
-    }
-    
-    func setQuestion (question: String) {
+    func setQuestion (question: String, molecule: SCNNode) {
         if question == nil {
             self.questionLabel!.text = ""
         }
         else {
             self.questionLabel!.text = question
         }
+        if self.molecule {
+            self.molecule!.removeFromParentNode()
+        }
+        self.molecule = molecule
+        scene.rootNode.addChildNode(molecule)
     }
     
     func handleZoom(gestureRecognize: UIPinchGestureRecognizer) {
