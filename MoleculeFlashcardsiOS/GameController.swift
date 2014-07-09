@@ -20,6 +20,7 @@ class GameController : UIViewController {
     var molecules: [SCNNode]?
     var answerSet: [Answer]?
     var responseCorrect = false
+    var finished = false
     
     // Custom colors
     var buttonWrongColor = UIColor(red: CGFloat(1.0), green: CGFloat(0), blue: CGFloat(0), alpha: CGFloat(1.0))
@@ -56,8 +57,16 @@ class GameController : UIViewController {
             }
             
             self.molecules = nodeList
-            self.startQuestions()
+            self.startQuestions() // COMMENT OUT IF YOU CHANGE BELOW
+            self.finished = true
             })
+        
+        //while(!finished) {} //   ADD THESE TO MAKE QUESTION APPEAR IMMEDIATELY
+        //startQuestions()    // buttons then never appear?
+        //the problem is that the setNeedsDisplay needs to be run in the main thread - if you call it from this asyc closure, it is NOT in the main thread
+        //waiting then running it IS in the main thread
+        //no idea why it makes buttons disappear though
+        //this is according to this guy, on the answer you originally found: http://stackoverflow.com/a/4284340
     }
     
     func startQuestions() {
@@ -66,7 +75,7 @@ class GameController : UIViewController {
         var moleculeController = self.childViewControllers[0] as MoleculeController
         moleculeController.setQuestion(self.questions![0].text, molecule: molecules![0])
         moleculeController.view.setNeedsDisplay()
-        moleculeController.view.setNeedsDisplayInRect(moleculeController.view.frame)
+        //moleculeController.view.setNeedsDisplayInRect(moleculeController.view.frame)
         
         // Set the answer choices
         answerSet = self.questions![0].answers
@@ -77,14 +86,13 @@ class GameController : UIViewController {
         println("controller: \(moleculeController.description)")
         println("number of molecules: \(molecules!.count)")
         
-        buttonController.becomeFirstResponder()
-        buttonController.collectionView.becomeFirstResponder()
+        //buttonController.becomeFirstResponder()
+        //buttonController.collectionView.becomeFirstResponder()
         println("button controller first responder? \(buttonController.isFirstResponder())")
         println("collection view first responder? \(buttonController.collectionView.isFirstResponder())")
         
-        buttonController.view.setNeedsDisplay()
-        buttonController.view.setNeedsDisplayInRect(buttonController.view.frame)
-        buttonController.view.reloadInputViews()
+        //buttonController.view.setNeedsDisplayInRect(buttonController.view.frame)
+        //buttonController.view.reloadInputViews()
         
         //buttonController.collectionView.becomeFirstResponder()
         //buttonController.collectionView.reloadInputViews()

@@ -1016,13 +1016,13 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
+                                </variation>
+                                <variation key="heightClass=compact">
                                     <mask key="constraints">
                                         <include reference="FC3-Zm-jXq"/>
                                         <include reference="QOZ-NW-9Qh"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=compact">
-                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                 </variation>
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
