@@ -34,6 +34,7 @@
 		1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9E1961FBE60054FB44 /* Images.xcassets */; };
 		1FB71EAB1961FBE60054FB44 /* MoleculeFlashcardsiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71EAA1961FBE60054FB44 /* MoleculeFlashcardsiOSTests.swift */; };
 		1FB71EB5196202640054FB44 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71EB4196202640054FB44 /* MainController.swift */; };
+		1FE9BCF8196DE4310090A239 /* CreditsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FE9BCF7196DE4310090A239 /* CreditsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		1FB71EA91961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71EAA1961FBE60054FB44 /* MoleculeFlashcardsiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoleculeFlashcardsiOSTests.swift; sourceTree = "<group>"; };
 		1FB71EB4196202640054FB44 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		1FE9BCF7196DE4310090A239 /* CreditsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				1F16AC0719645967008BAF6F /* GameController.swift */,
 				1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */,
 				1F2E925B196C264C00549BC0 /* MoleculeController.swift */,
+				1FE9BCF7196DE4310090A239 /* CreditsController.swift */,
 				1F7DCF64196C686C00035854 /* moleculeData.txt */,
 				1F2AF5D31964411B00107698 /* communication */,
 				1F2AF5D91964411B00107698 /* parser */,
@@ -313,6 +316,7 @@
 				1F16AC0819645967008BAF6F /* GameController.swift in Sources */,
 				1F2AF5F41964411B00107698 /* VecOp.swift in Sources */,
 				1F16AC0619645793008BAF6F /* DescriptionController.swift in Sources */,
+				1FE9BCF8196DE4310090A239 /* CreditsController.swift in Sources */,
 				1F2AF5F01964411B00107698 /* TableViewGameCell.swift in Sources */,
 				1FB71EB5196202640054FB44 /* MainController.swift in Sources */,
 				1F2E9258196B32B900549BC0 /* ButtonCollectionController.swift in Sources */,

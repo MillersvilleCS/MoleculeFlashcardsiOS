@@ -43,9 +43,9 @@ class DescriptionController : UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        scroller.scrollEnabled = true
-        scroller.contentSize.width = scroller.frame.width
-        scroller.contentSize.height = 1000
+        //scroller.scrollEnabled = true
+        //scroller.contentSize.width = scroller.frame.width
+        //scroller.contentSize.height = 1000
         //TO FIX TEXT POSITION LATER: http://stackoverflow.com/questions/1054558/vertically-align-text-within-a-uilabel
     }
     
