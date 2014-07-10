@@ -92,6 +92,7 @@ class GameController : UIViewController {
                 if isCorrect {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.WAIT_PERIOD), dispatch_get_main_queue(), ({
                         self.nextQuestion()
+                        
                     }))
                 }
             }))

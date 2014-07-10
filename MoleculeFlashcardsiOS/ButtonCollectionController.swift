@@ -88,16 +88,42 @@ class ButtonCollectionController: UICollectionViewController {
     func markAnswer(buttonIndex: Int, correct: Bool) {
         if correct {
             buttons[buttonIndex].backgroundColor = self.buttonGreenStartColor
+            animateButton(buttons[buttonIndex])
             for button in buttons {
                 if buttons[buttonIndex] != button {
                     button.enabled = false
-                    button.alpha = 0.7
                 }
             }
         } else {
             buttons[buttonIndex].backgroundColor = self.buttonWrongColor
         }
         buttons[buttonIndex].enabled = false
+        
+    }
+    
+    func animateButton(button: UIButton) {
+        var cycle = 0
+        self.animateLow(button: button, cycle: cycle)
+    }
+    
+    func animateHigh(#button: UIButton, cycle: Int) {
+        UIView.animateWithDuration(0.5, animations: {() in
+                button.alpha = 1
+            }, completion:  { (finished: Bool) in
+                
+                self.animateLow(button: button, cycle: cycle + 1)
+            })
+    }
+    
+    func animateLow(#button: UIButton, cycle: Int) {
+        if cycle <= 2 {
+            UIView.animateWithDuration(0.5, animations: {() in
+                button.alpha = 0.4
+                }, completion:  { (finished: Bool) in
+                    
+                    self.animateHigh(button: button, cycle: cycle)
+                })
+        }
         
     }
     
