@@ -94,6 +94,7 @@ class MoleculeController: UIViewController {
     }
     
     func setScore(score: Int) {
+        println(score)
         self.scoreLabel!.text = "\(score)"
     }
     
