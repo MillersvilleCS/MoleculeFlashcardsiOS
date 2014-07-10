@@ -54,8 +54,6 @@ class ButtonCollectionController: UICollectionViewController {
         buttons[cellRow!].frame = CGRect(x: 0, y: 0, width: myCell.frame.width, height: myCell.frame.height)
         buttons[cellRow!].backgroundColor = buttonGrayDefault
         buttons[cellRow!].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
-        buttons[cellRow!].enabled = false
-        buttons[cellRow!].hidden = true
         myCell.addSubview(buttons[cellRow!])
         
         return myCell
@@ -68,10 +66,10 @@ class ButtonCollectionController: UICollectionViewController {
     func setButtonAnswers (answerSet: [Answer]) {
         self.answerSet = answerSet
         for var index = 0; index < answerSet.count; ++index {
-            buttons[index].setTitle(answerSet[index].text, forState: UIControlState.Normal)
-            buttons[index].tag = answerSet[index].id
             buttons[index].enabled = true;
             buttons[index].hidden = false;
+            buttons[index].setTitle(answerSet[index].text, forState: UIControlState.Normal)
+            buttons[index].tag = answerSet[index].id
         }
         
         // Hide extra buttons
