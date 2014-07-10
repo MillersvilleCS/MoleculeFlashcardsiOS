@@ -19,6 +19,10 @@ class ButtonCollectionController: UICollectionViewController {
     var buttonGrayDefault = UIColor(red: CGFloat(209/255.0), green: CGFloat(209/255.0), blue: CGFloat(209/255.0), alpha: CGFloat(1.0))
     var buttonCorrectDefault = UIColor(red: CGFloat(0), green: CGFloat(153/255.0), blue: CGFloat(0), alpha: CGFloat(1.0))
     
+    var buttonWrongColor = UIColor(red: CGFloat(1.0), green: CGFloat(0), blue: CGFloat(0), alpha: CGFloat(1.0))
+    var buttonGreenStartColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
+    var buttonGreenEndColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
+    
     init(coder aDecoder: NSCoder!) {
         super.init(coder:aDecoder)
     }
@@ -69,7 +73,11 @@ class ButtonCollectionController: UICollectionViewController {
             buttons[index].enabled = true;
             buttons[index].hidden = false;
             buttons[index].setTitle(answerSet[index].text, forState: UIControlState.Normal)
-            buttons[index].tag = answerSet[index].id
+            buttons[index].tag = index
+            buttons[index].backgroundColor = buttonGrayDefault
+            buttons[index].alpha = 1.0
+            
+            println("\(index)    \(answerSet[index].id)")
         }
         
         // Hide extra buttons
@@ -79,10 +87,24 @@ class ButtonCollectionController: UICollectionViewController {
         }
     }
     
+    func markAnswer(buttonIndex: Int, correct: Bool) {
+        if correct {
+            buttons[buttonIndex].backgroundColor = self.buttonGreenStartColor
+            for button in buttons {
+                if buttons[buttonIndex] != button {
+                    button.enabled = false
+                    button.alpha = 0.7
+                }
+            }
+        } else {
+            buttons[buttonIndex].backgroundColor = self.buttonWrongColor
+        }
+        buttons[buttonIndex].enabled = false
+        
+    }
+    
     @IBAction func buttonClicked(sender: UIButton) {
-        let answerIndex = sender.tag.description.toInt()
-        let answerId = sender.tag
-        buttons[answerId].titleLabel        
-        (navigationController.topViewController as GameController).submitAnswer(answerSet![answerId], buttonId: answerId)
+        let answerIndex = sender.tag
+        (navigationController.topViewController as GameController).submitAnswer(answerSet![answerIndex], buttonIndex: answerIndex)
     }
 }

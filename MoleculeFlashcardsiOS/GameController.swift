@@ -10,6 +10,8 @@ import UIKit
 import SceneKit
 
 class GameController : UIViewController {
+    
+    let WAIT_PERIOD: Int64 = 3 * NSEC_PER_SEC.asSigned()
         
     var game: Game?
     var user: User?
@@ -20,11 +22,7 @@ class GameController : UIViewController {
     var molecules: [SCNNode]?
     var answerSet: [Answer]?
     var responseCorrect = false
-    
-    // Custom colors
-    var buttonWrongColor = UIColor(red: CGFloat(1.0), green: CGFloat(0), blue: CGFloat(0), alpha: CGFloat(1.0))
-    var buttonGreenStartColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
-    var buttonGreenEndColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
+    var questionIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,41 +59,45 @@ class GameController : UIViewController {
             //iOS global dispatch lets us put UI actions on the main thread again
             //tell it what thread queue to use (main), and what to do (closure)
             dispatch_async(dispatch_get_main_queue(), ({
-                self.startQuestions()
+                self.nextQuestion()
             }))
         })
     }
     
-    func startQuestions() {
-        
+    func nextQuestion() {
+        questionIndex++
+        if questionIndex >= questions!.count {
+            println("THE GAME IS OVER, THIS SHOULD LOAD A NEW SCREEN!")
+            return
+        }
         // Set the molecule to display
         var moleculeController = self.childViewControllers[0] as MoleculeController
-        moleculeController.setQuestion(self.questions![0].text, molecule: molecules![0])
+        moleculeController.setQuestion(self.questions![questionIndex].text, molecule: molecules![questionIndex])
         
         // Set the answer choices
-        answerSet = self.questions![0].answers
+        answerSet = self.questions![questionIndex].answers
         var buttonController = self.childViewControllers[1] as ButtonCollectionController
         buttonController.setButtonAnswers(answerSet!)
     }
-
     
-    func submitAnswer (response: Answer, buttonId: Int) {
-        println("response is \(response.text)")
-        self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: 0, {(isCorrect: Bool, scoreModifier: Int) in
+    func submitAnswer (response: Answer, buttonIndex: Int) {
+        self.game!.submit(url: requestURL!, user: self.user!, questionId: questions![questionIndex].id, answer: response, time: 0,
+            {(isCorrect: Bool, scoreModifier: Int) in
             
             //we need to update the button color in the main thread
             dispatch_async(dispatch_get_main_queue(), ({
                 self.responseCorrect = isCorrect
-                println(isCorrect)
-                println(scoreModifier)
                 
                 // Update the buttons to reflect correct/incorrect responses
                 var buttonController = self.childViewControllers[1] as ButtonCollectionController
-                if !isCorrect {
-                    buttonController.buttons[buttonId].backgroundColor = self.buttonWrongColor
-                }
-                else {
-                    buttonController.buttons[buttonId].backgroundColor = self.buttonGreenStartColor
+                buttonController.markAnswer(buttonIndex, correct: isCorrect)
+                
+                println("Chose \(response.text)")
+                
+                if isCorrect {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.WAIT_PERIOD), dispatch_get_main_queue(), ({
+                        self.nextQuestion()
+                    }))
                 }
             }))
         })

@@ -99,12 +99,12 @@ class Game {
 
     }
     
-    func submit(#url: String, user: User, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int) -> Void) {
+    func submit(#url: String, user: User, questionId: Int, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "submit_flashcard_answer")
         request.addParameter(key: "authenticator", value: !user.id)
         request.addParameter(key: "game_session_id", value: sessionId!)
-        request.addParameter(key: "question_id", value: id)
+        request.addParameter(key: "question_id", value: questionId)
         request.addParameter(key: "answer", value: answer.id)
         request.addParameter(key: "game_time", value: time)
         
