@@ -12,12 +12,11 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet var tableView : UITableView
     
+    let user = User()
+    
+    var loaded = false
     var games: [Game]?
     var nib = UINib(nibName: "TableViewGameCell", bundle: nil)
-    
-    let REQUEST_HANDLER_URL = "https://exscitech.org/request_handler.php"
-    let GET_MEDIA_URL = "https://exscitech.org/get_media.php"
-    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,33 +24,32 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.registerNib(nib, forCellReuseIdentifier: "gameCell")
         self.tableView.registerClass(TableViewGameCell.self, forCellReuseIdentifier: "gameCell")
         
-        user = User()
-        user!.login(url: REQUEST_HANDLER_URL, username: "wpgervasio@gmail.com", password: "lol12345")
-        getGames(url: REQUEST_HANDLER_URL, user: user!)
-        while !games {
-            
+        user.login(url: GameConstants.REQUEST_HANDLER_URL, username: "wpgervasio@gmail.com", password: "lol12345")
+        while(!user.loggedIn) {
+            usleep(10)
+        }
+        getGames(url: GameConstants.REQUEST_HANDLER_URL, user: user)
+        while !loaded {
+            usleep(10)
         }
     }
     
-    // Load the selected game.
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-      //  println("You selected cell #\(indexPath.row)!")
+        
         var controller = self.storyboard.instantiateViewControllerWithIdentifier("DescriptionController") as DescriptionController
         var game = self.games![indexPath.row]
-
+        
         controller.game = game
         controller.user = user
-        controller.requestURL = REQUEST_HANDLER_URL
-        controller.mediaURL = GET_MEDIA_URL
+        controller.requestURL = GameConstants.REQUEST_HANDLER_URL
+        controller.mediaURL = GameConstants.GET_MEDIA_URL
         self.navigationController.pushViewController(controller, animated: true)
-
+        
         // Update the navigation bar's title to the selected game
         navigationController.topViewController.title = tableView.cellForRowAtIndexPath(indexPath).textLabel.text
     }
     
-    // Set the number of cells
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.games!.count;
     }
@@ -60,7 +58,6 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         return 1;
     }
     
-    // Create the cells
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         
         var cell:TableViewGameCell = self.tableView.dequeueReusableCellWithIdentifier("gameCell") as TableViewGameCell
@@ -68,7 +65,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         var game = self.games![indexPath.row]
         var cellText = game.name
         var cellImage = ImageLoader.load(url: game.imageURL)
-
+        
         cell.textLabel!.text = cellText
         cell.imageView!.image = cellImage
         
@@ -83,9 +80,9 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             if error {
-                
+                println("Error loading games \(error.description)")
             } else {
-                var newGames = [Game]()
+                var gameList = [Game]()
                 var gamesJSON : AnyObject = response["available_games"]!
                 for gameJSON : AnyObject in gamesJSON as [AnyObject] {
                     var id = gameJSON["id"]! as String
@@ -95,9 +92,10 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
                     var timeLimit = gameJSON["time_limit"] as String
                     var imageURL = "https://exscitech.org" + gameJSON["image"].description
                     
-                    newGames.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, questionCount: questionCount, imageURL: imageURL))
+                    gameList.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, questionCount: questionCount, imageURL: imageURL))
                 }
-                self.games = newGames
+                self.games = gameList
+                self.loaded = true
             }
         })
     }

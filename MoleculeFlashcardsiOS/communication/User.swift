@@ -12,6 +12,7 @@ class User {
     
     var name: String?
     var id: String?
+    var loggedIn = false
     
     init() {
         
@@ -26,15 +27,16 @@ class User {
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             if error {
-                EventLogger.logError("Failed to log in, \(error.description)")
+                println("Failed to log in, \(error.description)")
             } else if response["success"] as Int == 0 {
-                EventLogger.logError("Failed to log in,  invalid username or password")
+                println("Failed to log in,  invalid username or password")
             } else {
-                EventLogger.log("Logged in successfully")
+                println("Logged in successfully")
                 self.name = response["username"] as NSString
                 self.id = response["auth"] as NSString
+                self.loggedIn = true
             }
-        })
+            })
     }
     
     func register(#url: String, username: String, password: String, email: String) {
@@ -47,14 +49,15 @@ class User {
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             if error {
-                EventLogger.logError("Failed to register, \(error.description)")
+                println("Failed to register, \(error.description)")
             } else if response["success"] as Int == 0 {
-                EventLogger.logError("Failed to register")
+                println("Failed to register")
             } else {
-                EventLogger.logError("registered successfully")
+                println("registered successfully")
                 self.name = response["username"] as NSString
                 self.id = response["auth"] as NSString
+                self.loggedIn = true
             }
-        })
+            })
     }
 }

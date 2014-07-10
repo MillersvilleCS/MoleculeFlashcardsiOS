@@ -19,15 +19,19 @@ class MainController : UIViewController {
         
         var x = UIBarButtonItem(title: "L", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         self.navigationItem.rightBarButtonItem = x
+        
+        playButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        creditsButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        tutorialButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
-            self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as UIViewController, animated: true)
+            navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as UIViewController, animated: true)
         } else if sender.isEqual(tutorialButton) {
-            self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("TutorialController") as UIViewController, animated: true)
+            navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("TutorialController") as UIViewController, animated: true)
         } else {
-            self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("CreditsController") as UIViewController, animated: true)
+            navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("CreditsController") as UIViewController, animated: true)
         }
     }
 }

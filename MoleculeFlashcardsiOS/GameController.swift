@@ -18,19 +18,25 @@ class GameController : UIViewController {
     var requestURL: String?
     var mediaURL: String?
     
-    var questions: [Question]?
+    var moleculeController: MoleculeController?
+    var buttonController: ButtonCollectionController?
+    
     var molecules: [SCNNode]?
-    var answerSet: [Answer]?
-    var responseCorrect = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true
+        navigationItem.hidesBackButton = true
         
-        assert(game)
-        assert(user)
-        assert(requestURL)
-        assert(mediaURL)
+        assert(game, "'game' not set on GameController")
+        assert(user, "'user' not set on GameController")
+        assert(requestURL, "'requestURL' not set on GameController")
+        assert(mediaURL, "'mediaURL' not set on GameController")
+        
+        moleculeController = self.childViewControllers[0] as? MoleculeController
+        buttonController = self.childViewControllers[1] as? ButtonCollectionController
+        
+        assert(moleculeController, "'moleculeController' could not be found on GameController")
+        assert(buttonController, "'buttonController' could not be found on GameController")
         
         start()
     }
@@ -38,7 +44,6 @@ class GameController : UIViewController {
     func start() {
         game!.start(url: requestURL!, user: user!,{(questions: [Question]) in
             var nodeList = [SCNNode]()
-            self.questions = questions
 
             for question in questions {
                 var request = Request(url: "\(self.mediaURL!)?gsi=\(self.game!.sessionId!)&mt=0&qid=\(question.id)")
@@ -68,14 +73,10 @@ class GameController : UIViewController {
             println("THE GAME IS OVER, THIS SHOULD LOAD A NEW SCREEN!")
             return
         }
-        // Set the molecule to display
-        var moleculeController = self.childViewControllers[0] as MoleculeController
-        moleculeController.setQuestion(game!.getCurrentQuestion().text, molecule: molecules![game!.questionIndex])
         
-        // Set the answer choices
-        answerSet = game!.getAvailableAnswers()
-        var buttonController = self.childViewControllers[1] as ButtonCollectionController
-        buttonController.setButtonAnswers(answerSet!)
+        moleculeController!.setQuestion(game!.getCurrentQuestion().text, molecule: molecules![game!.questionIndex])
+        
+        buttonController!.setButtonAnswers(game!.getAvailableAnswers())
     }
     
     func submitAnswer (response: Answer, buttonIndex: Int) {
@@ -83,14 +84,10 @@ class GameController : UIViewController {
             
             //we need to update the button color in the main thread
             dispatch_async(dispatch_get_main_queue(), ({
-                self.responseCorrect = isCorrect
-                
-                // Update buttons, score
-                var buttonController = self.childViewControllers[1] as ButtonCollectionController
-                buttonController.markAnswer(buttonIndex, correct: isCorrect)
-                
-                var moleculeController = self.childViewControllers[0] as MoleculeController
-                moleculeController.setScore(scoreModifier)
+  
+                self.buttonController!.markAnswer(buttonIndex, correct: isCorrect)
+   
+                self.moleculeController!.setScore(scoreModifier)
                 
                 if isCorrect {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.WAIT_PERIOD), dispatch_get_main_queue(), ({

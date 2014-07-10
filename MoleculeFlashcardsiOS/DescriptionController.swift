@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
+
 import UIKit
 import Foundation
 
@@ -35,37 +36,30 @@ class DescriptionController : UIViewController {
         assert(requestURL)
         assert(mediaURL)
         
-        self.timeLimitLabel.text = "\(game!.timeLimit)"
-        // self. = "\(game!.timeLimit)"
-        self.numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"
-        self.gameDescriptionLabel.text = game!.description
-        self.imageView.image = ImageLoader.load(url: game!.imageURL)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        //scroller.scrollEnabled = true
-        //scroller.contentSize.width = scroller.frame.width
-        //scroller.contentSize.height = 1000
-        //TO FIX TEXT POSITION LATER: http://stackoverflow.com/questions/1054558/vertically-align-text-within-a-uilabel
+        imageView.image = ImageLoader.load(url: game!.imageURL)
+        
+        highScoresButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        playButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        
+        timeLimitLabel.text = "\(game!.timeLimit)"
+        numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"
+        gameDescriptionLabel.text = game!.description
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
-        if sender.isEqual(playButton)
-        {
+        if sender.isEqual(playButton) {
             var gameTitle = navigationController.topViewController.title
-            var controller = self.storyboard.instantiateViewControllerWithIdentifier("GameController") as GameController
             
+            var controller = storyboard.instantiateViewControllerWithIdentifier("GameController") as GameController
             controller.game = game!
             controller.user = user!
             controller.requestURL = requestURL!
             controller.mediaURL = mediaURL!
-            self.navigationController.pushViewController(controller, animated: true)
             
-            //self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("Game") as UIViewController, animated: true)
-            self.navigationController.topViewController.title = gameTitle
+            navigationController.pushViewController(controller, animated: true)
+            navigationController.topViewController.title = gameTitle
         }
-        else if sender.isEqual(highScoresButton)
-        {
+        else if sender.isEqual(highScoresButton) {
             println("high scores clicked")
         }
     }
