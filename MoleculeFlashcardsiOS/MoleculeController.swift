@@ -93,6 +93,10 @@ class MoleculeController: UIViewController {
         scene.rootNode.addChildNode(molecule)
     }
     
+    func setScore(score: Int) {
+        self.scoreLabel!.text = "\(score)"
+    }
+    
     func handleZoom(gestureRecognize: UIPinchGestureRecognizer) {
         var pos = self.cameraNode.position
         

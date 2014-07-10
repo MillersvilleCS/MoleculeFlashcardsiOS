@@ -99,12 +99,12 @@ class Game {
 
     }
     
-    func submit(#url: String, user: User, questionId: Int, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int) -> Void) {
+    func submit(#url: String, user: User, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "submit_flashcard_answer")
         request.addParameter(key: "authenticator", value: !user.id)
         request.addParameter(key: "game_session_id", value: sessionId!)
-        request.addParameter(key: "question_id", value: questionId)
+        request.addParameter(key: "question_id", value: questions![questionIndex].id)
         request.addParameter(key: "answer", value: answer.id)
         request.addParameter(key: "game_time", value: time)
         
@@ -115,11 +115,12 @@ class Game {
             } else {
                 var isCorrect = response["correct"] as String
                 var score = response["score"] as Int
+                println(response.description)
+                println(isCorrect)
                 if isCorrect == "true" {
                     EventLogger.log("submitted answer \(answer.text) was correct")
-                    if self.questionIndex < self.getNumberOfQuestions() - 1 {
-                        ++self.questionIndex
-                    } else {
+                    self.questionIndex++
+                    if self.questionIndex >= self.questions!.count {
                         self.state = GameState.FINISHED
                     }
                     onComplete(isCorrect: true, scoreModifier: score)

@@ -76,8 +76,6 @@ class ButtonCollectionController: UICollectionViewController {
             buttons[index].tag = index
             buttons[index].backgroundColor = buttonGrayDefault
             buttons[index].alpha = 1.0
-            
-            println("\(index)    \(answerSet[index].id)")
         }
         
         // Hide extra buttons

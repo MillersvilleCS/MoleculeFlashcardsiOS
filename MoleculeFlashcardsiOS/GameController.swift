@@ -22,7 +22,6 @@ class GameController : UIViewController {
     var molecules: [SCNNode]?
     var answerSet: [Answer]?
     var responseCorrect = false
-    var questionIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,34 +64,33 @@ class GameController : UIViewController {
     }
     
     func nextQuestion() {
-        questionIndex++
-        if questionIndex >= questions!.count {
+        if game!.state == Game.GameState.FINISHED {
             println("THE GAME IS OVER, THIS SHOULD LOAD A NEW SCREEN!")
             return
         }
         // Set the molecule to display
         var moleculeController = self.childViewControllers[0] as MoleculeController
-        moleculeController.setQuestion(self.questions![questionIndex].text, molecule: molecules![questionIndex])
+        moleculeController.setQuestion(game!.getCurrentQuestion().text, molecule: molecules![game!.questionIndex])
         
         // Set the answer choices
-        answerSet = self.questions![questionIndex].answers
+        answerSet = game!.getAvailableAnswers()
         var buttonController = self.childViewControllers[1] as ButtonCollectionController
         buttonController.setButtonAnswers(answerSet!)
     }
     
     func submitAnswer (response: Answer, buttonIndex: Int) {
-        self.game!.submit(url: requestURL!, user: self.user!, questionId: questions![questionIndex].id, answer: response, time: 0,
-            {(isCorrect: Bool, scoreModifier: Int) in
+        self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: 0, {(isCorrect: Bool, scoreModifier: Int) in
             
             //we need to update the button color in the main thread
             dispatch_async(dispatch_get_main_queue(), ({
                 self.responseCorrect = isCorrect
                 
-                // Update the buttons to reflect correct/incorrect responses
+                // Update buttons, score
                 var buttonController = self.childViewControllers[1] as ButtonCollectionController
                 buttonController.markAnswer(buttonIndex, correct: isCorrect)
                 
-                println("Chose \(response.text)")
+                var moleculeController = self.childViewControllers[0] as MoleculeController
+                moleculeController.setScore(scoreModifier)
                 
                 if isCorrect {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.WAIT_PERIOD), dispatch_get_main_queue(), ({
