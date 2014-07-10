@@ -58,6 +58,7 @@ class ButtonCollectionController: UICollectionViewController {
         buttons[cellRow!].frame = CGRect(x: 0, y: 0, width: myCell.frame.width, height: myCell.frame.height)
         buttons[cellRow!].backgroundColor = buttonGrayDefault
         buttons[cellRow!].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
+        buttons[cellRow!].layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         myCell.addSubview(buttons[cellRow!])
         
         return myCell
