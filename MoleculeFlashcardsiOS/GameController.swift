@@ -32,8 +32,15 @@ class GameController : UIViewController {
         assert(requestURL, "'requestURL' not set on GameController")
         assert(mediaURL, "'mediaURL' not set on GameController")
         
-        moleculeController = self.childViewControllers[0] as? MoleculeController
-        buttonController = self.childViewControllers[1] as? ButtonCollectionController
+        var controller = self.childViewControllers[0] as UIViewController
+        if controller.restorationIdentifier == "MoleculeController" {
+            moleculeController = self.childViewControllers[0] as? MoleculeController
+            buttonController = self.childViewControllers[1] as? ButtonCollectionController
+        } else {
+            buttonController = self.childViewControllers[0] as? ButtonCollectionController
+            moleculeController = self.childViewControllers[1] as? MoleculeController
+            println("Warning, this may cause layout issues! Fix the storyboard!")
+        }
         
         assert(moleculeController, "'moleculeController' could not be found on GameController")
         assert(buttonController, "'buttonController' could not be found on GameController")

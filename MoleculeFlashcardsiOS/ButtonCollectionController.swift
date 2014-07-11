@@ -13,6 +13,7 @@ class ButtonCollectionController: UICollectionViewController {
     var reuseIdentifier = "ButtonCell"
     var buttons = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
     var answerSet : [Answer]?
+    var animationsRunning = false
     
     // Custom colors
     var buttonGrayPressed = UIColor(red: CGFloat(158/255.0), green: CGFloat(158/255.0), blue: CGFloat(158/255.0), alpha: CGFloat(1.0))
@@ -59,6 +60,9 @@ class ButtonCollectionController: UICollectionViewController {
         buttons[cellRow!].backgroundColor = buttonGrayDefault
         buttons[cellRow!].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
         buttons[cellRow!].layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        buttons[cellRow!].titleLabel.adjustsFontSizeToFitWidth = true
+        buttons[cellRow!].titleLabel.minimumScaleFactor = 0.5
+        buttons[cellRow!].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         myCell.addSubview(buttons[cellRow!])
         
         return myCell
@@ -69,6 +73,7 @@ class ButtonCollectionController: UICollectionViewController {
     }
     
     func setButtonAnswers (answerSet: [Answer]) {
+        animateButtonStopAll()
         self.answerSet = answerSet
         for var index = 0; index < answerSet.count; ++index {
             buttons[index].enabled = true;
@@ -77,6 +82,7 @@ class ButtonCollectionController: UICollectionViewController {
             buttons[index].tag = index
             buttons[index].backgroundColor = buttonGrayDefault
             buttons[index].alpha = 1.0
+            buttons[index].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
         
         // Hide extra buttons
@@ -87,49 +93,60 @@ class ButtonCollectionController: UICollectionViewController {
     }
     
     func markAnswer(buttonIndex: Int, correct: Bool) {
+        
         if correct {
             buttons[buttonIndex].backgroundColor = self.buttonGreenStartColor
-            animateButton(buttons[buttonIndex])
             for button in buttons {
                 if buttons[buttonIndex] != button {
-                    button.enabled = false
+                    button.alpha = 0.7
                 }
+                button.enabled = false
             }
         } else {
+            animateButtonStopAll()
             buttons[buttonIndex].backgroundColor = self.buttonWrongColor
         }
+        buttons[buttonIndex].setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         buttons[buttonIndex].enabled = false
         
     }
     
     func animateButton(button: UIButton) {
-        var cycle = 0
-        self.animateLow(button: button, cycle: cycle)
+        self.animationsRunning = true
+        self.animateLow(button: button)
     }
     
-    func animateHigh(#button: UIButton, cycle: Int) {
+    func animateHigh(#button: UIButton) {
         UIView.animateWithDuration(0.5, animations: {() in
                 button.alpha = 1
             }, completion:  { (finished: Bool) in
-                
-                self.animateLow(button: button, cycle: cycle + 1)
+                if self.animationsRunning {
+                    self.animateLow(button: button)
+                }
             })
     }
     
-    func animateLow(#button: UIButton, cycle: Int) {
-        if cycle <= 2 {
-            UIView.animateWithDuration(0.5, animations: {() in
+    func animateLow(#button: UIButton) {
+        UIView.animateWithDuration(0.5, animations: {() in
                 button.alpha = 0.4
-                }, completion:  { (finished: Bool) in
-                    
-                    self.animateHigh(button: button, cycle: cycle)
-                })
+            }, completion:  { (finished: Bool) in
+                if self.animationsRunning {
+                    self.animateHigh(button: button)
+                }
+            })
+    }
+    
+    func animateButtonStopAll() {
+        self.animationsRunning = false
+        for button in self.buttons {
+            button.alpha = 1.0
         }
-        
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
         let answerIndex = sender.tag
         (navigationController.topViewController as GameController).submitAnswer(answerSet![answerIndex], buttonIndex: answerIndex)
+        
+        animateButton(sender)
     }
 }

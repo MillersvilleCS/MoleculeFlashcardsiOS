@@ -96,6 +96,11 @@ class MoleculeController: UIViewController {
     func setScore(score: Int) {
         println(score)
         self.scoreLabel!.text = "\(score)"
+        if score >= 0 {
+            self.scoreLabel!.textColor = self.scoreColor
+        } else {
+            self.scoreLabel!.textColor = UIColor.redColor()
+        }
     }
     
     func handleZoom(gestureRecognize: UIPinchGestureRecognizer) {
