@@ -28,6 +28,8 @@ class Game {
     
     var state: GameState
     
+    var highScores: [Score]?
+    
     init(id: String, name: String, description: String, timeLimit: Int, questionCount: Int, imageURL: String) {
         self.id = id
         self.name = name
@@ -76,8 +78,8 @@ class Game {
             }
             
             self.state = GameState.READY
-
-        })
+            
+            })
     }
     
     
@@ -95,8 +97,8 @@ class Game {
             } else {
                 EventLogger.log("game \(self.sessionId) has ended")
             }
-        })
-
+            })
+        
     }
     
     func submit(#url: String, user: User, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int) -> Void) {
@@ -129,11 +131,11 @@ class Game {
                     onComplete(isCorrect: false, scoreModifier: score)
                 }
             }
-        })
+            })
     }
-
     
-    func getHighScores(#url: String, startingRank: Int, range: Int) {
+    
+    func getHighScores(#url: String, startingRank: Int, range: Int, onComplete: (highScores: [Score]) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "get_high_scores")
         request.addParameter(key: "game_id", value: id)
@@ -143,12 +145,28 @@ class Game {
             
             var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             if error != nil {
-                
+                EventLogger.logError("High scores could not be loaded \(error)")
             } else {
+                var highScoresJSON = responseDict["scores"]! as [NSDictionary]
+                var highScoresList = [Score]()
                 
+                // The first rank is stored as as a string, so we need to get it separately
+                var rank1 = highScoresJSON[0]["rank"] as String
+                var score1 = highScoresJSON[0]["score"] as String
+                var username1 = highScoresJSON[0]["username"] as String
+                highScoresList.append(Score(rank: "\(rank1)", username: username1, score: "\(score1)"))
+                
+                for var index = 1; index < highScoresJSON.count; ++index {
+                    var rank = highScoresJSON[index]["rank"] as Int
+                    var score = highScoresJSON[index]["score"] as String
+                    var username = highScoresJSON[index]["username"] as String
+                    
+                    highScoresList.append(Score(rank: "\(rank)", username: username, score: "\(score)"))
+                }
+                self.highScores = highScoresList
+                onComplete(highScores: self.highScores!)
             }
-        })
-
+            })
     }
     
     func setGameState(state: GameState) {
@@ -156,7 +174,7 @@ class Game {
             self.state = state
         }
     }
-
+    
     func getCurrentQuestion() -> Question {
         return questions![questionIndex]
     }
