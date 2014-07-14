@@ -77,7 +77,16 @@ class GameController : UIViewController {
     
     func nextQuestion() {
         if game!.state == Game.GameState.FINISHED {
-            println("THE GAME IS OVER, THIS SHOULD LOAD A NEW SCREEN!")
+            
+            self.game!.end(url: requestURL!, user: self.user!, gameTime: 600000, onComplete: {(rank: Int, finalScore: Int) in
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.WAIT_PERIOD), dispatch_get_main_queue(), ({
+                    var finalController = self.storyboard.instantiateViewControllerWithIdentifier("FinalController") as FinalController
+                    finalController.rank = rank
+                    finalController.score = finalScore
+                    
+                    self.navigationController.pushViewController( finalController as UIViewController, animated: true)
+                }))
+            })
             return
         }
         

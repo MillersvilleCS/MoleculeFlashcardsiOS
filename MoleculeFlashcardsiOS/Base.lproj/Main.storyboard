@@ -1405,10 +1405,10 @@
             </objects>
             <point key="canvasLocation" x="335" y="1100"/>
         </scene>
-        <!--High Scores Controller-->
+        <!--High Scores-->
         <scene sceneID="j2u-05-4VY">
             <objects>
-                <tableViewController storyboardIdentifier="HighScoreController" title="High Scores Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hFi-wd-9ZK" customClass="HighScoreController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HighScoreController" title="High Scores" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hFi-wd-9ZK" customClass="HighScoreController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uGI-ne-GCd">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1799,7 +1799,7 @@
         <!--Final Score-->
         <scene sceneID="rUz-9A-KCR">
             <objects>
-                <viewController storyboardIdentifier="FinalController" title="Final Score" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wHv-Nb-1EO" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FinalController" title="Final Score" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wHv-Nb-1EO" customClass="FinalController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b2j-j8-mGL"/>
                         <viewControllerLayoutGuide type="bottom" id="VxC-Ve-IsW"/>
@@ -1809,13 +1809,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agt-IV-BA3">
-                                <rect key="frame" x="160" y="270" width="160" height="60"/>
+                                <rect key="frame" x="144" y="270" width="192" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="Back">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="wHv-Nb-1EO" eventType="touchUpInside" id="lTT-Y5-EN6"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rank: #23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0E-73-Xth">
                                 <rect key="frame" x="171" y="204" width="138" height="36"/>
@@ -1832,7 +1835,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="agt-IV-BA3" firstAttribute="width" secondItem="TmO-B8-OBP" secondAttribute="width" multiplier="1:3" id="AHA-VW-3b5"/>
+                            <constraint firstItem="agt-IV-BA3" firstAttribute="width" secondItem="TmO-B8-OBP" secondAttribute="width" multiplier="1:2.5" id="AHA-VW-3b5"/>
                             <constraint firstItem="agt-IV-BA3" firstAttribute="top" secondItem="Q0E-73-Xth" secondAttribute="bottom" constant="30" id="G8z-3Y-r3Z"/>
                             <constraint firstAttribute="centerX" secondItem="Q0E-73-Xth" secondAttribute="centerX" id="R5P-iA-h30"/>
                             <constraint firstAttribute="centerX" secondItem="agt-IV-BA3" secondAttribute="centerX" id="XrD-VV-A5Z"/>
@@ -1841,6 +1844,11 @@
                             <constraint firstItem="Q0E-73-Xth" firstAttribute="top" secondItem="yzJ-tV-zii" secondAttribute="bottom" constant="30" id="ygE-WD-TZh"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="agt-IV-BA3" id="Nwh-fa-oxh"/>
+                        <outlet property="rankLabel" destination="Q0E-73-Xth" id="K3K-KO-9nr"/>
+                        <outlet property="scoreLabel" destination="yzJ-tV-zii" id="kZt-Jh-8tS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="61J-yy-pRc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

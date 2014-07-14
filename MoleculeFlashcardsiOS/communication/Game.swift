@@ -82,7 +82,7 @@ class Game {
     }
     
     
-    func end(#url: String, user: User, gameTime: Int, onComplete: () -> Void) {
+    func end(#url: String, user: User, gameTime: Int, onComplete: (rank: Int, finalScore: Int) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "end_flashcard_game")
         request.addParameter(key: "authenticator", value: !user.id)
@@ -91,11 +91,15 @@ class Game {
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             
             var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            if error {
-                EventLogger.logError("Failed to end Game \(error)")
+            if !error {
+                var rank = responseDict["rank"] as Int
+                var score = responseDict["final_score"] as Int
+                
+                onComplete(rank: rank, finalScore: score)
             } else {
-                EventLogger.log("game \(self.sessionId) has ended")
+                EventLogger.logError("Failed to end Game \(error)")
             }
+            
             })
         
     }
