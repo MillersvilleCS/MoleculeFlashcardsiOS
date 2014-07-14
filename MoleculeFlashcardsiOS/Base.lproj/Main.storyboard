@@ -393,6 +393,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Molecule Flashcards" id="Awh-tr-mWQ">
                         <barButtonItem key="rightBarButtonItem" image="login" id="9AS-uz-PG5">
+                            <inset key="imageInsets" minX="25" minY="10" maxX="0.0" maxY="10"/>
                             <connections>
                                 <action selector="registerButtonClicked:" destination="f4w-xL-80n" id="yPd-Zw-Mlv"/>
                             </connections>
