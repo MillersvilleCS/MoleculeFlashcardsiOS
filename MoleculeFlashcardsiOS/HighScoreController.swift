@@ -19,7 +19,7 @@ class HighScoreControllerTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.tableView.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.registerClass(TableViewGameCell.self, forCellReuseIdentifier: reuseIdentifier)
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.highScores = (navigationController.viewControllers[2] as DescriptionController).highScores
     }
     

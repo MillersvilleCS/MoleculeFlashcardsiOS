@@ -10,7 +10,6 @@
 		1F0D92B0196312630098EB6C /* GameSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AE196312630098EB6C /* GameSelectionController.swift */; };
 		1F16AC0619645793008BAF6F /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F16AC0519645793008BAF6F /* DescriptionController.swift */; };
 		1F16AC0819645967008BAF6F /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F16AC0719645967008BAF6F /* GameController.swift */; };
-		1F16AC0A19648BBE008BAF6F /* DescriptionScrollView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F16AC0919648BBE008BAF6F /* DescriptionScrollView.xib */; };
 		1F2AF5E61964411B00107698 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D41964411B00107698 /* Answer.swift */; };
 		1F2AF5E71964411B00107698 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D51964411B00107698 /* Game.swift */; };
 		1F2AF5E81964411B00107698 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D61964411B00107698 /* Question.swift */; };
@@ -20,8 +19,6 @@
 		1F2AF5EC1964411B00107698 /* Bond.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5DB1964411B00107698 /* Bond.swift */; };
 		1F2AF5ED1964411B00107698 /* Molecule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5DC1964411B00107698 /* Molecule.swift */; };
 		1F2AF5EE1964411B00107698 /* SDFParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5DD1964411B00107698 /* SDFParser.swift */; };
-		1F2AF5EF1964411B00107698 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F2AF5DF1964411B00107698 /* CustomTableViewCell.xib */; };
-		1F2AF5F01964411B00107698 /* TableViewGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E01964411B00107698 /* TableViewGameCell.swift */; };
 		1F2AF5F11964411B00107698 /* EventLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E21964411B00107698 /* EventLogger.swift */; };
 		1F2AF5F21964411B00107698 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E31964411B00107698 /* ImageLoader.swift */; };
 		1F2AF5F31964411B00107698 /* MoleculeGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5E41964411B00107698 /* MoleculeGeometry.swift */; };
@@ -54,7 +51,6 @@
 		1F0D92AE196312630098EB6C /* GameSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSelectionController.swift; sourceTree = "<group>"; };
 		1F16AC0519645793008BAF6F /* DescriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
 		1F16AC0719645967008BAF6F /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
-		1F16AC0919648BBE008BAF6F /* DescriptionScrollView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DescriptionScrollView.xib; sourceTree = "<group>"; };
 		1F2AF5D41964411B00107698 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		1F2AF5D51964411B00107698 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		1F2AF5D61964411B00107698 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -64,8 +60,6 @@
 		1F2AF5DB1964411B00107698 /* Bond.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bond.swift; sourceTree = "<group>"; };
 		1F2AF5DC1964411B00107698 /* Molecule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Molecule.swift; sourceTree = "<group>"; };
 		1F2AF5DD1964411B00107698 /* SDFParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SDFParser.swift; sourceTree = "<group>"; };
-		1F2AF5DF1964411B00107698 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
-		1F2AF5E01964411B00107698 /* TableViewGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewGameCell.swift; sourceTree = "<group>"; };
 		1F2AF5E21964411B00107698 /* EventLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventLogger.swift; sourceTree = "<group>"; };
 		1F2AF5E31964411B00107698 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		1F2AF5E41964411B00107698 /* MoleculeGeometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleculeGeometry.swift; sourceTree = "<group>"; };
@@ -130,16 +124,6 @@
 			path = parser;
 			sourceTree = "<group>";
 		};
-		1F2AF5DE1964411B00107698 /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				1F2AF5DF1964411B00107698 /* CustomTableViewCell.xib */,
-				1F2AF5E01964411B00107698 /* TableViewGameCell.swift */,
-				1F16AC0919648BBE008BAF6F /* DescriptionScrollView.xib */,
-			);
-			path = ui;
-			sourceTree = "<group>";
-		};
 		1F2AF5E11964411B00107698 /* util */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +170,6 @@
 				1F7DCF64196C686C00035854 /* moleculeData.txt */,
 				1F2AF5D31964411B00107698 /* communication */,
 				1F2AF5D91964411B00107698 /* parser */,
-				1F2AF5DE1964411B00107698 /* ui */,
 				1F2AF5E11964411B00107698 /* util */,
 				1FB71E951961FBE60054FB44 /* Supporting Files */,
 				1FB71E9E1961FBE60054FB44 /* Images.xcassets */,
@@ -299,11 +282,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F16AC0A19648BBE008BAF6F /* DescriptionScrollView.xib in Resources */,
 				1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */,
 				1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */,
 				1F7DCF65196C686C00035854 /* moleculeData.txt in Resources */,
-				1F2AF5EF1964411B00107698 /* CustomTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +308,6 @@
 				1F16AC0619645793008BAF6F /* DescriptionController.swift in Sources */,
 				1F344F07196EF7CB0032E4CA /* GameConstants.swift in Sources */,
 				1FE9BCF8196DE4310090A239 /* CreditsController.swift in Sources */,
-				1F2AF5F01964411B00107698 /* TableViewGameCell.swift in Sources */,
 				1FB71EB5196202640054FB44 /* MainController.swift in Sources */,
 				1F2E9258196B32B900549BC0 /* ButtonCollectionController.swift in Sources */,
 				1F2AF5E71964411B00107698 /* Game.swift in Sources */,

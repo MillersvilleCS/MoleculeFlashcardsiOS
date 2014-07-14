@@ -16,14 +16,14 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     
     var loaded = false
     var games: [Game]?
-    var nib = UINib(nibName: "TableViewGameCell", bundle: nil)
+    var nib = UINib(nibName: "UITableViewCell", bundle: nil)
     var reuseIdentifier = "gameCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.registerClass(TableViewGameCell.self, forCellReuseIdentifier: reuseIdentifier)
+        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
         user.login(url: GameConstants.REQUEST_HANDLER_URL, username: "wpgervasio@gmail.com", password: "lol12345")
         while(!user.loggedIn) {
@@ -61,7 +61,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         
-        var cell:TableViewGameCell = self.tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as TableViewGameCell
+        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell
         
         var game = self.games![indexPath.row]
         var cellText = game.name
