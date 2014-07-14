@@ -14,14 +14,28 @@ class MainController : UIViewController {
     @IBOutlet var creditsButton: UIButton
     @IBOutlet var tutorialButton: UIButton
     
-    @IBOutlet var registerBarButtonItem: UIBarButtonItem
+    var loggedIn = false
+
+    var loginImage = UIImage(named: "login.png")
+    var logoutImage = UIImage(named: "logout.png")
     
+    var loginButton: UIBarButtonItem?
+    var logoutButton: UIBarButtonItem?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         playButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         creditsButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         tutorialButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        
+        loginButton = UIBarButtonItem(image: loginImage, style: UIBarButtonItemStyle.Plain, target: self, action: Selector("registerButtonClicked:"))
+        loginButton!.imageInsets = UIEdgeInsetsMake(15, 23, 7, 0)
+        
+        logoutButton = UIBarButtonItem(image: logoutImage, style: UIBarButtonItemStyle.Plain, target: self, action: Selector("registerButtonClicked:"))
+        logoutButton!.imageInsets = UIEdgeInsetsMake(5, 16, 7, 0)
+        
+        self.navigationItem.setRightBarButtonItem(loginButton, animated: true)
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
@@ -35,6 +49,15 @@ class MainController : UIViewController {
     }
     
     @IBAction func registerButtonClicked (sender: UIBarButtonItem) {
-        navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("LoginController") as UIViewController, animated: true)
+        if loggedIn {
+            // Prompt to confirm logout
+            var logout = true
+            if logout {
+                self.navigationItem.setRightBarButtonItem(self.loginButton, animated: true)
+                loggedIn = false
+            }
+        } else {
+            navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("LoginController") as UIViewController, animated: true)
+        }
     }
 }
