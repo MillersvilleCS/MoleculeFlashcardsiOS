@@ -1,5 +1,5 @@
 //
-//  HighScoreControllerTableViewController.swift
+//  HighScoreControllerController.swift
 //  MoleculeFlashcardsiOS
 //
 //  Created by exscitech on 7/11/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HighScoreControllerTableViewController: UITableViewController {
+class HighScoreController: UITableViewController {
     
     var nib = UINib(nibName: "UITableViewCell", bundle: nil)
     var reuseIdentifier = "scoreCell"

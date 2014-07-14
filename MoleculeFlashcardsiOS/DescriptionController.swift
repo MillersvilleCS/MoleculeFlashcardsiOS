@@ -65,7 +65,7 @@ class DescriptionController : UIViewController {
             dispatch_async(dispatch_get_main_queue(), ({
                 self.game!.getHighScores(url: self.requestURL!, startingRank: 1, range: 10, {(highScores: [Score]) in
                     self.highScores = highScores
-                    self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("HighScoresController") as UITableViewController, animated: true)
+                    self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("HighScoreController") as UITableViewController, animated: true)
                     })
                 }))
         }

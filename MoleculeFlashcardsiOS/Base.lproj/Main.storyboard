@@ -391,10 +391,17 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Molecule Flashcards" id="Awh-tr-mWQ"/>
+                    <navigationItem key="navigationItem" title="Molecule Flashcards" id="Awh-tr-mWQ">
+                        <barButtonItem key="rightBarButtonItem" image="login" id="9AS-uz-PG5">
+                            <connections>
+                                <action selector="registerButtonClicked:" destination="f4w-xL-80n" id="yPd-Zw-Mlv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="creditsButton" destination="akD-Fe-z05" id="4KO-Rs-VUJ"/>
                         <outlet property="playButton" destination="MfU-ag-bxb" id="HR9-mX-URg"/>
+                        <outlet property="registerBarButtonItem" destination="9AS-uz-PG5" id="akT-36-27u"/>
                         <outlet property="tutorialButton" destination="zIa-OF-Bb9" id="PCz-1a-SoV"/>
                     </connections>
                 </viewController>
@@ -1524,7 +1531,7 @@
         <!--Register Controller-->
         <scene sceneID="Ggu-DS-xcQ">
             <objects>
-                <viewController storyboardIdentifier="RegisterController" title="Register Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vsq-kd-eAs" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterController" title="Register Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vsq-kd-eAs" customClass="RegisterController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dvb-4I-ZNn"/>
                         <viewControllerLayoutGuide type="bottom" id="rrg-6E-Wg8"/>
@@ -1575,6 +1582,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="40" y="479" width="240" height="54"/>
                                 </variation>
+                                <connections>
+                                    <action selector="registerButtonClicked:" destination="Vsq-kd-eAs" eventType="touchUpInside" id="ptE-ya-dlG"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1597,6 +1607,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="registerButton" destination="51c-RT-L8A" id="iLK-IB-bHF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OgZ-Se-dMV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1605,7 +1618,7 @@
         <!--High Scores Controller-->
         <scene sceneID="j2u-05-4VY">
             <objects>
-                <tableViewController storyboardIdentifier="HighScoresController" title="High Scores Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hFi-wd-9ZK" customClass="HighScoreControllerTableViewController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HighScoreController" title="High Scores Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hFi-wd-9ZK" customClass="HighScoreController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uGI-ne-GCd">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1637,6 +1650,7 @@
     <resources>
         <image name="exscitech_logo" width="1347" height="240"/>
         <image name="header" width="1200" height="600"/>
+        <image name="login" width="48" height="48"/>
         <image name="nsf_logo" width="524" height="524"/>
         <image name="tutorial_screenshot" width="768" height="932"/>
     </resources>

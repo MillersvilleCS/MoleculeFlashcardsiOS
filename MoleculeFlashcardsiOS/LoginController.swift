@@ -14,11 +14,21 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registerButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        loginButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     @IBAction func buttonClicked (sender:UIButton) {
         if (sender.isEqual(registerButton)) {
             navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("RegisterController") as UIViewController, animated: true)
+        }
+        if sender.isEqual(loginButton) {
+
         }
     }
 }

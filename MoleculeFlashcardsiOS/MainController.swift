@@ -14,11 +14,10 @@ class MainController : UIViewController {
     @IBOutlet var creditsButton: UIButton
     @IBOutlet var tutorialButton: UIButton
     
+    @IBOutlet var registerBarButtonItem: UIBarButtonItem
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var x = UIBarButtonItem(title: "R", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("registerButtonClicked:"))
-        self.navigationItem.rightBarButtonItem = x
         
         playButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         creditsButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
