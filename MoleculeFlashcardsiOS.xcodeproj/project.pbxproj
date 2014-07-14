@@ -29,6 +29,7 @@
 		1F5128591970801400077E3A /* HighScoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5128581970801400077E3A /* HighScoreController.swift */; };
 		1F51285B1970819900077E3A /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F51285A1970819900077E3A /* Score.swift */; };
 		1F7DCF65196C686C00035854 /* moleculeData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F7DCF64196C686C00035854 /* moleculeData.txt */; };
+		1FA9E7D5197412EE00F873FC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9E7D4197412EE00F873FC /* LoginController.swift */; };
 		1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB71E971961FBE60054FB44 /* AppDelegate.swift */; };
 		1FB71E9D1961FBE60054FB44 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9B1961FBE60054FB44 /* Main.storyboard */; };
 		1FB71E9F1961FBE60054FB44 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FB71E9E1961FBE60054FB44 /* Images.xcassets */; };
@@ -70,6 +71,7 @@
 		1F5128581970801400077E3A /* HighScoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreController.swift; sourceTree = "<group>"; };
 		1F51285A1970819900077E3A /* Score.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		1F7DCF64196C686C00035854 /* moleculeData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = moleculeData.txt; path = assets/moleculeData.txt; sourceTree = "<group>"; };
+		1FA9E7D4197412EE00F873FC /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1FB71E921961FBE60054FB44 /* MoleculeFlashcardsiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoleculeFlashcardsiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB71E961961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71E971961FBE60054FB44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
 				1FB71E971961FBE60054FB44 /* AppDelegate.swift */,
 				1FB71EB4196202640054FB44 /* MainController.swift */,
+				1FA9E7D4197412EE00F873FC /* LoginController.swift */,
 				1F0D92AE196312630098EB6C /* GameSelectionController.swift */,
 				1F16AC0519645793008BAF6F /* DescriptionController.swift */,
 				1F5128581970801400077E3A /* HighScoreController.swift */,
@@ -321,6 +324,7 @@
 				1FB71E981961FBE60054FB44 /* AppDelegate.swift in Sources */,
 				1F2AF5E61964411B00107698 /* Answer.swift in Sources */,
 				1F51285B1970819900077E3A /* Score.swift in Sources */,
+				1FA9E7D5197412EE00F873FC /* LoginController.swift in Sources */,
 				1F2AF5EC1964411B00107698 /* Bond.swift in Sources */,
 				1F0D92B0196312630098EB6C /* GameSelectionController.swift in Sources */,
 				1F2AF5EB1964411B00107698 /* Atom.swift in Sources */,

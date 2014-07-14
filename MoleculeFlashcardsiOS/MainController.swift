@@ -17,7 +17,7 @@ class MainController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var x = UIBarButtonItem(title: "L", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        var x = UIBarButtonItem(title: "R", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("registerButtonClicked:"))
         self.navigationItem.rightBarButtonItem = x
         
         playButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
@@ -33,5 +33,9 @@ class MainController : UIViewController {
         } else {
             navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("CreditsController") as UIViewController, animated: true)
         }
+    }
+    
+    @IBAction func registerButtonClicked (sender: UIBarButtonItem) {
+        navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("LoginController") as UIViewController, animated: true)
     }
 }
