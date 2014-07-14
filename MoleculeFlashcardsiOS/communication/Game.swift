@@ -5,7 +5,6 @@
 //  Authored by Will Gervasio on 6/24/14.
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
-
 import Foundation
 import UIKit
 
@@ -19,8 +18,9 @@ class Game {
     var name: String
     var description: String
     var timeLimit: Int
-    var questionCount : Int
+    var questionCount: Int
     var imageURL: String
+    var highscores: HighScores
     
     var questionIndex: Int = 0
     var sessionId: String?
@@ -28,9 +28,7 @@ class Game {
     
     var state: GameState
     
-    var highScores: [Score]?
-    
-    init(id: String, name: String, description: String, timeLimit: Int, questionCount: Int, imageURL: String) {
+    init(id: String, name: String, description: String, timeLimit: Int, questionCount: Int, imageURL: String, highscores: HighScores) {
         self.id = id
         self.name = name
         self.description = description
@@ -38,6 +36,7 @@ class Game {
         self.questionCount = questionCount
         self.imageURL = imageURL
         self.state = GameState.WAITING_TO_START
+        self.highscores = highscores
     }
     
     func start(#url: String, user: User, onComplete: (questions: [Question]) -> Void) {
@@ -134,41 +133,42 @@ class Game {
             })
     }
     
-    
+    /*
     func getHighScores(#url: String, startingRank: Int, range: Int, onComplete: (highScores: [Score]) -> Void) {
-        var request = Request(url: url)
-        request.addParameter(key: "request_type", value: "get_high_scores")
-        request.addParameter(key: "game_id", value: id)
-        request.addParameter(key: "starting_rank", value: startingRank)
-        request.addParameter(key: "range", value: range)
-        request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
-            
-            var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            if error != nil {
-                EventLogger.logError("High scores could not be loaded \(error)")
-            } else {
-                var highScoresJSON = responseDict["scores"]! as [NSDictionary]
-                var highScoresList = [Score]()
-                
-                // The first rank is stored as as a string, so we need to get it separately
-                var rank1 = highScoresJSON[0]["rank"] as String
-                var score1 = highScoresJSON[0]["score"] as String
-                var username1 = highScoresJSON[0]["username"] as String
-                highScoresList.append(Score(rank: "\(rank1)", username: username1, score: "\(score1)"))
-                
-                for var index = 1; index < highScoresJSON.count; ++index {
-                    var rank = highScoresJSON[index]["rank"] as Int
-                    var score = highScoresJSON[index]["score"] as String
-                    var username = highScoresJSON[index]["username"] as String
-                    
-                    highScoresList.append(Score(rank: "\(rank)", username: username, score: "\(score)"))
-                }
-                self.highScores = highScoresList
-                onComplete(highScores: self.highScores!)
-            }
-            })
-    }
+    var request = Request(url: url)
+    request.addParameter(key: "request_type", value: "get_high_scores")
+    request.addParameter(key: "game_id", value: id)
+    request.addParameter(key: "starting_rank", value: startingRank)
+    request.addParameter(key: "range", value: range)
+    request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
     
+    var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
+    if error != nil {
+    EventLogger.logError("High scores could not be loaded \(error)")
+    } else {
+    var highScoresJSON = responseDict["scores"]! as [NSDictionary]
+    var highScoresList = [Score]()
+    
+    // The first rank is stored as as a string, so we need to get it separately
+    var rank1 = highScoresJSON[0]["rank"] as String
+    var score1 = highScoresJSON[0]["score"] as String
+    var username1 = highScoresJSON[0]["username"] as String
+    highScoresList.append(Score(rank: "\(rank1)", username: username1, score: "\(score1)"))
+    
+    for var index = 1; index < highScoresJSON.count; ++index {
+    var rank = highScoresJSON[index]["rank"] as Int
+    var score = highScoresJSON[index]["score"] as String
+    var username = highScoresJSON[index]["username"] as String
+    
+    highScoresList.append(Score(rank: "\(rank)", username: username, score: "\(score)"))
+    }
+    self.highScores = highScoresList
+    onComplete(highScores: self.highScores!)
+    }
+    })
+    
+    }
+    */
     func setGameState(state: GameState) {
         if(state != GameState.FINISHED) {
             self.state = state

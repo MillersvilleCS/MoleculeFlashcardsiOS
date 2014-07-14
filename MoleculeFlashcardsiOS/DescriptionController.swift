@@ -27,9 +27,7 @@ class DescriptionController : UIViewController {
     var user: User?
     var requestURL: String?
     var mediaURL: String?
-    
-    var highScores: [Score]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,12 +60,9 @@ class DescriptionController : UIViewController {
             navigationController.topViewController.title = gameTitle
         }
         else if sender.isEqual(highScoresButton) {
-            dispatch_async(dispatch_get_main_queue(), ({
-                self.game!.getHighScores(url: self.requestURL!, startingRank: 1, range: 10, {(highScores: [Score]) in
-                    self.highScores = highScores
-                    self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("HighScoreController") as UITableViewController, animated: true)
-                    })
-                }))
+            var controller = self.storyboard.instantiateViewControllerWithIdentifier("HighScoreController") as HighScoreController
+            
+            self.navigationController.pushViewController(controller, animated: true)
         }
     }
 }

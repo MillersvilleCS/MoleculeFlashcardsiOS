@@ -10,17 +10,20 @@ import UIKit
 
 class HighScoreController: UITableViewController {
     
+    
     var nib = UINib(nibName: "UITableViewCell", bundle: nil)
     var reuseIdentifier = "scoreCell"
     
-    var highScores: [Score]?
+    var highScores: HighScores?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        self.highScores = (navigationController.viewControllers[2] as DescriptionController).highScores
+        
+        var controller: DescriptionController = navigationController.viewControllers[2] as DescriptionController
+        self.highScores = controller.game!.highscores
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,13 +35,13 @@ class HighScoreController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-        return self.highScores!.count
+        return self.highScores!.entryCount()
     }
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath)  as UITableViewCell
         
-        var highScore = self.highScores![indexPath.row]
+        var highScore = self.highScores!.entries[indexPath.row]
         
         var rank = highScore.rank
         var username = highScore.username
@@ -54,9 +57,10 @@ class HighScoreController: UITableViewController {
         cell.addSubview(usernameLabel)
         
         var scoreLabel = UILabel(frame: CGRectMake(CGFloat(cellFrame.width * 0.75), 0, cellFrame.width * 0.25, cellFrame.height))
-        scoreLabel.text = score
+        scoreLabel.text = "\(score)"
         cell.addSubview(scoreLabel)
         
         return cell
     }
+
 }

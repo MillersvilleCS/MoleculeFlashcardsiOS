@@ -92,8 +92,9 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
                     var questionCount = gameJSON["mol_count"] as Int
                     var timeLimit = gameJSON["time_limit"] as String
                     var imageURL = "https://exscitech.org" + gameJSON["image"].description
+                    var highScores = gameJSON["high_scores"] as [AnyObject]
                     
-                    gameList.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, questionCount: questionCount, imageURL: imageURL))
+                    gameList.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, questionCount: questionCount, imageURL: imageURL, highscores: HighScores(json: highScores)))
                 }
                 self.games = gameList
                 self.loaded = true
