@@ -21,8 +21,6 @@ class MainController : UIViewController {
     
     var loginButton: UIBarButtonItem?
     var logoutButton: UIBarButtonItem?
-    
-    var username : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
