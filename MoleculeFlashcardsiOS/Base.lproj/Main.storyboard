@@ -701,11 +701,6 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
-                                    <mask key="subviews">
-                                        <include reference="VbA-nf-ykj"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <include reference="Bhh-eY-s7y"/>
                                         <include reference="KCR-Ss-yUc"/>
@@ -723,6 +718,11 @@
                                         <include reference="cry-h9-1G4"/>
                                         <include reference="mWF-bV-N5u"/>
                                         <include reference="teB-bN-RnC"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="VbA-nf-ykj"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">

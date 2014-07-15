@@ -43,15 +43,23 @@ class MainController : UIViewController {
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
             // Confirm to play without logging in
-            var confirmNoScorePrompt = UIAlertController(title: "Warning!", message: GameMessages.CONFIRM_NO_SCORE, preferredStyle: UIAlertControllerStyle.Alert)
-            
-            confirmNoScorePrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
+            if user.status != User.LoginStatus.LOGGED_IN {
+                var confirmNoScorePrompt = UIAlertController(title: "Warning!", message: GameMessages.CONFIRM_NO_SCORE, preferredStyle: UIAlertControllerStyle.Alert)
+                
+                confirmNoScorePrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
+                    var controller = self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
+                    controller.user = self.user
+                    self.navigationController.pushViewController(controller, animated: true)
+                    }))
+                confirmNoScorePrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(confirmNoScorePrompt, animated: true, completion: nil)
+            } else {
                 var controller = self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
                 controller.user = self.user
                 self.navigationController.pushViewController(controller, animated: true)
-                }))
-            confirmNoScorePrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(confirmNoScorePrompt, animated: true, completion: nil)
+
+            }
+            
             
         } else if sender.isEqual(tutorialButton) {
             navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("TutorialController") as UIViewController, animated: true)
@@ -62,9 +70,8 @@ class MainController : UIViewController {
     
     @IBAction func registerButtonClicked (sender: UIBarButtonItem) {
         if user.status == User.LoginStatus.LOGGED_IN {
-            username = "Test"
             // Confirm logout
-            var logoutPrompt = UIAlertController(title: "Logout", message: "\n\(username!) \(GameMessages.CONFIRM_LOGOUT)", preferredStyle: UIAlertControllerStyle.Alert)
+            var logoutPrompt = UIAlertController(title: "Logout", message: "\n\(user.name) \(GameMessages.CONFIRM_LOGOUT)", preferredStyle: UIAlertControllerStyle.Alert)
             
             logoutPrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
                 self.navigationItem.setRightBarButtonItem(self.loginButton, animated: true)
