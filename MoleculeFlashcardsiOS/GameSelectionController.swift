@@ -12,7 +12,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet var tableView : UITableView
     
-    let user = User()
+    var user: User?
     
     var loaded = false
     var games: [Game]?
@@ -22,14 +22,11 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        assert(user, "user must be set in GameSelectionController")
         self.tableView.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
-        user.login(url: GameConstants.REQUEST_HANDLER_URL, username: "wpgervasio@gmail.com", password: "lol12345")
-        while(!user.loggedIn) {
-            usleep(10)
-        }
-        getGames(url: GameConstants.REQUEST_HANDLER_URL, user: user)
+        getGames(url: GameConstants.REQUEST_HANDLER_URL, user: user!)
         while !loaded {
             usleep(10)
         }
