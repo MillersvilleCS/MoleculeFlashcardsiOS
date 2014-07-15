@@ -115,12 +115,10 @@ class MoleculeController: UIViewController {
     }
     
     func animateLabel(label: UILabel) {
+        label.alpha = 1
         UIView.animateWithDuration(1, delay: 0.5, options: UIViewAnimationOptions.CurveLinear,animations: {() in
-            label.alpha = 0.1
-            }, completion:  { (finished: Bool) in
-                label.text = ""
-                label.alpha = 1
-            })
+            label.alpha = 0.0
+        }, completion:  nil)
     }
     
     func handleZoom(gestureRecognize: UIPinchGestureRecognizer) {
