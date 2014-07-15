@@ -41,7 +41,7 @@ class DescriptionController : UIViewController {
         highScoresButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         playButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
-        timeLimitLabel.text = "\(game!.timeLimit)"
+        timeLimitLabel.text = Time.formatTime(ms: game!.timeLimit)
         numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"
         gameDescriptionLabel.text = game!.description
     }

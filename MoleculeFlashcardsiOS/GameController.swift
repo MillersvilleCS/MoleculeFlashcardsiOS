@@ -22,6 +22,8 @@ class GameController : UIViewController {
     var buttonController: ButtonCollectionController?
     
     var molecules: [SCNNode]?
+    
+    var timeRemaing = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,12 @@ class GameController : UIViewController {
     }
     
     func start() {
+        //set time text and start timer (start here with 5 less seconds do to server timing glitch)
+        self.timeRemaing = self.game!.timeLimit - 5000
+        self.moleculeController!.timerLabel!.text = Time.formatTime(ms: self.timeRemaing)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(1.0 as NSTimeInterval, target: self, selector: Selector("decreaseTime"), userInfo: nil, repeats: true)
+        
+        //load SDF files
         game!.start(url: requestURL!, user: user!,{(questions: [Question]) in
             var nodeList = [SCNNode]()
 
@@ -70,23 +78,26 @@ class GameController : UIViewController {
             //iOS global dispatch lets us put UI actions on the main thread again
             //tell it what thread queue to use (main), and what to do (closure)
             dispatch_async(dispatch_get_main_queue(), ({
+                //timer SHOULD be started here
                 self.nextQuestion()
             }))
         })
     }
     
+    func decreaseTime() {
+        if self.timeRemaing > 0 {
+            self.timeRemaing -= 1000
+            self.moleculeController!.timerLabel!.text = Time.formatTime(ms: self.timeRemaing)
+            
+            if self.timeRemaing == 0 {
+                endGame()
+            }
+        }
+    }
+    
     func nextQuestion() {
         if game!.state == Game.GameState.FINISHED {
-            
-            self.game!.end(url: requestURL!, user: self.user!, gameTime: 600000, onComplete: {(rank: Int, finalScore: Int) in
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.WAIT_PERIOD), dispatch_get_main_queue(), ({
-                    var finalController = self.storyboard.instantiateViewControllerWithIdentifier("FinalController") as FinalController
-                    finalController.rank = rank
-                    finalController.score = finalScore
-                    
-                    self.navigationController.pushViewController( finalController as UIViewController, animated: true)
-                }))
-            })
+            endGame()
             return
         }
         
@@ -108,9 +119,28 @@ class GameController : UIViewController {
                 if isCorrect {
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.WAIT_PERIOD), dispatch_get_main_queue(), ({
                         self.nextQuestion()
-                        
                     }))
                 }
+            }))
+        })
+    }
+    
+    func endGame() {
+        var waitTime: Int64 = 0
+        let gameTime = self.game!.timeLimit - self.timeRemaing
+        
+        //if we didn't run out of time, wait 3 seconds before ending game (last question)
+        if self.timeRemaing != 0 {
+            waitTime = self.WAIT_PERIOD
+        }
+        
+        self.game!.end(url: requestURL!, user: self.user!, gameTime: gameTime, onComplete: {(rank: Int, finalScore: Int) in
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, waitTime), dispatch_get_main_queue(), ({
+                var finalController = self.storyboard.instantiateViewControllerWithIdentifier("FinalController") as FinalController
+                finalController.rank = rank
+                finalController.score = finalScore
+                
+                self.navigationController.pushViewController( finalController as UIViewController, animated: true)
             }))
         })
     }
