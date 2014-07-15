@@ -46,12 +46,12 @@ class MainController : UIViewController {
                 dispatch_async(dispatch_get_main_queue(), ({
                     var confirmNoScorePrompt = UIAlertController(title: "Warning!", message: GameMessages.CONFIRM_NO_SCORE, preferredStyle: UIAlertControllerStyle.Alert)
                     
+                    confirmNoScorePrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
                     confirmNoScorePrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
                         var controller = self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
                         controller.user = self.user
                         self.navigationController.pushViewController(controller, animated: true)
-                        }))
-                    confirmNoScorePrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
+                    }))
                     self.presentViewController(confirmNoScorePrompt, animated: true, completion: nil)
                 }))
 
@@ -76,13 +76,14 @@ class MainController : UIViewController {
             dispatch_async(dispatch_get_main_queue(), ({
                 var logoutPrompt = UIAlertController(title: "Logout", message: "\n\(self.user.name)\(GameMessages.CONFIRM_LOGOUT)", preferredStyle: UIAlertControllerStyle.Alert)
                 
+                logoutPrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
                 logoutPrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
                     self.navigationItem.setRightBarButtonItem(self.loginButton, animated: true)
                     self.user = User()
-                    }))
-                logoutPrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(logoutPrompt, animated: true, completion: nil)
                 }))
+                
+                self.presentViewController(logoutPrompt, animated: true, completion: nil)
+            }))
             
         } else {
             var controller = self.storyboard.instantiateViewControllerWithIdentifier("LoginController") as LoginController
