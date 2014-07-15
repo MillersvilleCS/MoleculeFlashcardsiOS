@@ -36,13 +36,21 @@ class RegisterController: UIViewController {
         var passwordConfirm = confirmPasswordTextField.text
         
         if password.compare(passwordConfirm) == 0  {
-            user!.register(url: GameConstants.REQUEST_HANDLER_URL, username: username, password: password, email: email,onComplete: {(success: Bool) in
+            user!.register(url: GameConstants.REQUEST_HANDLER_URL, username: username, password: password, email: email,onComplete: {(success: Bool, error: String) in
                 
                 dispatch_async(dispatch_get_main_queue(), ({
                     if success {
                         var mainController = self.navigationController.viewControllers[0] as MainController
                         mainController.navigationItem.setRightBarButtonItem(mainController.logoutButton, animated: true)
                         self.navigationController.popToViewController(mainController, animated: true)
+                    } else {
+                        var  errorPrompt = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
+                            self.passwordTextField.text = ""
+                            self.confirmPasswordTextField.text = ""
+                            }))
+                        self.presentViewController(errorPrompt, animated: true, completion: nil)
                     }
                 }))
             })

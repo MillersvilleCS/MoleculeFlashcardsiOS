@@ -35,14 +35,21 @@ class LoginController: UIViewController {
             navigationController.pushViewController(controller, animated: true)
         }
         if sender.isEqual(loginButton) {
-            user!.login(url: GameConstants.REQUEST_HANDLER_URL, username: usernameField.text, password: passwordField.text, onComplete: {(success: Bool) in
+            user!.login(url: GameConstants.REQUEST_HANDLER_URL, username: usernameField.text, password: passwordField.text, onComplete: {(success: Bool, error: String) in
                 
                 dispatch_async(dispatch_get_main_queue(), ({
                     if success {
-                        var mainController = self.navigationController.viewControllers[0] as UIViewController
+                        var mainController = self.navigationController.viewControllers[0] as MainController
+                        mainController.navigationItem.setRightBarButtonItem(mainController.logoutButton, animated: true)
                         self.navigationController.popToViewController(mainController, animated: true)
+                    } else {
+                        var  errorPrompt = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
+                            
+                        }))
+                        self.presentViewController(errorPrompt, animated: true, completion: nil)
                     }
-                    
                 }))
             })
         }

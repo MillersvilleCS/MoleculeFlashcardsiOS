@@ -75,7 +75,7 @@ class MainController : UIViewController {
             
             logoutPrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
                 self.navigationItem.setRightBarButtonItem(self.loginButton, animated: true)
-                // Delete credentials
+                self.user = User()
                 }))
             logoutPrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(logoutPrompt, animated: true, completion: nil)
