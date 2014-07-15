@@ -46,7 +46,7 @@ struct SDFParser {
         scanner.scanUpToString("\n", intoString: &rest)
         
         if let type = rest {
-            return Atom(x, y, z, type: type.substringToIndex(1))
+            return Atom(x, y, z, type: type.substringToIndex(2).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).uppercaseString)
         } else {
             return Atom(x, y, z, type: "ERR")
         }
