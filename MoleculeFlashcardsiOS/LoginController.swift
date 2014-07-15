@@ -25,7 +25,8 @@ class LoginController: UIViewController {
     
     @IBAction func buttonClicked (sender:UIButton) {
         if (sender.isEqual(registerButton)) {
-            navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("RegisterController") as UIViewController, animated: true)
+            var controller = self.storyboard.instantiateViewControllerWithIdentifier("RegisterController") as RegisterController
+            navigationController.pushViewController(controller, animated: true)
         }
         if sender.isEqual(loginButton) {
 

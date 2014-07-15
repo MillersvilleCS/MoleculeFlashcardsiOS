@@ -701,6 +701,11 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="VbA-nf-ykj"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <include reference="Bhh-eY-s7y"/>
                                         <include reference="KCR-Ss-yUc"/>
@@ -718,11 +723,6 @@
                                         <include reference="cry-h9-1G4"/>
                                         <include reference="mWF-bV-N5u"/>
                                         <include reference="teB-bN-RnC"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="subviews">
-                                        <include reference="VbA-nf-ykj"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
@@ -1047,13 +1047,13 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
+                                </variation>
+                                <variation key="heightClass=compact">
                                     <mask key="constraints">
                                         <include reference="FC3-Zm-jXq"/>
                                         <include reference="QOZ-NW-9Qh"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=compact">
-                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                 </variation>
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
@@ -1638,7 +1638,7 @@
         <!--Register-->
         <scene sceneID="A6Z-NC-kpI">
             <objects>
-                <viewController storyboardIdentifier="RegisterController" title="Register" useStoryboardIdentifierAsRestorationIdentifier="YES" id="19O-rF-lkG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterController" title="Register" useStoryboardIdentifierAsRestorationIdentifier="YES" id="19O-rF-lkG" customClass="RegisterController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VS3-QK-0hj"/>
                         <viewControllerLayoutGuide type="bottom" id="DSR-u0-ufP"/>
@@ -1783,6 +1783,12 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="Oxi-nV-2OI" id="7LT-B1-cyb"/>
+                        <outlet property="emailTextField" destination="sRX-6j-mP2" id="YLh-a6-EDV"/>
+                        <outlet property="passwordTextField" destination="9hB-ps-5bT" id="EHH-EH-zYw"/>
+                        <outlet property="usernameTextField" destination="YqC-AL-h3k" id="eav-La-1Hn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O5E-oz-2LU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

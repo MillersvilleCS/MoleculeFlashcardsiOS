@@ -21,6 +21,8 @@ class MainController : UIViewController {
     
     var loginButton: UIBarButtonItem?
     var logoutButton: UIBarButtonItem?
+    
+    var username : String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +42,15 @@ class MainController : UIViewController {
     
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
-            navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as UIViewController, animated: true)
+            // Confirm to play without logging in
+            var confirmNoScorePrompt = UIAlertController(title: "Warning!", message: GameMessages.CONFIRM_NO_SCORE, preferredStyle: UIAlertControllerStyle.Alert)
+            
+            confirmNoScorePrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
+                self.navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as UIViewController, animated: true)
+                }))
+            confirmNoScorePrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(confirmNoScorePrompt, animated: true, completion: nil)
+            
         } else if sender.isEqual(tutorialButton) {
             navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("TutorialController") as UIViewController, animated: true)
         } else {
@@ -50,12 +60,17 @@ class MainController : UIViewController {
     
     @IBAction func registerButtonClicked (sender: UIBarButtonItem) {
         if loggedIn {
-            // Prompt to confirm logout
-            var logout = true
-            if logout {
+            username = "Test"
+            // Confirm logout
+            var logoutPrompt = UIAlertController(title: "Logout", message: "\n\(username!) \(GameMessages.CONFIRM_LOGOUT)", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            logoutPrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
                 self.navigationItem.setRightBarButtonItem(self.loginButton, animated: true)
-                loggedIn = false
-            }
+                self.loggedIn = false
+                // Delete credentials
+                }))
+            logoutPrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(logoutPrompt, animated: true, completion: nil)
         } else {
             navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("LoginController") as UIViewController, animated: true)
         }
