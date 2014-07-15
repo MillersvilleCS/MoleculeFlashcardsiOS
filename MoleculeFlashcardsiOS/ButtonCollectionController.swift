@@ -15,15 +15,6 @@ class ButtonCollectionController: UICollectionViewController {
     var answerSet : [Answer]?
     var animationsRunning = false
     
-    // Custom colors
-    var buttonGrayPressed = UIColor(red: CGFloat(158/255.0), green: CGFloat(158/255.0), blue: CGFloat(158/255.0), alpha: CGFloat(1.0))
-    var buttonGrayDefault = UIColor(red: CGFloat(209/255.0), green: CGFloat(209/255.0), blue: CGFloat(209/255.0), alpha: CGFloat(1.0))
-    var buttonCorrectDefault = UIColor(red: CGFloat(0), green: CGFloat(153/255.0), blue: CGFloat(0), alpha: CGFloat(1.0))
-    
-    var buttonWrongColor = UIColor(red: CGFloat(1.0), green: CGFloat(0), blue: CGFloat(0), alpha: CGFloat(1.0))
-    var buttonGreenStartColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
-    var buttonGreenEndColor = UIColor(red: CGFloat(137/255.0), green: CGFloat(200/255.0), blue: CGFloat(60/255.0), alpha: CGFloat(1.0))
-    
     init(coder aDecoder: NSCoder!) {
         super.init(coder:aDecoder)
     }
@@ -57,7 +48,7 @@ class ButtonCollectionController: UICollectionViewController {
         
         // Construct a cell with a button
         buttons[cellRow!].frame = CGRect(x: 0, y: 0, width: myCell.frame.width, height: myCell.frame.height)
-        buttons[cellRow!].backgroundColor = buttonGrayDefault
+        buttons[cellRow!].backgroundColor = GameColors.BUTTON_GRAY_DEFAULT
         buttons[cellRow!].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
         buttons[cellRow!].layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         buttons[cellRow!].titleLabel.adjustsFontSizeToFitWidth = true
@@ -80,7 +71,7 @@ class ButtonCollectionController: UICollectionViewController {
             buttons[index].hidden = false;
             buttons[index].setTitle(answerSet[index].text, forState: UIControlState.Normal)
             buttons[index].tag = index
-            buttons[index].backgroundColor = buttonGrayDefault
+            buttons[index].backgroundColor = GameColors.BUTTON_GRAY_DEFAULT
             buttons[index].alpha = 1.0
             buttons[index].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
@@ -95,7 +86,7 @@ class ButtonCollectionController: UICollectionViewController {
     func markAnswer(buttonIndex: Int, correct: Bool) {
         
         if correct {
-            buttons[buttonIndex].backgroundColor = self.buttonGreenStartColor
+            buttons[buttonIndex].backgroundColor = GameColors.BUTTON_GREEN_START_COLOR
             for button in buttons {
                 if buttons[buttonIndex] != button {
                     button.alpha = 0.7
@@ -104,7 +95,7 @@ class ButtonCollectionController: UICollectionViewController {
             }
         } else {
             animateButtonStopAll()
-            buttons[buttonIndex].backgroundColor = self.buttonWrongColor
+            buttons[buttonIndex].backgroundColor = GameColors.BUTTON_WRONG_COLOR
         }
         buttons[buttonIndex].setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         buttons[buttonIndex].enabled = false

@@ -18,10 +18,7 @@ class MoleculeController: UIViewController {
     @IBOutlet var scoreLabel: UILabel?
     @IBOutlet var timerLabel: UILabel?
     @IBOutlet var questionLabel: UILabel?
-    
-    // Custom colors
-    var scoreColor = UIColor(red: CGFloat(0), green: CGFloat(180/255.0), blue: CGFloat(0), alpha: CGFloat(1.0))
-
+    @IBOutlet var scoreChangeLabel: UILabel
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +31,7 @@ class MoleculeController: UIViewController {
         let lightNode = SCNNode()
         lightNode.light = SCNLight()
         lightNode.light.type = SCNLightTypeOmni
-        lightNode.light.color = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+        lightNode.light.color = GameColors.LIGHT_NODE
         lightNode.position = SCNVector3(x: -25, y: 0, z: 0)
         scene.rootNode.addChildNode(lightNode)
         
@@ -42,13 +39,13 @@ class MoleculeController: UIViewController {
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light.type = SCNLightTypeAmbient
-        ambientLightNode.light.color = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+        ambientLightNode.light.color = GameColors.AMBIENT_LIGHT_NODE
         scene.rootNode.addChildNode(ambientLightNode)
         
         // set scene to view
         let sceneView = super.view as SCNView
         sceneView.scene = scene
-        sceneView.backgroundColor = UIColor(red: 0.82, green: 0.82, blue: 0.82, alpha: 1.0)
+        sceneView.backgroundColor = GameColors.SCENE_VIEW_BACKGROUND
         
         // gesture recognizers
         let zoomGesture = UIPinchGestureRecognizer(target: self, action: "handleZoom:")
@@ -95,12 +92,35 @@ class MoleculeController: UIViewController {
     
     func setScore(score: Int) {
         println(score)
+        var currentScore = scoreLabel!.text.toInt()
+        var scoreChange: Int = score - currentScore!
+        
         self.scoreLabel!.text = "\(score)"
+        
+        if scoreChange < 0 {
+            scoreChangeLabel!.textColor = UIColor.redColor()
+            self.scoreChangeLabel!.text = "\(scoreChange)"
+        } else {
+            scoreChangeLabel!.textColor = GameColors.SCORE_COLOR
+            self.scoreChangeLabel!.text = "+\(scoreChange)"
+        }
+        
+        animateLabel(scoreChangeLabel!)
+        
         if score >= 0 {
-            self.scoreLabel!.textColor = self.scoreColor
+            self.scoreLabel!.textColor = GameColors.SCORE_COLOR
         } else {
             self.scoreLabel!.textColor = UIColor.redColor()
         }
+    }
+    
+    func animateLabel(label: UILabel) {
+        UIView.animateWithDuration(1, delay: 0.5, options: UIViewAnimationOptions.CurveLinear,animations: {() in
+            label.alpha = 0.1
+            }, completion:  { (finished: Bool) in
+                label.text = ""
+                label.alpha = 1
+            })
     }
     
     func handleZoom(gestureRecognize: UIPinchGestureRecognizer) {

@@ -26,6 +26,7 @@
 		1F2E9258196B32B900549BC0 /* ButtonCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */; };
 		1F2E925C196C264C00549BC0 /* MoleculeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2E925B196C264C00549BC0 /* MoleculeController.swift */; };
 		1F344F07196EF7CB0032E4CA /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F344F06196EF7CB0032E4CA /* GameConstants.swift */; };
+		1F42ABFB1975AA640028CF16 /* GameColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F42ABFA1975AA640028CF16 /* GameColors.swift */; };
 		1F7DCF65196C686C00035854 /* moleculeData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F7DCF64196C686C00035854 /* moleculeData.txt */; };
 		1F8668AB1975676B00F37784 /* GameMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8668AA1975676B00F37784 /* GameMessages.swift */; };
 		1F8E973F19742D6100004622 /* HighScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E973E19742D6100004622 /* HighScores.swift */; };
@@ -71,6 +72,7 @@
 		1F2E9257196B32B900549BC0 /* ButtonCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonCollectionController.swift; sourceTree = "<group>"; };
 		1F2E925B196C264C00549BC0 /* MoleculeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoleculeController.swift; sourceTree = "<group>"; };
 		1F344F06196EF7CB0032E4CA /* GameConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
+		1F42ABFA1975AA640028CF16 /* GameColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameColors.swift; sourceTree = "<group>"; };
 		1F7DCF64196C686C00035854 /* moleculeData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = moleculeData.txt; path = assets/moleculeData.txt; sourceTree = "<group>"; };
 		1F8668AA1975676B00F37784 /* GameMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMessages.swift; sourceTree = "<group>"; };
 		1F8E973E19742D6100004622 /* HighScores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScores.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 		1FB71E941961FBE60054FB44 /* MoleculeFlashcardsiOS */ = {
 			isa = PBXGroup;
 			children = (
+				1F42ABFA1975AA640028CF16 /* GameColors.swift */,
 				1F344F06196EF7CB0032E4CA /* GameConstants.swift */,
 				1F8668AA1975676B00F37784 /* GameMessages.swift */,
 				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
@@ -319,6 +322,7 @@
 				1F2AF5F41964411B00107698 /* VecOp.swift in Sources */,
 				1F16AC0619645793008BAF6F /* DescriptionController.swift in Sources */,
 				1F344F07196EF7CB0032E4CA /* GameConstants.swift in Sources */,
+				1F42ABFB1975AA640028CF16 /* GameColors.swift in Sources */,
 				1FE9BCF8196DE4310090A239 /* CreditsController.swift in Sources */,
 				1FB71EB5196202640054FB44 /* MainController.swift in Sources */,
 				1F2E9258196B32B900549BC0 /* ButtonCollectionController.swift in Sources */,

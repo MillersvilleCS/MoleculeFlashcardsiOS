@@ -432,6 +432,15 @@
                                 <color key="textColor" red="0.0" green="0.70588235294117641" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlc-Ja-KyT">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="-1" y="60" width="70" height="34"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -443,9 +452,20 @@
                             <constraint firstItem="z5d-dy-n2P" firstAttribute="top" secondItem="gJb-T8-HzQ" secondAttribute="bottom" constant="20" id="qWX-5J-7gb"/>
                             <constraint firstItem="nbm-NT-mDh" firstAttribute="top" secondItem="B5R-ni-Ku2" secondAttribute="bottom" constant="20" id="xks-Oi-MSe"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Nlc-Ja-KyT"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Nlc-Ja-KyT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="questionLabel" destination="gJb-T8-HzQ" id="MRk-LC-9vB"/>
+                        <outlet property="scoreChangeLabel" destination="Nlc-Ja-KyT" id="RJx-Km-4CK"/>
                         <outlet property="scoreLabel" destination="nbm-NT-mDh" id="W4O-fo-ybg"/>
                         <outlet property="timerLabel" destination="zuL-GP-3lG" id="6fh-2B-W5w"/>
                         <outlet property="view" destination="BAu-7U-RfQ" id="Sc3-VW-hXu"/>
@@ -701,6 +721,11 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="VbA-nf-ykj"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <include reference="Bhh-eY-s7y"/>
                                         <include reference="KCR-Ss-yUc"/>
@@ -718,11 +743,6 @@
                                         <include reference="cry-h9-1G4"/>
                                         <include reference="mWF-bV-N5u"/>
                                         <include reference="teB-bN-RnC"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="subviews">
-                                        <include reference="VbA-nf-ykj"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
@@ -1047,13 +1067,13 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
-                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
-                                </variation>
-                                <variation key="heightClass=compact">
                                     <mask key="constraints">
                                         <include reference="FC3-Zm-jXq"/>
                                         <include reference="QOZ-NW-9Qh"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                 </variation>
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
