@@ -42,8 +42,9 @@ class MainController : UIViewController {
     
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
-            // Confirm to play without logging in
+            
             if user.status != User.LoginStatus.LOGGED_IN {
+                // Display a dialog box warning the player if they aren't logged in
                 var confirmNoScorePrompt = UIAlertController(title: "Warning!", message: GameMessages.CONFIRM_NO_SCORE, preferredStyle: UIAlertControllerStyle.Alert)
                 
                 confirmNoScorePrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
@@ -59,7 +60,6 @@ class MainController : UIViewController {
                 self.navigationController.pushViewController(controller, animated: true)
 
             }
-            
             
         } else if sender.isEqual(tutorialButton) {
             navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("TutorialController") as UIViewController, animated: true)

@@ -40,7 +40,8 @@ class RegisterController: UIViewController {
                 
                 dispatch_async(dispatch_get_main_queue(), ({
                     if success {
-                        var mainController = self.navigationController.viewControllers[0] as UIViewController
+                        var mainController = self.navigationController.viewControllers[0] as MainController
+                        mainController.navigationItem.setRightBarButtonItem(mainController.logoutButton, animated: true)
                         self.navigationController.popToViewController(mainController, animated: true)
                     }
                 }))
