@@ -22,7 +22,7 @@ class User {
         
     }
     
-    func login(#url: String, username: String, password: String, onComplete: (success: Bool, error: String) -> Void) {
+    func login(#url: String, username: String, password: String, onComplete: (name: String, id: String, success: Bool, error: String) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "login")
         request.addParameter(key: "login", value: username)
@@ -35,23 +35,23 @@ class User {
             
             if error {
                 println("Failed to log in, \(error.description)")
-                onComplete(success: false, error: error.description)
+                onComplete(name: "", id: "", success: false, error: error.description)
                 self.status = LoginStatus.FAILED
             } else if response["success"] is String { // Server returns String if failed int if succes. Someone needs to fix that
                 println("Failed to log in,  invalid username or password")
-                onComplete(success: false, error: response["error"] as String)
+                onComplete(name: "", id: "",success: false, error: response["error"] as String)
                 self.status = LoginStatus.FAILED
             } else {
                 println("Logged in successfully")
                 self.name = response["username"] as NSString
                 self.id = response["auth"] as NSString
                 self.status = LoginStatus.LOGGED_IN
-                onComplete(success: true, error: "")
+                onComplete(name: self.name!, id: self.id!, success: true, error: "")
             }
             })
     }
     
-    func register(#url: String, username: String, password: String, email: String, onComplete: (success: Bool, error: String) -> Void) {
+    func register(#url: String, username: String, password: String, email: String, onComplete: (name: String, id: String,success: Bool, error: String) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "register")
         request.addParameter(key: "username", value: username)
@@ -65,18 +65,18 @@ class User {
             if error {
                 println("Failed to register, \(error.description)")
                 self.status = LoginStatus.FAILED
-                onComplete(success: false, error: error.description)
+                onComplete(name: "", id: "", success: false, error: error.description)
             } else if response["success"] is String {
                 println("Failed to register")
                 self.status = LoginStatus.FAILED
                 var errorString = response["error"] as String
-                onComplete(success: false, error: errorString)
+                onComplete(name: "", id: "", success: false, error: errorString)
             } else {
                 println("registered successfully")
                 self.name = response["username"] as NSString
                 self.id = response["auth"] as NSString
                 self.status = LoginStatus.LOGGED_IN
-                onComplete(success: true, error: "")
+                onComplete(name: self.name!, id: self.id!, success: true, error: "")
             }
             })
     }

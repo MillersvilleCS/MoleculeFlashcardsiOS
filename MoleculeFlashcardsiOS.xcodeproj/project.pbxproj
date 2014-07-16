@@ -10,6 +10,7 @@
 		1F0D92B0196312630098EB6C /* GameSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AE196312630098EB6C /* GameSelectionController.swift */; };
 		1F16AC0619645793008BAF6F /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F16AC0519645793008BAF6F /* DescriptionController.swift */; };
 		1F16AC0819645967008BAF6F /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F16AC0719645967008BAF6F /* GameController.swift */; };
+		1F285E731976DF5700B04149 /* LoginInfoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F285E721976DF5700B04149 /* LoginInfoManager.swift */; };
 		1F2AF5E61964411B00107698 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D41964411B00107698 /* Answer.swift */; };
 		1F2AF5E71964411B00107698 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D51964411B00107698 /* Game.swift */; };
 		1F2AF5E81964411B00107698 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2AF5D61964411B00107698 /* Question.swift */; };
@@ -57,6 +58,7 @@
 		1F0D92AE196312630098EB6C /* GameSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSelectionController.swift; sourceTree = "<group>"; };
 		1F16AC0519645793008BAF6F /* DescriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
 		1F16AC0719645967008BAF6F /* GameController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		1F285E721976DF5700B04149 /* LoginInfoManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInfoManager.swift; sourceTree = "<group>"; };
 		1F2AF5D41964411B00107698 /* Answer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		1F2AF5D51964411B00107698 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		1F2AF5D61964411B00107698 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 		1F2AF5E11964411B00107698 /* util */ = {
 			isa = PBXGroup;
 			children = (
+				1F285E721976DF5700B04149 /* LoginInfoManager.swift */,
 				1F2AF5E21964411B00107698 /* EventLogger.swift */,
 				1F2AF5E31964411B00107698 /* ImageLoader.swift */,
 				1F2AF5E41964411B00107698 /* MoleculeGeometry.swift */,
@@ -332,6 +335,7 @@
 				1FDD9E8B19743D520086F5E3 /* FinalController.swift in Sources */,
 				1F2AF5E71964411B00107698 /* Game.swift in Sources */,
 				1F2AF5E81964411B00107698 /* Question.swift in Sources */,
+				1F285E731976DF5700B04149 /* LoginInfoManager.swift in Sources */,
 				1F3B3C031975D26800EFFC73 /* Time.swift in Sources */,
 				1F8668AB1975676B00F37784 /* GameMessages.swift in Sources */,
 				1F2AF5F31964411B00107698 /* MoleculeGeometry.swift in Sources */,

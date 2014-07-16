@@ -35,7 +35,16 @@ class MainController : UIViewController {
         logoutButton = UIBarButtonItem(image: logoutImage, style: UIBarButtonItemStyle.Plain, target: self, action: Selector("registerButtonClicked:"))
         logoutButton!.imageInsets = UIEdgeInsetsMake(5, 16, 7, 0)
         
-        self.navigationItem.setRightBarButtonItem(loginButton, animated: true)
+        var loginInfo = LoginInfoManager.getInfo()?.componentsSeparatedByString("\n")
+        
+        if loginInfo && loginInfo!.count == 2 {
+            user.name = loginInfo![0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            user.id = loginInfo![1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            user.status = User.LoginStatus.LOGGED_IN
+            navigationItem.setRightBarButtonItem(logoutButton, animated: true)
+        } else {
+            self.navigationItem.setRightBarButtonItem(loginButton, animated: true)
+        }
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
@@ -80,6 +89,7 @@ class MainController : UIViewController {
                 logoutPrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
                     self.navigationItem.setRightBarButtonItem(self.loginButton, animated: true)
                     self.user = User()
+                    LoginInfoManager.deleteInfo()
                 }))
                 
                 self.presentViewController(logoutPrompt, animated: true, completion: nil)

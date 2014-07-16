@@ -50,10 +50,14 @@ class LoginController: UIViewController, UITextFieldDelegate {
             navigationController.pushViewController(controller, animated: true)
         }
         if sender.isEqual(loginButton) {
-            user!.login(url: GameConstants.REQUEST_HANDLER_URL, username: usernameField.text, password: passwordField.text, onComplete: {(success: Bool, error: String) in
+            user!.login(url: GameConstants.REQUEST_HANDLER_URL, username: usernameField.text, password: passwordField.text, onComplete: {(name: String, id: String, success: Bool, error: String) in
                 
                 dispatch_async(dispatch_get_main_queue(), ({
                     if success {
+                        
+                        
+                        LoginInfoManager.writeInfo(name: name, id: id)
+                        
                         var mainController = self.navigationController.viewControllers[0] as MainController
                         mainController.navigationItem.setRightBarButtonItem(mainController.logoutButton, animated: true)
                         self.navigationController.popToViewController(mainController, animated: true)
@@ -62,10 +66,10 @@ class LoginController: UIViewController, UITextFieldDelegate {
                         
                         errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
                             
-                        }))
+                            }))
                         self.presentViewController(errorPrompt, animated: true, completion: nil)
                     }
-                }))
+                    }))
             })
         }
     }

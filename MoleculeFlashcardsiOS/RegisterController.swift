@@ -52,10 +52,11 @@ class RegisterController: UIViewController, UITextFieldDelegate {
         var passwordConfirm = confirmPasswordTextField.text
         
         if password.compare(passwordConfirm) == 0  {
-            user!.register(url: GameConstants.REQUEST_HANDLER_URL, username: username, password: password, email: email,onComplete: {(success: Bool, error: String) in
+            user!.register(url: GameConstants.REQUEST_HANDLER_URL, username: username, password: password, email: email,onComplete: {(name: String, id: String, success: Bool, error: String) in
                 
                 dispatch_async(dispatch_get_main_queue(), ({
                     if success {
+                        LoginInfoManager.writeInfo(name: name, id: id)
                         var mainController = self.navigationController.viewControllers[0] as MainController
                         mainController.navigationItem.setRightBarButtonItem(mainController.logoutButton, animated: true)
                         self.navigationController.popToViewController(mainController, animated: true)
