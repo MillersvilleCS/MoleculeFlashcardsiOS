@@ -438,7 +438,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Z15-v6-H1N">
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z15-v6-H1N">
                                 <rect key="frame" x="0.0" y="-2" width="150" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="5" id="Ei2-Gy-kvJ"/>
@@ -469,6 +469,7 @@
                     </view>
                     <connections>
                         <outlet property="questionLabel" destination="gJb-T8-HzQ" id="MRk-LC-9vB"/>
+                        <outlet property="questionProgressView" destination="Z15-v6-H1N" id="wpb-x0-7aO"/>
                         <outlet property="scoreChangeLabel" destination="Nlc-Ja-KyT" id="RJx-Km-4CK"/>
                         <outlet property="scoreLabel" destination="nbm-NT-mDh" id="W4O-fo-ybg"/>
                         <outlet property="timerLabel" destination="zuL-GP-3lG" id="6fh-2B-W5w"/>

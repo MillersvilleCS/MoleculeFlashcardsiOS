@@ -15,10 +15,14 @@ class MoleculeController: UIViewController {
     let cameraNode = SCNNode()
     var molecule: SCNNode?
     
+    var currentQuestionCount = 0
+    
     @IBOutlet var scoreLabel: UILabel?
     @IBOutlet var timerLabel: UILabel?
     @IBOutlet var questionLabel: UILabel?
     @IBOutlet var scoreChangeLabel: UILabel
+    
+    @IBOutlet var questionProgressView: UIProgressView
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +81,13 @@ class MoleculeController: UIViewController {
     }
     
     func setQuestion (question: String, molecule: SCNNode) {
+        var gameController = navigationController.topViewController as GameController
+        
+        var questionCount = Float(gameController.game!.questionCount)
+        var currentQuestion = Float(gameController.game!.questionIndex + 1)
+        
+        questionProgressView.setProgress(currentQuestion / questionCount, animated: true)
+        
         if question == nil {
             self.questionLabel!.text = ""
         } else {

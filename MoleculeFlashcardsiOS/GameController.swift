@@ -71,7 +71,6 @@ class GameController : UIViewController {
                 var node = MoleculeGeometry.constructWith(molecule)
                 nodeList.append(node)
             }
-            
             self.molecules = nodeList
             
             //when doing UI updates you must be on the main thread - these async closures in the request API don't happen in the main thread
