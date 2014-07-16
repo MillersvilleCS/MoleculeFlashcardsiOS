@@ -79,8 +79,7 @@ class MoleculeController: UIViewController {
     func setQuestion (question: String, molecule: SCNNode) {
         if question == nil {
             self.questionLabel!.text = ""
-        }
-        else {
+        } else {
             self.questionLabel!.text = question
         }
         if self.molecule {
