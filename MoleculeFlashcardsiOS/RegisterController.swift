@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterController: UIViewController {
+class RegisterController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var registerButton: UIButton
     
@@ -23,10 +23,26 @@ class RegisterController: UIViewController {
         super.viewDidLoad()
         assert(user, "User must be set in RegisterController")
         registerButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        
+        emailTextField.delegate = self
+        usernameTextField.delegate = self
+        passwordTextField.delegate = self
+        confirmPasswordTextField.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func textFieldShouldReturn (textField: UITextField) -> Bool {
+        var nextTag: NSInteger = textField.tag + 1
+        var nextResponder = textField.superview.viewWithTag(nextTag)
+        if (nextResponder) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return false
     }
     
     @IBAction func registerButtonClicked(sender: AnyObject) {
