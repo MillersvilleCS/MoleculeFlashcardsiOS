@@ -16,6 +16,9 @@ class MoleculeController: UIViewController {
     var molecule: SCNNode?
     
     var currentQuestionCount = 0
+    let SPIN_AMMOUNT: Float = 0.01
+    var timer: NSTimer?
+    var spinDirection: Float = 1
     
     @IBOutlet var scoreLabel: UILabel?
     @IBOutlet var timerLabel: UILabel?
@@ -98,6 +101,14 @@ class MoleculeController: UIViewController {
         }
         self.molecule = molecule
         scene.rootNode.addChildNode(molecule)
+        
+        if timer {
+            timer!.invalidate()
+            
+        }
+        ///SHOULD BE DONE IN APP DELIGATE NOT HERE!
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
+        
     }
     
     func setScore(score: Int) {
@@ -131,6 +142,15 @@ class MoleculeController: UIViewController {
         }, completion:  nil)
     }
     
+    func update() {
+        var ammount: Float = self.SPIN_AMMOUNT * self.spinDirection
+        var m1  = SCNMatrix4MakeRotation(ammount, 0, 1, 0)
+        
+        self.molecule!.transform = SCNMatrix4Mult(self.molecule!.transform, m1)
+    }
+    
+    
+    
     func handleZoom(gestureRecognize: UIPinchGestureRecognizer) {
         var pos = self.cameraNode.position
         
@@ -151,5 +171,10 @@ class MoleculeController: UIViewController {
         var result = SCNMatrix4Mult(m1, m2)
         
         self.molecule!.transform = SCNMatrix4Mult(self.molecule!.transform, result)
+        if velocity.x > 1 {
+            spinDirection = 1
+        } else {
+            spinDirection = -1
+        }
     }
 }
