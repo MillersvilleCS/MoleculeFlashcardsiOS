@@ -62,5 +62,4 @@ class HighScoreController: UITableViewController {
         
         return cell
     }
-
 }
