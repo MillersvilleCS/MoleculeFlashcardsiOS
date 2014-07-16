@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-class GameController : UIViewController {
+class GameController : UIViewController, UIApplicationDelegate {
     
     let WAIT_PERIOD: Int64 = 3 * NSEC_PER_SEC.asSigned()
         
@@ -24,9 +24,15 @@ class GameController : UIViewController {
     var molecules: [SCNNode]?
     
     var timeRemaing = 0
+    
+    var notificationCenter = NSNotificationCenter.defaultCenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        notificationCenter.addObserver(self, selector: Selector("applicationWillResignActive:"), name: UIApplicationWillResignActiveNotification, object: nil)
+        notificationCenter.addObserver(self, selector: Selector("applicationWillTerminate:"), name: UIApplicationWillTerminateNotification, object: nil)
+        
         navigationItem.hidesBackButton = true
         
         assert(game, "'game' not set on GameController")
@@ -48,6 +54,16 @@ class GameController : UIViewController {
         assert(buttonController, "'buttonController' could not be found on GameController")
         
         start()
+    }
+    
+    func applicationWillResignActive(application: UIApplication) {
+        var gameDescriptionController = navigationController.viewControllers[2] as UIViewController
+        self.navigationController.popToViewController(gameDescriptionController, animated: false)
+    }
+    
+    func applicationWillTerminate(application: UIApplication!) {
+        notificationCenter.removeObserver(self, name: UIApplicationWillResignActiveNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIApplicationWillTerminateNotification, object: nil)
     }
     
     func start() {
