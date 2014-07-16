@@ -27,6 +27,8 @@ class GameController : UIViewController, UIApplicationDelegate {
     
     var notificationCenter = NSNotificationCenter.defaultCenter()
 
+    @IBOutlet var loadingView: UIActivityIndicatorView
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -53,7 +55,9 @@ class GameController : UIViewController, UIApplicationDelegate {
         assert(moleculeController, "'moleculeController' could not be found on GameController")
         assert(buttonController, "'buttonController' could not be found on GameController")
         
-        start()
+        loadingView.startAnimating()
+        
+        self.start()
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -95,6 +99,8 @@ class GameController : UIViewController, UIApplicationDelegate {
             dispatch_async(dispatch_get_main_queue(), ({
                 //timer SHOULD be started here
                 self.nextQuestion()
+                
+                self.loadingView.stopAnimating()
             }))
         })
     }

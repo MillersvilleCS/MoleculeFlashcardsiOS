@@ -73,6 +73,13 @@
                                     <segue destination="55i-gY-1NE" kind="embed" id="ga1-lz-b1d"/>
                                 </connections>
                             </containerView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wsn-U2-cUZ">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <color key="color" red="0.53725490200000003" green="0.7843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="188" width="37" height="37"/>
+                                </variation>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -94,6 +101,9 @@
                             <constraint firstItem="vCp-uZ-89H" firstAttribute="leading" secondItem="qkq-WO-wPW" secondAttribute="leading" id="zo0-Oa-3nN"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="wsn-U2-cUZ"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="46J-rH-AAv"/>
                                 <exclude reference="Abe-UC-zbm"/>
@@ -137,7 +147,15 @@
                                 <include reference="fC7-Ia-blp"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="wsn-U2-cUZ"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="loadingView" destination="wsn-U2-cUZ" id="jiv-yf-Lcw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ife-tV-EbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
