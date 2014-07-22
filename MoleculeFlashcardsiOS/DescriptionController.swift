@@ -12,16 +12,16 @@ import Foundation
 
 class DescriptionController : UIViewController {
     
-    @IBOutlet var imageView: UIImageView
+    @IBOutlet var imageView: UIImageView?
     
-    @IBOutlet var highScoresButton: UIButton
-    @IBOutlet var playButton: UIButton
+    @IBOutlet var highScoresButton: UIButton?
+    @IBOutlet var playButton: UIButton?
     
-    @IBOutlet var timeLimitLabel: UILabel
-    @IBOutlet var numberOfQuestionsLabel: UILabel
-    @IBOutlet var gameDescriptionLabel: UILabel
+    @IBOutlet var timeLimitLabel: UILabel?
+    @IBOutlet var numberOfQuestionsLabel: UILabel?
+    @IBOutlet var gameDescriptionLabel: UILabel?
     
-    @IBOutlet var scroller: UIScrollView
+    @IBOutlet var scroller: UIScrollView?
     
     var game: Game?
     var user: User?
@@ -36,14 +36,14 @@ class DescriptionController : UIViewController {
         assert(requestURL)
         assert(mediaURL)
         
-        imageView.image = ImageLoader.load(url: game!.imageURL)
+        imageView!.image = ImageLoader.load(url: game!.imageURL)
         
-        highScoresButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
-        playButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        highScoresButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        playButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
-        timeLimitLabel.text = Time.formatTime(ms: game!.timeLimit)
-        numberOfQuestionsLabel.text = "\(game!.getNumberOfQuestions())"
-        gameDescriptionLabel.text = game!.description
+        timeLimitLabel!.text = Time.formatTime(ms: game!.timeLimit)
+        numberOfQuestionsLabel!.text = "\(game!.getNumberOfQuestions())"
+        gameDescriptionLabel!.text = game!.description
     }
     
     @IBAction func buttonClicked(sender: UIButton) {

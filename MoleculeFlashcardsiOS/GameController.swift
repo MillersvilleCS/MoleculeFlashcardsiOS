@@ -53,7 +53,7 @@ class GameController : UIViewController, UIApplicationDelegate {
         assert(moleculeController, "'moleculeController' could not be found on GameController")
         assert(buttonController, "'buttonController' could not be found on GameController")
         
-        moleculeController!.loadingView.startAnimating()
+        moleculeController!.loadingView!.startAnimating()
         
         self.start()
     }
@@ -98,7 +98,7 @@ class GameController : UIViewController, UIApplicationDelegate {
                 //timer SHOULD be started here
                 self.nextQuestion()
                 
-                self.moleculeController!.loadingView.stopAnimating()
+                self.moleculeController!.loadingView!.stopAnimating()
             }))
         })
     }

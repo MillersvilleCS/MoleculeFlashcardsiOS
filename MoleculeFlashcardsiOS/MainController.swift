@@ -10,9 +10,9 @@ import UIKit
 
 class MainController : UIViewController {
     
-    @IBOutlet var playButton: UIButton
-    @IBOutlet var creditsButton: UIButton
-    @IBOutlet var tutorialButton: UIButton
+    @IBOutlet var playButton: UIButton?
+    @IBOutlet var creditsButton: UIButton?
+    @IBOutlet var tutorialButton: UIButton?
     
     var user = User()
 
@@ -22,14 +22,14 @@ class MainController : UIViewController {
     var loginButton: UIBarButtonItem?
     var logoutButton: UIBarButtonItem?
 
-    @IBOutlet var loadingView: UIActivityIndicatorView
+    @IBOutlet var loadingView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        playButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
-        creditsButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
-        tutorialButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        playButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        creditsButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        tutorialButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
         loginButton = UIBarButtonItem(image: loginImage, style: UIBarButtonItemStyle.Plain, target: self, action: Selector("registerButtonClicked:"))
         loginButton!.imageInsets = UIEdgeInsetsMake(15, 23, 7, 0)
@@ -51,7 +51,7 @@ class MainController : UIViewController {
     
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
-            playButton.titleLabel.alpha = 0.1
+            playButton!.titleLabel.alpha = 0.1
 
             
             if user.status != User.LoginStatus.LOGGED_IN {

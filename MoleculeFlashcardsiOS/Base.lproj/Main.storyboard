@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UXC-nY-PDq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UXC-nY-PDq">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -10,13 +10,13 @@
         <scene sceneID="cnO-0m-Tfl">
             <objects>
                 <tableViewController storyboardIdentifier="GameSelectionController" title="Select a Game" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Anc-wc-NLv" customClass="GameSelectionController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="tax-Us-X6l">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="tax-Us-X6l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleAspectFit" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameCell" rowHeight="150" id="YQF-Kx-WOd">
+                            <tableViewCell contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="gameCell" rowHeight="150" id="YQF-Kx-WOd">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YQF-Kx-WOd" id="tO2-Je-UQg">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -31,9 +31,6 @@
                         </variation>
                         <variation key="widthClass=compact" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="1" y="0.0" width="320" height="640"/>
                         </variation>
                         <connections>
                             <outlet property="dataSource" destination="Anc-wc-NLv" id="Guv-7v-6o8"/>
@@ -58,7 +55,7 @@
                         <viewControllerLayoutGuide type="bottom" id="ELd-l2-jM4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qkq-WO-wPW">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vCp-uZ-89H">
@@ -176,7 +173,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Gjz-oy-iew"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YO7-EO-PBW">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="7C3-1d-RPF">
@@ -260,7 +257,7 @@
                                     <action selector="buttonClicked:" destination="f4w-xL-80n" eventType="touchUpInside" id="PFy-SN-R3T"/>
                                 </connections>
                             </button>
-                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Welcome to ExSciTecH!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="Hcg-V3-XTM">
+                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Welcome to ExSciTecH!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="20" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Hcg-V3-XTM">
                                 <rect key="frame" x="50" y="136" width="380" height="96"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -354,12 +351,12 @@
                                 <exclude reference="uqz-6h-rB7"/>
                                 <exclude reference="Nos-R4-gNc"/>
                                 <exclude reference="TeP-wl-ZIx"/>
-                                <exclude reference="LYV-cY-PLm"/>
                                 <exclude reference="BoO-2v-54l"/>
                                 <exclude reference="Epu-Ru-SbK"/>
                                 <exclude reference="anB-pV-xlI"/>
                                 <exclude reference="irU-Hq-pgz"/>
                                 <exclude reference="yZ2-qn-EKX"/>
+                                <exclude reference="LYV-cY-PLm"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -375,9 +372,9 @@
                                 <include reference="r8o-9W-zc7"/>
                                 <include reference="sfM-VK-VGR"/>
                                 <include reference="Nos-R4-gNc"/>
-                                <include reference="LYV-cY-PLm"/>
                                 <include reference="irU-Hq-pgz"/>
                                 <include reference="yZ2-qn-EKX"/>
+                                <include reference="LYV-cY-PLm"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -438,7 +435,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading..." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-T8-HzQ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottomLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Loading..." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="380" translatesAutoresizingMaskIntoConstraints="NO" id="gJb-T8-HzQ">
                                 <rect key="frame" x="12" y="334" width="207" height="37"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -520,7 +517,7 @@
         <scene sceneID="9L1-Iq-9Ur">
             <objects>
                 <collectionViewController storyboardIdentifier="ButtonCollectionController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="55i-gY-1NE" customClass="ButtonCollectionController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" dataMode="prototypes" id="jv5-gz-MsI">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="jv5-gz-MsI">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="kbH-KK-W6d">
@@ -546,9 +543,6 @@
                         <variation key="widthClass=compact" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         </variation>
-                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="227"/>
-                        </variation>
                         <connections>
                             <outlet property="dataSource" destination="55i-gY-1NE" id="hSb-in-bWp"/>
                             <outlet property="delegate" destination="55i-gY-1NE" id="mJi-AG-j6w"/>
@@ -571,7 +565,7 @@
                         <viewControllerLayoutGuide type="bottom" id="AXZ-gy-8kF"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="e1l-R8-J3a">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xr5-Yp-YpO">
@@ -596,7 +590,7 @@
                                 <variation key="widthClass=compact" ambiguous="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="40" y="553" width="240" height="54"/>
                                 </variation>
                                 <connections>
@@ -667,7 +661,7 @@
                                             <rect key="frame" x="313" y="202" width="85" height="21"/>
                                         </variation>
                                     </label>
-                                    <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="283" translatesAutoresizingMaskIntoConstraints="NO" id="JsF-Gf-Ebx">
+                                    <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="?" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="354" translatesAutoresizingMaskIntoConstraints="NO" id="JsF-Gf-Ebx">
                                         <rect key="frame" x="45" y="124" width="237" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -765,6 +759,9 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="VbA-nf-ykj"/>
+                                    </mask>
                                     <mask key="constraints">
                                         <include reference="Bhh-eY-s7y"/>
                                         <include reference="KCR-Ss-yUc"/>
@@ -782,11 +779,6 @@
                                         <include reference="cry-h9-1G4"/>
                                         <include reference="mWF-bV-N5u"/>
                                         <include reference="teB-bN-RnC"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="subviews">
-                                        <include reference="VbA-nf-ykj"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
@@ -910,14 +902,14 @@
                         <viewControllerLayoutGuide type="bottom" id="kO3-OR-hex"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="I8a-eK-8Tc">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZbK-TS-aMN">
-                                <rect key="frame" x="0.0" y="-10" width="480" height="490"/>
+                                <rect key="frame" x="0.0" y="-10" width="600" height="610"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Click Play then select a Game to play." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="274" translatesAutoresizingMaskIntoConstraints="NO" id="WSk-Qb-NaF">
-                                        <rect key="frame" x="20" y="0.0" width="411" height="60"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Click Play then select a Game to play." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="343" translatesAutoresizingMaskIntoConstraints="NO" id="WSk-Qb-NaF">
+                                        <rect key="frame" x="20" y="0.0" width="514" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="wjF-0K-Z5C"/>
                                         </constraints>
@@ -925,8 +917,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="274" translatesAutoresizingMaskIntoConstraints="NO" id="zbE-7d-V1c">
-                                        <rect key="frame" x="20" y="220" width="411" height="110"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="343" translatesAutoresizingMaskIntoConstraints="NO" id="zbE-7d-V1c">
+                                        <rect key="frame" x="20" y="220" width="514" height="110"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="110" id="4gn-Pk-Kr6"/>
                                         </constraints>
@@ -935,8 +927,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Once you are sure of your decision, hit Play." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="274" translatesAutoresizingMaskIntoConstraints="NO" id="g6K-ju-Fbj">
-                                        <rect key="frame" x="20" y="60" width="411" height="60"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2. Once you are sure of your decision, hit Play." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="343" translatesAutoresizingMaskIntoConstraints="NO" id="g6K-ju-Fbj">
+                                        <rect key="frame" x="20" y="60" width="514" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="i6h-uv-hgw"/>
                                         </constraints>
@@ -944,8 +936,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct answers gain you points, incorrect answers cost you points." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="274" translatesAutoresizingMaskIntoConstraints="NO" id="gUM-Yp-GXP">
-                                        <rect key="frame" x="20" y="730" width="411" height="80"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct answers gain you points, incorrect answers cost you points." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="343" translatesAutoresizingMaskIntoConstraints="NO" id="gUM-Yp-GXP">
+                                        <rect key="frame" x="20" y="730" width="514" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="TOV-Ct-hPq"/>
                                         </constraints>
@@ -953,8 +945,8 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish before the timer runs out. Finishing faster will gain you extra points and an opportunity to get within the top 10!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="274" translatesAutoresizingMaskIntoConstraints="NO" id="i8C-1L-AwE">
-                                        <rect key="frame" x="20" y="810" width="411" height="100"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finish before the timer runs out. Finishing faster will gain you extra points and an opportunity to get within the top 10!" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="343" translatesAutoresizingMaskIntoConstraints="NO" id="i8C-1L-AwE">
+                                        <rect key="frame" x="20" y="810" width="514" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="1gn-Tc-Dmc"/>
                                         </constraints>
@@ -963,13 +955,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have Fun!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGd-Sa-rmX">
-                                        <rect key="frame" x="20" y="920" width="411" height="29"/>
+                                        <rect key="frame" x="20" y="920" width="514" height="29"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important: Once you've started a game, exiting an app will restart your game cause you to lose progress." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="254" translatesAutoresizingMaskIntoConstraints="NO" id="8Us-KO-Gi8">
-                                        <rect key="frame" x="40" y="120" width="391" height="100"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Important: Once you've started a game, exiting an app will restart your game cause you to lose progress." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="323" translatesAutoresizingMaskIntoConstraints="NO" id="8Us-KO-Gi8">
+                                        <rect key="frame" x="40" y="120" width="494" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="imr-06-zYo"/>
                                         </constraints>
@@ -978,7 +970,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tutorial_screenshot" translatesAutoresizingMaskIntoConstraints="NO" id="M06-8v-PDq">
-                                        <rect key="frame" x="20" y="330" width="411" height="400"/>
+                                        <rect key="frame" x="20" y="330" width="514" height="400"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="400" id="IGw-5v-u2a"/>
                                         </constraints>
@@ -1036,7 +1028,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FHK-j3-SmW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="teJ-FU-cRK">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Primary Developers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3B-aY-25N">
@@ -1093,7 +1085,7 @@
                                     <action selector="buttonClicked:" destination="C0G-eM-EHk" eventType="touchUpInside" id="Koa-9x-324"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="This project was made possible through the support of the National Science Foundation." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="jiN-Zz-jIF">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="This project was made possible through the support of the National Science Foundation." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="360" translatesAutoresizingMaskIntoConstraints="NO" id="jiN-Zz-jIF">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="FC3-Zm-jXq"/>
@@ -1111,13 +1103,11 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                     <mask key="constraints">
                                         <include reference="FC3-Zm-jXq"/>
                                         <include reference="QOZ-NW-9Qh"/>
                                     </mask>
-                                </variation>
-                                <variation key="heightClass=compact">
-                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                 </variation>
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
@@ -1465,12 +1455,12 @@
         <scene sceneID="j2u-05-4VY">
             <objects>
                 <tableViewController storyboardIdentifier="HighScoreController" title="High Scores" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hFi-wd-9ZK" customClass="HighScoreController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uGI-ne-GCd">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uGI-ne-GCd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="DYG-R1-uEh">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="DYG-R1-uEh">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DYG-R1-uEh" id="jiT-uV-lhc">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -1481,9 +1471,6 @@
                         <sections/>
                         <variation key="heightClass=regular" ambiguous="YES">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
                         </variation>
                         <connections>
                             <outlet property="dataSource" destination="hFi-wd-9ZK" id="AsX-hZ-wKh"/>
@@ -1504,7 +1491,7 @@
                         <viewControllerLayoutGuide type="bottom" id="tEJ-et-Yf6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PMG-h4-4Rc">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="header" translatesAutoresizingMaskIntoConstraints="NO" id="Szr-HL-Kul">
@@ -1713,7 +1700,7 @@
                         <viewControllerLayoutGuide type="bottom" id="DSR-u0-ufP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0nq-29-Cfa">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9nB-3M-NdE">
@@ -1876,11 +1863,11 @@
                         <viewControllerLayoutGuide type="bottom" id="VxC-Ve-IsW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TmO-B8-OBP">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agt-IV-BA3">
-                                <rect key="frame" x="144" y="270" width="192" height="60"/>
+                                <rect key="frame" x="180" y="330" width="240" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="Back">
@@ -1892,13 +1879,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rank: #23" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0E-73-Xth">
-                                <rect key="frame" x="171" y="204" width="138" height="36"/>
+                                <rect key="frame" x="231" y="264" width="138" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 9001" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzJ-tV-zii">
-                                <rect key="frame" x="158" y="138" width="164" height="36"/>
+                                <rect key="frame" x="218" y="198" width="164" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>

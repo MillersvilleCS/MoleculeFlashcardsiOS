@@ -10,10 +10,10 @@ import UIKit
 
 class FinalController : UIViewController {
     
-    @IBOutlet var backButton: UIButton
+    @IBOutlet var backButton: UIButton?
     
-    @IBOutlet var scoreLabel: UILabel
-    @IBOutlet var rankLabel: UILabel
+    @IBOutlet var scoreLabel: UILabel?
+    @IBOutlet var rankLabel: UILabel?
     
     var game: Game?
     var score: Int?
@@ -24,10 +24,10 @@ class FinalController : UIViewController {
         
         navigationItem.hidesBackButton = true
         
-        backButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        backButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
-        scoreLabel.text = "Score: \(score!)"
-        rankLabel.text = "Rank: #\(rank!)"
+        scoreLabel!.text = "Score: \(score!)"
+        rankLabel!.text = "Rank: #\(rank!)"
         
         var controller = navigationController.viewControllers[2] as DescriptionController
         var username = controller.user!.name

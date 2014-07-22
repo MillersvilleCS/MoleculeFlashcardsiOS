@@ -16,7 +16,7 @@ struct LoginInfoManager {
         var data: String = "\(name)\n\(id)"
         let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
 
-        if (dirs! != nil) {
+        if dirs {
             let directories:[String] = dirs!;
             let dir = directories[0]; //documents directory
             let path = dir.stringByAppendingPathComponent(file);
@@ -29,7 +29,7 @@ struct LoginInfoManager {
     static func getInfo() -> String? {
         let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
         
-        if (dirs! != nil) {
+        if dirs {
             let directories:[String] = dirs!;
             let dir = directories[0]; //documents directory
             let path = dir.stringByAppendingPathComponent(file);
@@ -43,7 +43,7 @@ struct LoginInfoManager {
         var data: String = ""
         let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
         
-        if (dirs! != nil) {
+        if dirs {
             let directories:[String] = dirs!;
             let dir = directories[0]; //documents directory
             let path = dir.stringByAppendingPathComponent(file);

@@ -10,24 +10,24 @@ import UIKit
 
 class RegisterController: UIViewController, UITextFieldDelegate {
 
-    @IBOutlet var registerButton: UIButton
+    @IBOutlet var registerButton: UIButton?
     
-    @IBOutlet var emailTextField: UITextField
-    @IBOutlet var usernameTextField: UITextField
-    @IBOutlet var passwordTextField: UITextField
-    @IBOutlet var confirmPasswordTextField: UITextField
+    @IBOutlet var emailTextField: UITextField?
+    @IBOutlet var usernameTextField: UITextField?
+    @IBOutlet var passwordTextField: UITextField?
+    @IBOutlet var confirmPasswordTextField: UITextField?
     
     var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(user, "User must be set in RegisterController")
-        registerButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        registerButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
-        emailTextField.delegate = self
-        usernameTextField.delegate = self
-        passwordTextField.delegate = self
-        confirmPasswordTextField.delegate = self
+        emailTextField!.delegate = self
+        usernameTextField!.delegate = self
+        passwordTextField!.delegate = self
+        confirmPasswordTextField!.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,10 +46,10 @@ class RegisterController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func registerButtonClicked(sender: AnyObject) {
-        var email = emailTextField.text
-        var username = usernameTextField.text
-        var password = passwordTextField.text
-        var passwordConfirm = confirmPasswordTextField.text
+        var email = emailTextField!.text
+        var username = usernameTextField!.text
+        var password = passwordTextField!.text
+        var passwordConfirm = confirmPasswordTextField!.text
         
         if password.compare(passwordConfirm) == 0  {
             user!.register(url: GameConstants.REQUEST_HANDLER_URL, username: username, password: password, email: email,onComplete: {(name: String, id: String, success: Bool, error: String) in
@@ -64,8 +64,8 @@ class RegisterController: UIViewController, UITextFieldDelegate {
                         var  errorPrompt = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
                         
                         errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
-                            self.passwordTextField.text = ""
-                            self.confirmPasswordTextField.text = ""
+                            self.passwordTextField!.text = ""
+                            self.confirmPasswordTextField!.text = ""
                             }))
                         self.presentViewController(errorPrompt, animated: true, completion: nil)
                     }
@@ -75,8 +75,8 @@ class RegisterController: UIViewController, UITextFieldDelegate {
             var  passwordErrorPrompt = UIAlertController(title: "Error", message: GameMessages.PASSWORD_ERROR, preferredStyle: UIAlertControllerStyle.Alert)
             
             passwordErrorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
-                    self.passwordTextField.text = ""
-                    self.confirmPasswordTextField.text = ""
+                    self.passwordTextField!.text = ""
+                    self.confirmPasswordTextField!.text = ""
                 }))
             self.presentViewController(passwordErrorPrompt, animated: true, completion: nil)
         }

@@ -10,13 +10,13 @@ import UIKit
 
 class CreditsController : UIViewController {
     
-    @IBOutlet var exscitechButton: UIButton
-    @IBOutlet var connorButton: UIButton
-    @IBOutlet var willButton: UIButton
-    @IBOutlet var kimButton: UIButton
-    @IBOutlet var samButton: UIButton
-    @IBOutlet var michelaButton: UIButton
-    @IBOutlet var nsfButton: UIButton
+    @IBOutlet var exscitechButton: UIButton?
+    @IBOutlet var connorButton: UIButton?
+    @IBOutlet var willButton: UIButton?
+    @IBOutlet var kimButton: UIButton?
+    @IBOutlet var samButton: UIButton?
+    @IBOutlet var michelaButton: UIButton?
+    @IBOutlet var nsfButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()

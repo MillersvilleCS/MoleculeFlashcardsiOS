@@ -23,10 +23,10 @@ class MoleculeController: UIViewController {
     @IBOutlet var scoreLabel: UILabel?
     @IBOutlet var timerLabel: UILabel?
     @IBOutlet var questionLabel: UILabel?
-    @IBOutlet var scoreChangeLabel: UILabel
+    @IBOutlet var scoreChangeLabel: UILabel?
     
-    @IBOutlet var questionProgressView: UIProgressView
-    @IBOutlet var loadingView: UIActivityIndicatorView
+    @IBOutlet var questionProgressView: UIProgressView?
+    @IBOutlet var loadingView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,7 +90,7 @@ class MoleculeController: UIViewController {
         var questionCount = Float(gameController.game!.questionCount)
         var currentQuestion = Float(gameController.game!.questionIndex + 1)
         
-        questionProgressView.setProgress(currentQuestion / questionCount, animated: true)
+        questionProgressView!.setProgress(currentQuestion / questionCount, animated: true)
         
         if question == nil {
             self.questionLabel!.text = ""
@@ -167,8 +167,8 @@ class MoleculeController: UIViewController {
         let sceneView = self.view as SCNView
         let velocity = gestureRecognize.velocityInView(sceneView)
         
-        var m1     = SCNMatrix4MakeRotation(velocity.x / 1500, 0, 1, 0)
-        var m2     = SCNMatrix4MakeRotation(velocity.y / 1500, 1, 0, 0)
+        var m1     = SCNMatrix4MakeRotation(Float (velocity.x / 1500), 0, 1, 0)
+        var m2     = SCNMatrix4MakeRotation(Float (velocity.y / 1500), 1, 0, 0)
         var result = SCNMatrix4Mult(m1, m2)
         
         self.molecule!.transform = SCNMatrix4Mult(self.molecule!.transform, result)

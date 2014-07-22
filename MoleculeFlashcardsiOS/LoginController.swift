@@ -10,22 +10,22 @@ import UIKit
 import Foundation
 
 class LoginController: UIViewController, UITextFieldDelegate {
-    @IBOutlet var loginButton: UIButton
-    @IBOutlet var registerButton: UIButton
+    @IBOutlet var loginButton: UIButton?
+    @IBOutlet var registerButton: UIButton?
     
-    @IBOutlet var usernameField: UITextField
-    @IBOutlet var passwordField: UITextField
+    @IBOutlet var usernameField: UITextField?
+    @IBOutlet var passwordField: UITextField?
     
     var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(user, "User must be set in LoginController")
-        registerButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
-        loginButton.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        registerButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+        loginButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
-        usernameField.delegate = self
-        passwordField.delegate = self
+        usernameField!.delegate = self
+        passwordField!.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,7 +50,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
             navigationController.pushViewController(controller, animated: true)
         }
         if sender.isEqual(loginButton) {
-            user!.login(url: GameConstants.REQUEST_HANDLER_URL, username: usernameField.text, password: passwordField.text, onComplete: {(name: String, id: String, success: Bool, error: String) in
+            user!.login(url: GameConstants.REQUEST_HANDLER_URL, username: usernameField!.text, password: passwordField!.text, onComplete: {(name: String, id: String, success: Bool, error: String) in
                 
                 dispatch_async(dispatch_get_main_queue(), ({
                     if success {

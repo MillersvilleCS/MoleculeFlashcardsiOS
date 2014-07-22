@@ -19,7 +19,7 @@ class User {
     var status = LoginStatus.LOGGED_OUT
     
     init() {
-        
+        self.id = ""
     }
     
     func login(#url: String, username: String, password: String, onComplete: (name: String, id: String, success: Bool, error: String) -> Void) {
@@ -43,8 +43,8 @@ class User {
                 self.status = LoginStatus.FAILED
             } else {
                 println("Logged in successfully")
-                self.name = response["username"] as NSString
-                self.id = response["auth"] as NSString
+                self.name = response["username"] as? NSString
+                self.id = response["auth"] as? NSString
                 self.status = LoginStatus.LOGGED_IN
                 onComplete(name: self.name!, id: self.id!, success: true, error: "")
             }
@@ -73,8 +73,8 @@ class User {
                 onComplete(name: "", id: "", success: false, error: errorString)
             } else {
                 println("registered successfully")
-                self.name = response["username"] as NSString
-                self.id = response["auth"] as NSString
+                self.name = response["username"] as? NSString
+                self.id = response["auth"] as? NSString
                 self.status = LoginStatus.LOGGED_IN
                 onComplete(name: self.name!, id: self.id!, success: true, error: "")
             }

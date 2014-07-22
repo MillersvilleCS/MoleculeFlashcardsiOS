@@ -10,7 +10,7 @@ import UIKit
 
 class GameSelectionController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var tableView : UITableView
+    @IBOutlet var tableView : UITableView?
     
     var user: User?
     
@@ -23,8 +23,8 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         assert(user, "user must be set in GameSelectionController")
-        self.tableView.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        self.tableView!.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)
+        self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
         getGames(url: GameConstants.REQUEST_HANDLER_URL, user: user!)
         while !loaded {
@@ -58,7 +58,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
         
-        var cell:UITableViewCell = self.tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell
+        var cell:UITableViewCell = self.tableView!.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell
         
         var game = self.games![indexPath.row]
         var cellText = game.name

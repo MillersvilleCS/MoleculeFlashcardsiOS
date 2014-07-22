@@ -69,11 +69,11 @@ struct MoleculeGeometry {
         var fromPos  = fromAtom.position
         var toPos    = toAtom.position
         
-        cylinder.height    = VecOp.distance(fromPos, toPos)
+        cylinder.height    = CGFloat(VecOp.distance(fromPos, toPos))
         bondNode.position  = fromPos
         bondNode.geometry  = cylinder
         //translate rotation point from middle of model to bottom of model
-        bondNode.pivot = SCNMatrix4Translate(bondNode.pivot, xOffset, cylinder.height / 2, 0)
+        bondNode.pivot = SCNMatrix4Translate (bondNode.pivot, xOffset, Float (cylinder.height / 2), 0)
         
         var down  = VecOp.UP
         var dir   = VecOp.normalize(VecOp.sub(fromPos, toPos))
@@ -84,8 +84,8 @@ struct MoleculeGeometry {
         bondNode.transform  = SCNMatrix4Mult(rMatrix, bondNode.transform)
         
         //temporarily set all bonds to the color of the atom they are going towards
-        var color1 = colors[fromAtom.type] as [Float]
-        var color2 = colors[toAtom.type] as [Float]
+        var color1 = colors[fromAtom.type] as [CGFloat]
+        var color2 = colors[toAtom.type] as [CGFloat]
         var materials = [SCNMaterial]()
         materials.append(SCNMaterial())
         
