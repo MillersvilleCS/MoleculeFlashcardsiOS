@@ -96,6 +96,6 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
                 self.games = gameList
                 self.loaded = true
             }
-            })
+        })
     }
 }

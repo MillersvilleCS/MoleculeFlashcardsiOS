@@ -26,6 +26,7 @@ class MoleculeController: UIViewController {
     @IBOutlet var scoreChangeLabel: UILabel
     
     @IBOutlet var questionProgressView: UIProgressView
+    @IBOutlet var loadingView: UIActivityIndicatorView
     
     override func viewDidLoad() {
         super.viewDidLoad()

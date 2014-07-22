@@ -22,6 +22,8 @@ class MainController : UIViewController {
     var loginButton: UIBarButtonItem?
     var logoutButton: UIBarButtonItem?
 
+    @IBOutlet var loadingView: UIActivityIndicatorView
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,6 +51,8 @@ class MainController : UIViewController {
     
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
+            playButton.titleLabel.alpha = 0.1
+
             
             if user.status != User.LoginStatus.LOGGED_IN {
                 // Display a dialog box warning the player if they aren't logged in

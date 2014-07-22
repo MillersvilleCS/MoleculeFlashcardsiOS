@@ -42,7 +42,7 @@ class Game {
     func start(#url: String, user: User, onComplete: (questions: [Question]) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "load_flashcard_game")
-        request.addParameter(key: "authenticator", value: !user.id)
+        request.addParameter(key: "authenticator", value: user.id!)
         request.addParameter(key: "game_id", value: id)
         
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
@@ -78,18 +78,18 @@ class Game {
             
             self.state = GameState.READY
             
-            })
+        })
     }
     
     
     func end(#url: String, user: User, gameTime: Int, onComplete: (rank: Int, finalScore: Int) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "end_flashcard_game")
-        request.addParameter(key: "authenticator", value: !user.id)
+        request.addParameter(key: "authenticator", value: user.id!)
         request.addParameter(key: "game_session_id", value: sessionId!)
         request.addParameter(key: "game_time", value: gameTime)
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
-            
+            println(request.parameters.description)
             var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             if !error {
                 var rank = responseDict["rank"] as Int
@@ -99,15 +99,13 @@ class Game {
             } else {
                 EventLogger.logError("Failed to end Game \(error)")
             }
-            
-            })
-        
+        })
     }
     
     func submit(#url: String, user: User, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "submit_flashcard_answer")
-        request.addParameter(key: "authenticator", value: !user.id)
+        request.addParameter(key: "authenticator", value: user.id!)
         request.addParameter(key: "game_session_id", value: sessionId!)
         request.addParameter(key: "question_id", value: questions![questionIndex].id)
         request.addParameter(key: "answer", value: answer.id)
@@ -134,7 +132,7 @@ class Game {
                     onComplete(isCorrect: false, scoreModifier: score)
                 }
             }
-            })
+        })
     }
     
     func setGameState(state: GameState) {

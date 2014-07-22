@@ -26,8 +26,6 @@ class GameController : UIViewController, UIApplicationDelegate {
     var timeRemaing = 0
     
     var notificationCenter = NSNotificationCenter.defaultCenter()
-
-    @IBOutlet var loadingView: UIActivityIndicatorView
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +53,7 @@ class GameController : UIViewController, UIApplicationDelegate {
         assert(moleculeController, "'moleculeController' could not be found on GameController")
         assert(buttonController, "'buttonController' could not be found on GameController")
         
-        loadingView.startAnimating()
+        moleculeController!.loadingView.startAnimating()
         
         self.start()
     }
@@ -100,7 +98,7 @@ class GameController : UIViewController, UIApplicationDelegate {
                 //timer SHOULD be started here
                 self.nextQuestion()
                 
-                self.loadingView.stopAnimating()
+                self.moleculeController!.loadingView.stopAnimating()
             }))
         })
     }
@@ -128,7 +126,7 @@ class GameController : UIViewController, UIApplicationDelegate {
     }
     
     func submitAnswer (response: Answer, buttonIndex: Int) {
-        self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: 0, {(isCorrect: Bool, scoreModifier: Int) in
+        self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: self.game!.timeLimit - self.timeRemaing, {(isCorrect: Bool, scoreModifier: Int) in
             
             //we need to update the button color in the main thread
             dispatch_async(dispatch_get_main_queue(), ({
@@ -154,7 +152,7 @@ class GameController : UIViewController, UIApplicationDelegate {
         if self.timeRemaing != 0 {
             waitTime = self.WAIT_PERIOD
         }
-        
+        println("user: \(self.user!.id)")
         self.game!.end(url: requestURL!, user: self.user!, gameTime: gameTime, onComplete: {(rank: Int, finalScore: Int) in
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, waitTime), dispatch_get_main_queue(), ({
                 var finalController = self.storyboard.instantiateViewControllerWithIdentifier("FinalController") as FinalController

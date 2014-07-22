@@ -73,13 +73,6 @@
                                     <segue destination="55i-gY-1NE" kind="embed" id="ga1-lz-b1d"/>
                                 </connections>
                             </containerView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wsn-U2-cUZ">
-                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                <color key="color" red="0.53725490200000003" green="0.7843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="142" y="188" width="37" height="37"/>
-                                </variation>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -101,9 +94,6 @@
                             <constraint firstItem="vCp-uZ-89H" firstAttribute="leading" secondItem="qkq-WO-wPW" secondAttribute="leading" id="zo0-Oa-3nN"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="wsn-U2-cUZ"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="46J-rH-AAv"/>
                                 <exclude reference="Abe-UC-zbm"/>
@@ -145,11 +135,6 @@
                                 <include reference="oFD-BS-ZOK"/>
                                 <include reference="zo0-Oa-3nN"/>
                                 <include reference="fC7-Ia-blp"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="wsn-U2-cUZ"/>
                             </mask>
                         </variation>
                     </view>
@@ -296,6 +281,12 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 </variation>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="H09-Cr-4qQ">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="425" width="37" height="37"/>
+                                </variation>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -333,6 +324,9 @@
                             <constraint firstItem="akD-Fe-z05" firstAttribute="leading" secondItem="zIa-OF-Bb9" secondAttribute="trailing" constant="20" id="yZ2-qn-EKX"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="H09-Cr-4qQ"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="NyN-Z8-OIP"/>
                                 <exclude reference="Uq6-eb-wPl"/>
@@ -408,10 +402,16 @@
                                 <include reference="anB-pV-xlI"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="H09-Cr-4qQ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Molecule Flashcards" id="Awh-tr-mWQ"/>
                     <connections>
                         <outlet property="creditsButton" destination="akD-Fe-z05" id="4KO-Rs-VUJ"/>
+                        <outlet property="loadingView" destination="H09-Cr-4qQ" id="OMU-15-SK7"/>
                         <outlet property="playButton" destination="MfU-ag-bxb" id="HR9-mX-URg"/>
                         <outlet property="tutorialButton" destination="zIa-OF-Bb9" id="PCz-1a-SoV"/>
                     </connections>
@@ -468,6 +468,13 @@
                                     <rect key="frame" x="0.0" y="408" width="320" height="5"/>
                                 </variation>
                             </progressView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wsn-U2-cUZ">
+                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
+                                <color key="color" red="0.53725490200000003" green="0.7843137255" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="142" y="188" width="37" height="37"/>
+                                </variation>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -484,8 +491,19 @@
                             <constraint firstItem="Z15-v6-H1N" firstAttribute="leading" secondItem="BAu-7U-RfQ" secondAttribute="leading" id="vOa-ln-s2p"/>
                             <constraint firstItem="nbm-NT-mDh" firstAttribute="top" secondItem="B5R-ni-Ku2" secondAttribute="bottom" constant="20" id="xks-Oi-MSe"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="wsn-U2-cUZ"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="wsn-U2-cUZ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
+                        <outlet property="loadingView" destination="wsn-U2-cUZ" id="yVB-V3-gQQ"/>
                         <outlet property="questionLabel" destination="gJb-T8-HzQ" id="MRk-LC-9vB"/>
                         <outlet property="questionProgressView" destination="Z15-v6-H1N" id="wpb-x0-7aO"/>
                         <outlet property="scoreChangeLabel" destination="Nlc-Ja-KyT" id="RJx-Km-4CK"/>
@@ -1093,13 +1111,13 @@
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact">
-                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
-                                </variation>
-                                <variation key="heightClass=compact">
                                     <mask key="constraints">
                                         <include reference="FC3-Zm-jXq"/>
                                         <include reference="QOZ-NW-9Qh"/>
                                     </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                 </variation>
                                 <variation key="heightClass=regular">
                                     <mask key="constraints">
