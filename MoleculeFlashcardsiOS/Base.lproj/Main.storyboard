@@ -278,12 +278,6 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 </variation>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="H09-Cr-4qQ">
-                                <rect key="frame" x="-10" y="-10" width="20" height="20"/>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="142" y="425" width="37" height="37"/>
-                                </variation>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -321,9 +315,6 @@
                             <constraint firstItem="akD-Fe-z05" firstAttribute="leading" secondItem="zIa-OF-Bb9" secondAttribute="trailing" constant="20" id="yZ2-qn-EKX"/>
                         </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="H09-Cr-4qQ"/>
-                            </mask>
                             <mask key="constraints">
                                 <exclude reference="NyN-Z8-OIP"/>
                                 <exclude reference="Uq6-eb-wPl"/>
@@ -399,16 +390,10 @@
                                 <include reference="anB-pV-xlI"/>
                             </mask>
                         </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="H09-Cr-4qQ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Molecule Flashcards" id="Awh-tr-mWQ"/>
                     <connections>
                         <outlet property="creditsButton" destination="akD-Fe-z05" id="4KO-Rs-VUJ"/>
-                        <outlet property="loadingView" destination="H09-Cr-4qQ" id="OMU-15-SK7"/>
                         <outlet property="playButton" destination="MfU-ag-bxb" id="HR9-mX-URg"/>
                         <outlet property="tutorialButton" destination="zIa-OF-Bb9" id="PCz-1a-SoV"/>
                     </connections>

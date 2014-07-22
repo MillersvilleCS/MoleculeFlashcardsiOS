@@ -21,8 +21,6 @@ class MainController : UIViewController {
     
     var loginButton: UIBarButtonItem?
     var logoutButton: UIBarButtonItem?
-
-    @IBOutlet var loadingView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +49,16 @@ class MainController : UIViewController {
     
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
-            playButton!.titleLabel.alpha = 0.1
-
-            
             if user.status != User.LoginStatus.LOGGED_IN {
                 // Display a dialog box warning the player if they aren't logged in
                 dispatch_async(dispatch_get_main_queue(), ({
+                    self.playButton!.titleLabel.alpha = 0.3
+
                     var confirmNoScorePrompt = UIAlertController(title: "Warning!", message: GameMessages.CONFIRM_NO_SCORE, preferredStyle: UIAlertControllerStyle.Alert)
                     
-                    confirmNoScorePrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
+                    confirmNoScorePrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: { action in
+                        self.playButton!.titleLabel.alpha = 1.0
+                        }))
                     confirmNoScorePrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
                         var controller = self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
                         controller.user = self.user
@@ -70,10 +69,13 @@ class MainController : UIViewController {
 
                 
             } else {
-                var controller = self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
-                controller.user = self.user
-                self.navigationController.pushViewController(controller, animated: true)
-
+                dispatch_async(dispatch_get_main_queue(), ({
+                    self.playButton!.titleLabel.alpha = 0.3
+                    var controller = self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
+                    controller.user = self.user
+                    self.navigationController.pushViewController(controller, animated: true)
+                    
+                }))
             }
             
         } else if sender.isEqual(tutorialButton) {
