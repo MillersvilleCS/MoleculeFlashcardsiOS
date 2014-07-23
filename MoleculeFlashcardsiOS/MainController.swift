@@ -54,7 +54,7 @@ class MainController : UIViewController {
                 dispatch_async(dispatch_get_main_queue(), ({
                     self.playButton!.titleLabel.alpha = 0.3
 
-                    var confirmNoScorePrompt = UIAlertController(title: "Warning!", message: GameMessages.CONFIRM_NO_SCORE, preferredStyle: UIAlertControllerStyle.Alert)
+                    var confirmNoScorePrompt = UIAlertController(title: "Warning!", message: GameConstants.CONFIRM_NO_SCORE_MESSAGE, preferredStyle: UIAlertControllerStyle.Alert)
                     
                     confirmNoScorePrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: { action in
                         self.playButton!.titleLabel.alpha = 1.0
@@ -90,7 +90,7 @@ class MainController : UIViewController {
 
             // Display lougout prompt
             dispatch_async(dispatch_get_main_queue(), ({
-                var logoutPrompt = UIAlertController(title: "Logout", message: "\n\(self.user.name!)\(GameMessages.CONFIRM_LOGOUT)", preferredStyle: UIAlertControllerStyle.Alert)
+                var logoutPrompt = UIAlertController(title: "Logout", message: "\n\(self.user.name!)\(GameConstants.CONFIRM_LOGOUT_MESSAGE)", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 logoutPrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
                 logoutPrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in

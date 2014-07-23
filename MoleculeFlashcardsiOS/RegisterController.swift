@@ -72,7 +72,7 @@ class RegisterController: UIViewController, UITextFieldDelegate {
                 }))
             })
         } else {
-            var  passwordErrorPrompt = UIAlertController(title: "Error", message: GameMessages.PASSWORD_ERROR, preferredStyle: UIAlertControllerStyle.Alert)
+            var  passwordErrorPrompt = UIAlertController(title: "Error", message: GameConstants.PASSWORD_ERROR_MESSAGE, preferredStyle: UIAlertControllerStyle.Alert)
             
             passwordErrorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
                     self.passwordTextField!.text = ""

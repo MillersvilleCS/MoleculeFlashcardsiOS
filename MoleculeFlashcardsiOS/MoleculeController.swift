@@ -39,7 +39,7 @@ class MoleculeController: UIViewController {
         let lightNode = SCNNode()
         lightNode.light = SCNLight()
         lightNode.light.type = SCNLightTypeOmni
-        lightNode.light.color = GameColors.LIGHT_NODE
+        lightNode.light.color = GameConstants.LIGHT_NODE_COLOR
         lightNode.position = SCNVector3(x: -25, y: 0, z: 0)
         scene.rootNode.addChildNode(lightNode)
         
@@ -47,13 +47,13 @@ class MoleculeController: UIViewController {
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light.type = SCNLightTypeAmbient
-        ambientLightNode.light.color = GameColors.AMBIENT_LIGHT_NODE
+        ambientLightNode.light.color = GameConstants.AMBIENT_LIGHT_NODE_COLOR
         scene.rootNode.addChildNode(ambientLightNode)
         
         // set scene to view
         let sceneView = super.view as SCNView
         sceneView.scene = scene
-        sceneView.backgroundColor = GameColors.SCENE_VIEW_BACKGROUND
+        sceneView.backgroundColor = GameConstants.SCENE_VIEW_BACKGROUND_COLOR
         
         // gesture recognizers
         let zoomGesture = UIPinchGestureRecognizer(target: self, action: "handleZoom:")
@@ -123,14 +123,14 @@ class MoleculeController: UIViewController {
             scoreChangeLabel!.textColor = UIColor.redColor()
             self.scoreChangeLabel!.text = "\(scoreChange)"
         } else {
-            scoreChangeLabel!.textColor = GameColors.SCORE_COLOR
+            scoreChangeLabel!.textColor = GameConstants.SCORE_COLOR
             self.scoreChangeLabel!.text = "+\(scoreChange)"
         }
         
         animateLabel(scoreChangeLabel!)
         
         if score >= 0 {
-            self.scoreLabel!.textColor = GameColors.SCORE_COLOR
+            self.scoreLabel!.textColor = GameConstants.SCORE_COLOR
         } else {
             self.scoreLabel!.textColor = UIColor.redColor()
         }

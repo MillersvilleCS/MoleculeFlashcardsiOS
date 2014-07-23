@@ -48,7 +48,7 @@ class ButtonCollectionController: UICollectionViewController {
         
         // Construct a cell with a button
         buttons[cellRow!].frame = CGRect(x: 0, y: 0, width: myCell.frame.width, height: myCell.frame.height)
-        buttons[cellRow!].backgroundColor = GameColors.BUTTON_GRAY_DEFAULT
+        buttons[cellRow!].backgroundColor = GameConstants.BUTTON_GRAY_DEFAULT_COLOR
         buttons[cellRow!].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
         buttons[cellRow!].layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         buttons[cellRow!].titleLabel.adjustsFontSizeToFitWidth = true
@@ -71,7 +71,7 @@ class ButtonCollectionController: UICollectionViewController {
             buttons[index].hidden = false;
             buttons[index].setTitle(answerSet[index].text, forState: UIControlState.Normal)
             buttons[index].tag = index
-            buttons[index].backgroundColor = GameColors.BUTTON_GRAY_DEFAULT
+            buttons[index].backgroundColor = GameConstants.BUTTON_GRAY_DEFAULT_COLOR
             buttons[index].alpha = 1.0
             buttons[index].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
@@ -86,7 +86,7 @@ class ButtonCollectionController: UICollectionViewController {
     func markAnswer(buttonIndex: Int, correct: Bool) {
         
         if correct {
-            buttons[buttonIndex].backgroundColor = GameColors.BUTTON_GREEN_START_COLOR
+            buttons[buttonIndex].backgroundColor = GameConstants.BUTTON_GREEN_COLOR
             for button in buttons {
                 if buttons[buttonIndex] != button {
                     button.alpha = 0.7
@@ -95,7 +95,7 @@ class ButtonCollectionController: UICollectionViewController {
             }
         } else {
             animateButtonStopAll()
-            buttons[buttonIndex].backgroundColor = GameColors.BUTTON_WRONG_COLOR
+            buttons[buttonIndex].backgroundColor = GameConstants.BUTTON_WRONG_COLOR
         }
         buttons[buttonIndex].setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         buttons[buttonIndex].enabled = false
