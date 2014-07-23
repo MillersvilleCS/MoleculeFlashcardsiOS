@@ -23,6 +23,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         assert(user, "user must be set in GameSelectionController")
+        
         self.tableView!.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)
         self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
@@ -30,8 +31,12 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         while !loaded {
             usleep(10)
         }
+        
+        // Adding a footer ensures the table does not display unneeded cells.
+        self.tableView!.tableFooterView = UIView (frame: CGRectZero)
     }
     
+    // Create a GameDescription controller for the selected game.
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
@@ -48,6 +53,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         navigationController.topViewController.title = tableView.cellForRowAtIndexPath(indexPath).textLabel.text
     }
     
+    // Limit the number of rows to the number of games.
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.games!.count
     }
@@ -56,20 +62,21 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         return 1
     }
     
+    // Create a cell consisting of a game name and its associated image.
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        
+
         var cell:UITableViewCell = self.tableView!.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell
         
         var game = self.games![indexPath.row]
         var cellText = game.name
         var cellImage = ImageLoader.load(url: game.imageURL)
-        
         cell.textLabel!.text = cellText
         cell.imageView!.image = cellImage
         
         return cell
     }
     
+    // Retrieve the games from the server.
     func getGames(#url: String, user: User) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "get_avail_flashcard_games")
@@ -99,6 +106,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         })
     }
     
+    // Change the transparency of play button in the main controller to indicate an unpressed state.
     override func viewWillDisappear(animated: Bool)  {
         var mainController = navigationController.viewControllers[0] as MainController
         mainController.playButton!.titleLabel.alpha = 1.0

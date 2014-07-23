@@ -24,6 +24,9 @@ class HighScoreController: UITableViewController {
         
         var controller: DescriptionController = navigationController.viewControllers[2] as DescriptionController
         self.highScores = controller.game!.highscores
+        
+        // Adding a footer ensures the table does not display unneeded cells.
+        self.tableView!.tableFooterView = UIView (frame: CGRectZero)
     }
     
     override func didReceiveMemoryWarning() {
