@@ -100,7 +100,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillDisappear(animated: Bool)  {
-        var mainController = navigationController.topViewController as MainController
+        var mainController = navigationController.viewControllers[0] as MainController
         mainController.playButton!.titleLabel.alpha = 1.0
     }
 }
