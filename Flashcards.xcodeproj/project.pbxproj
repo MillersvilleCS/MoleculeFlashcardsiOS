@@ -83,7 +83,7 @@
 		1FA9E7D4197412EE00F873FC /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1FA9E7D61974170400F873FC /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		1FA9E7D8197418FA00F873FC /* HighScoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreController.swift; sourceTree = "<group>"; };
-		1FB71E921961FBE60054FB44 /* MoleculeFlashcardsiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoleculeFlashcardsiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FB71E921961FBE60054FB44 /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB71E961961FBE60054FB44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FB71E971961FBE60054FB44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FB71E9C1961FBE60054FB44 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 		1FB71E931961FBE60054FB44 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1FB71E921961FBE60054FB44 /* MoleculeFlashcardsiOS.app */,
+				1FB71E921961FBE60054FB44 /* Flashcards.app */,
 				1FB71EA41961FBE60054FB44 /* MoleculeFlashcardsiOSTests.xctest */,
 			);
 			name = Products;
@@ -240,7 +240,7 @@
 			);
 			name = MoleculeFlashcardsiOS;
 			productName = MoleculeFlashcardsiOS;
-			productReference = 1FB71E921961FBE60054FB44 /* MoleculeFlashcardsiOS.app */;
+			productReference = 1FB71E921961FBE60054FB44 /* Flashcards.app */;
 			productType = "com.apple.product-type.application";
 		};
 		1FB71EA31961FBE60054FB44 /* MoleculeFlashcardsiOSTests */ = {
@@ -279,7 +279,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1FB71E8D1961FBE60054FB44 /* Build configuration list for PBXProject "MoleculeFlashcardsiOS" */;
+			buildConfigurationList = 1FB71E8D1961FBE60054FB44 /* Build configuration list for PBXProject "Flashcards" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -473,7 +473,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MoleculeFlashcardsiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flashcards;
 			};
 			name = Debug;
 		};
@@ -484,7 +484,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = MoleculeFlashcardsiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Flashcards;
 			};
 			name = Release;
 		};
@@ -527,7 +527,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1FB71E8D1961FBE60054FB44 /* Build configuration list for PBXProject "MoleculeFlashcardsiOS" */ = {
+		1FB71E8D1961FBE60054FB44 /* Build configuration list for PBXProject "Flashcards" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FB71EAC1961FBE60054FB44 /* Debug */,

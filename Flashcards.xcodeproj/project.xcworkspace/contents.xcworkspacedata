@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:MoleculeFlashcardsiOS.xcodeproj">
+      location = "self:Flashcards.xcodeproj">
    </FileRef>
 </Workspace>
