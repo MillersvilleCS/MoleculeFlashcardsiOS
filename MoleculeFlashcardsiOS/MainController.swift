@@ -87,9 +87,10 @@ class MainController : UIViewController {
     
     @IBAction func registerButtonClicked (sender: UIBarButtonItem) {
         if user.status == User.LoginStatus.LOGGED_IN {
+
             // Display lougout prompt
             dispatch_async(dispatch_get_main_queue(), ({
-                var logoutPrompt = UIAlertController(title: "Logout", message: "\n\(self.user.name)\(GameMessages.CONFIRM_LOGOUT)", preferredStyle: UIAlertControllerStyle.Alert)
+                var logoutPrompt = UIAlertController(title: "Logout", message: "\n\(self.user.name!)\(GameMessages.CONFIRM_LOGOUT)", preferredStyle: UIAlertControllerStyle.Alert)
                 
                 logoutPrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
                 logoutPrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in

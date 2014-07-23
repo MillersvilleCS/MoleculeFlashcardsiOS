@@ -9,7 +9,7 @@
         <!--Select a Game-->
         <scene sceneID="cnO-0m-Tfl">
             <objects>
-                <tableViewController storyboardIdentifier="GameSelectionController" title="Select a Game" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Anc-wc-NLv" customClass="GameSelectionController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="GameSelectionController" title="Select a Game" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Anc-wc-NLv" customClass="GameSelectionController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" id="tax-Us-X6l">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
         <!--Game Controller-->
         <scene sceneID="LJm-3k-qim">
             <objects>
-                <viewController storyboardIdentifier="GameController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vVP-2S-3zx" customClass="GameController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vVP-2S-3zx" customClass="GameController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Axp-kF-Jvf"/>
                         <viewControllerLayoutGuide type="bottom" id="ELd-l2-jM4"/>
@@ -167,7 +167,7 @@
         <!--Molecule Flashcards-->
         <scene sceneID="3tl-Lk-VzM">
             <objects>
-                <viewController storyboardIdentifier="MainController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="f4w-xL-80n" customClass="MainController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="f4w-xL-80n" customClass="MainController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7hd-SV-c6I"/>
                         <viewControllerLayoutGuide type="bottom" id="Gjz-oy-iew"/>
@@ -405,7 +405,7 @@
         <!--Molecule Controller-->
         <scene sceneID="gto-IT-FJ1">
             <objects>
-                <viewController storyboardIdentifier="MoleculeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WoN-34-A0X" customClass="MoleculeController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MoleculeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WoN-34-A0X" customClass="MoleculeController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="B5R-ni-Ku2"/>
                         <viewControllerLayoutGuide type="bottom" id="z5d-dy-n2P"/>
@@ -501,7 +501,7 @@
         <!--Button Collection Controller-->
         <scene sceneID="9L1-Iq-9Ur">
             <objects>
-                <collectionViewController storyboardIdentifier="ButtonCollectionController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="55i-gY-1NE" customClass="ButtonCollectionController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ButtonCollectionController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="55i-gY-1NE" customClass="ButtonCollectionController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="jv5-gz-MsI">
                         <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -544,7 +544,7 @@
         <!--Description Controller-->
         <scene sceneID="VSN-Bd-kiv">
             <objects>
-                <viewController storyboardIdentifier="DescriptionController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="esl-v0-MJm" customClass="DescriptionController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DescriptionController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="esl-v0-MJm" customClass="DescriptionController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="T7n-Dh-kHa"/>
                         <viewControllerLayoutGuide type="bottom" id="AXZ-gy-8kF"/>
@@ -1007,7 +1007,7 @@
         <!--Credits Controller-->
         <scene sceneID="FIG-N0-CC8">
             <objects>
-                <viewController storyboardIdentifier="CreditsController" id="C0G-eM-EHk" customClass="CreditsController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreditsController" id="C0G-eM-EHk" customClass="CreditsController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZW4-lz-CLV"/>
                         <viewControllerLayoutGuide type="bottom" id="FHK-j3-SmW"/>
@@ -1439,7 +1439,7 @@
         <!--High Scores-->
         <scene sceneID="j2u-05-4VY">
             <objects>
-                <tableViewController storyboardIdentifier="HighScoreController" title="High Scores" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hFi-wd-9ZK" customClass="HighScoreController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HighScoreController" title="High Scores" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hFi-wd-9ZK" customClass="HighScoreController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="1" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uGI-ne-GCd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1470,7 +1470,7 @@
         <!--Login-->
         <scene sceneID="1gx-2h-LX0">
             <objects>
-                <viewController storyboardIdentifier="LoginController" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PmQ-qm-Y8j" customClass="LoginController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginController" title="Login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PmQ-qm-Y8j" customClass="LoginController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mrl-09-siw"/>
                         <viewControllerLayoutGuide type="bottom" id="tEJ-et-Yf6"/>
@@ -1679,7 +1679,7 @@
         <!--Register-->
         <scene sceneID="A6Z-NC-kpI">
             <objects>
-                <viewController storyboardIdentifier="RegisterController" title="Register" useStoryboardIdentifierAsRestorationIdentifier="YES" id="19O-rF-lkG" customClass="RegisterController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterController" title="Register" useStoryboardIdentifierAsRestorationIdentifier="YES" id="19O-rF-lkG" customClass="RegisterController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VS3-QK-0hj"/>
                         <viewControllerLayoutGuide type="bottom" id="DSR-u0-ufP"/>
@@ -1842,7 +1842,7 @@
         <!--Final Score-->
         <scene sceneID="rUz-9A-KCR">
             <objects>
-                <viewController storyboardIdentifier="FinalController" title="Final Score" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wHv-Nb-1EO" customClass="FinalController" customModule="MoleculeFlashcardsiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FinalController" title="Final Score" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wHv-Nb-1EO" customClass="FinalController" customModule="Flashcards" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b2j-j8-mGL"/>
                         <viewControllerLayoutGuide type="bottom" id="VxC-Ve-IsW"/>
