@@ -19,7 +19,7 @@ class DescriptionController : UIViewController {
     
     @IBOutlet var timeLimitLabel: UILabel?
     @IBOutlet var numberOfQuestionsLabel: UILabel?
-    @IBOutlet var gameDescriptionLabel: UILabel?
+    @IBOutlet var gameDescriptionTextView: UITextView?
     
     @IBOutlet var scroller: UIScrollView?
     
@@ -27,7 +27,7 @@ class DescriptionController : UIViewController {
     var user: User?
     var requestURL: String?
     var mediaURL: String?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,14 +43,7 @@ class DescriptionController : UIViewController {
         
         timeLimitLabel!.text = Time.formatTime(ms: game!.timeLimit)
         numberOfQuestionsLabel!.text = "\(game!.getNumberOfQuestions())"
-        gameDescriptionLabel!.text = game!.description
-    }
-    
-    override func viewDidLayoutSubviews()  {
-        //http://stackoverflow.com/questions/1054558/vertically-align-text-within-a-uilabel
-        //calling this does fix the automatic sizing iOS does
-        //but as soon as you touch the scrollview it reverts back to what it was
-        gameDescriptionLabel!.sizeToFit()
+        gameDescriptionTextView!.text = game!.description
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
