@@ -29,6 +29,15 @@ class HighScoreController: UITableViewController {
         self.tableView!.tableFooterView = UIView (frame: CGRectZero)
     }
     
+    override func viewWillLayoutSubviews() {
+        println("HighScoreController willLayoutSubviews")
+        println (self.view.bounds)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        println("HighScoreController viewDidLayoutSubviews")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

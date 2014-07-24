@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import QuartzCore
 
 class GameSelectionController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -34,6 +35,10 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         
         // Adding a footer ensures the table does not display unneeded cells.
         self.tableView!.tableFooterView = UIView (frame: CGRectZero)
+        
+        
+        //self.tableView!.autoresizesSubviews = true
+        self.tableView!.contentInset = UIEdgeInsetsZero
     }
     
     // Create a GameDescription controller for the selected game.
@@ -74,6 +79,43 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         cell.imageView!.image = cellImage
         
         return cell
+    }
+    
+    // Updates the size of any visible cells to fit the current view.
+    override func viewWillLayoutSubviews() {
+        var cellHeight = self.tableView!.bounds.height / (CGFloat(self.games!.count) + CGFloat (1.0))
+        var cellWidth = self.tableView!.bounds.width
+        var yOffset = 0.0 as CGFloat
+        var heightIncrease : CGFloat
+        
+        var gameCells = tableView!.visibleCells() as [UITableViewCell]
+        for cell in gameCells {
+            heightIncrease = cellHeight - cell.frame.height
+            yOffset = yOffset + heightIncrease
+            
+            // Don't offset the y coordinate for the first cell
+            if yOffset == heightIncrease {
+                cell.frame = CGRectMake(0, cell.frame.origin.y, cellWidth, cellHeight)
+            } else {
+                cell.frame = CGRectMake(0, cell.frame.origin.y + yOffset, cellWidth, cellHeight)
+            }
+        }
+    }
+    
+    // Updates the frames of any visible cells.
+    override func viewDidLayoutSubviews() {
+        dispatch_async(dispatch_get_main_queue(), ({
+            var gameCells = self.tableView!.visibleCells() as [UITableViewCell]
+            for cell in gameCells {
+                
+                var imageInset = (cell.frame.height - cell.imageView.frame.height) / 2
+                cell.imageView.contentMode = UIViewContentMode.ScaleAspectFit
+                cell.textLabel.contentMode = UIViewContentMode.ScaleAspectFit
+                
+                cell.imageView.center = CGPointMake(cell.imageView.frame.width / 2 + imageInset, cell.frame.height / 2)
+                cell.textLabel.frame = CGRectMake(GameConstants.GAME_TEXT_LABEL_INSET_RATIO * cell.frame.width, 0, cell.frame.width / 0.67, cell.frame.height)
+            }
+        }))
     }
     
     // Retrieve the games from the server.

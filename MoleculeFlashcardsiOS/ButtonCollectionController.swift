@@ -26,6 +26,24 @@ class ButtonCollectionController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        
+        println("ButtonCollectionController viewDidLoad")
+
+        var userScreenSize = UIScreen.mainScreen().bounds
+        println (userScreenSize)
+        println(collectionView.bounds)
+        println (collectionView.superview.bounds)
+        println(view.bounds)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        println("ButtonCollectionController viewWillLayoutSubviews")
+        println (self.view.superview.bounds)
+        println(self.view.superview.frame)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        println("ButtonCollectionController viewDidLayoutSubviews")
     }
     
     override func didReceiveMemoryWarning() {

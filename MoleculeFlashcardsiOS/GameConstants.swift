@@ -34,4 +34,7 @@ struct GameConstants {
     static let CONFIRM_NO_SCORE_MESSAGE = "\nYour scores will not be saved unless you register. Play anyway?"
     static let CONFIRM_LOGOUT_MESSAGE = ", are you sure you want to log out?"
     static let PASSWORD_ERROR_MESSAGE = "Password's do not match!"
+    
+    // Proportions for resizing of images and controls
+    static let GAME_TEXT_LABEL_INSET_RATIO: CGFloat = 0.475
 }

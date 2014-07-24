@@ -55,7 +55,6 @@ class LoginController: UIViewController, UITextFieldDelegate {
                 dispatch_async(dispatch_get_main_queue(), ({
                     if success {
                         
-                        
                         LoginInfoManager.writeInfo(name: name, id: id)
                         
                         var mainController = self.navigationController.viewControllers[0] as MainController
@@ -66,10 +65,10 @@ class LoginController: UIViewController, UITextFieldDelegate {
                         
                         errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
                             
-                            }))
+                        }))
                         self.presentViewController(errorPrompt, animated: true, completion: nil)
                     }
-                    }))
+                }))
             })
         }
     }

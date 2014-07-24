@@ -55,8 +55,24 @@ class GameController : UIViewController, UIApplicationDelegate {
         
         moleculeController!.loadingView!.startAnimating()
         
+        println("GameController")
+        var userScreenSize = UIScreen.mainScreen().bounds
+        println (userScreenSize)
+        println (view.bounds)
+        
         self.start()
     }
+    
+    override func viewDidLayoutSubviews() {
+        println("GameController viewDidLayoutSubviews")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        println("GameController willLayoutSubviews")
+        println (self.view.bounds)
+        println(self.view.frame)
+    }
+
     
     func applicationWillResignActive(application: UIApplication) {
         var gameDescriptionController = navigationController.viewControllers[2] as UIViewController

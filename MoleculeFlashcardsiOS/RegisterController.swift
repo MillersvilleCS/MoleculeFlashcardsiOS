@@ -80,6 +80,5 @@ class RegisterController: UIViewController, UITextFieldDelegate {
                 }))
             self.presentViewController(passwordErrorPrompt, animated: true, completion: nil)
         }
-        
     }
 }
