@@ -171,10 +171,10 @@ class MoleculeController: UIViewController {
         var pos = self.cameraNode.position
         
         if gestureRecognize.velocity > 0 && pos.z > 10 {
-            self.cameraNode.position = VecOp.translate(pos, z: -1.0)
+            self.cameraNode.position = VecOp.translate(pos, z: -0.5)
         }
         if gestureRecognize.velocity < 0 && pos.z < 64 {
-            self.cameraNode.position = VecOp.translate(pos, z: 1.0)
+            self.cameraNode.position = VecOp.translate(pos, z: 0.5)
         }
     }
     
@@ -182,8 +182,8 @@ class MoleculeController: UIViewController {
         let sceneView = self.view as SCNView
         let velocity = gestureRecognize.velocityInView(sceneView)
         
-        var m1     = SCNMatrix4MakeRotation(Float (velocity.x / 1500), 0, 1, 0)
-        var m2     = SCNMatrix4MakeRotation(Float (velocity.y / 1500), 1, 0, 0)
+        var m1     = SCNMatrix4MakeRotation(Float (velocity.x / 5000), 0, 1, 0)
+        var m2     = SCNMatrix4MakeRotation(Float (velocity.y / 5000), 1, 0, 0)
         var result = SCNMatrix4Mult(m1, m2)
         
         self.molecule!.transform = SCNMatrix4Mult(self.molecule!.transform, result)
