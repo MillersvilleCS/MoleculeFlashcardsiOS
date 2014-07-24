@@ -46,6 +46,13 @@ class DescriptionController : UIViewController {
         gameDescriptionLabel!.text = game!.description
     }
     
+    override func viewDidLayoutSubviews()  {
+        //http://stackoverflow.com/questions/1054558/vertically-align-text-within-a-uilabel
+        //calling this does fix the automatic sizing iOS does
+        //but as soon as you touch the scrollview it reverts back to what it was
+        gameDescriptionLabel!.sizeToFit()
+    }
+    
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
             var gameTitle = navigationController.topViewController.title

@@ -15,6 +15,7 @@ class CreditsController : UIViewController {
     @IBOutlet var willButton: UIButton?
     @IBOutlet var kimButton: UIButton?
     @IBOutlet var samButton: UIButton?
+    @IBOutlet var garyButton: UIButton?
     @IBOutlet var michelaButton: UIButton?
     @IBOutlet var nsfButton: UIButton?
     
@@ -35,6 +36,8 @@ class CreditsController : UIViewController {
             url = NSURL(string: "https://github.com/kbroskie")
         } else if sender.isEqual(samButton) {
             url = NSURL(string: "http://samschlachter.com")
+        } else if sender.isEqual(garyButton) {
+            url = NSURL(string: "http://cs.millersville.edu/fs/gzoppetti/")
         } else if sender.isEqual(michelaButton) {
             url = NSURL(string: "http://gcl.cis.udel.edu/personal/taufer/index.php")
         } else {
