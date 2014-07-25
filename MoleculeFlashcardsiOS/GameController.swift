@@ -19,7 +19,7 @@ class GameController : UIViewController, UIApplicationDelegate {
     var mediaURL: String?
     
     var moleculeController: MoleculeController?
-    var buttonController: ButtonCollectionController?
+    var buttonController: ButtonViewController?
     
     var molecules: [SCNNode]?
     
@@ -43,9 +43,9 @@ class GameController : UIViewController, UIApplicationDelegate {
         var controller = self.childViewControllers[0] as UIViewController
         if controller.restorationIdentifier == "MoleculeController" {
             moleculeController = self.childViewControllers[0] as? MoleculeController
-            buttonController = self.childViewControllers[1] as? ButtonCollectionController
+            buttonController = self.childViewControllers[1] as? ButtonViewController
         } else {
-            buttonController = self.childViewControllers[0] as? ButtonCollectionController
+            buttonController = self.childViewControllers[0] as? ButtonViewController
             moleculeController = self.childViewControllers[1] as? MoleculeController
             println("Warning, this may cause layout issues! Fix the storyboard!")
         }

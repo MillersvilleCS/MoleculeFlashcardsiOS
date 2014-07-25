@@ -1,21 +1,29 @@
 //
-//  ButtonCollectionController.swift
-//  MoleculeFlashcardsiOS
+//  ButtonViewController.swift
+//  Flashcards
 //
-//  Created by exscitech on 7/7/14.
+//  Created by exscitech on 7/24/14.
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
 import UIKit
 
-class ButtonCollectionController: UIViewController {
-    
-    var buttons = [UIButton(), UIButton(), UIButton(), UIButton(), UIButton(), UIButton()]
+class ButtonViewController: UIViewController {
+
+    @IBOutlet var button1: UIButton?
+    @IBOutlet var button2: UIButton?
+    @IBOutlet var button3: UIButton?
+    @IBOutlet var button4: UIButton?
+    @IBOutlet var button5: UIButton?
+    @IBOutlet var button6: UIButton?
+        
+    var buttons: [UIButton]?
     var answerSet : [Answer]?
     var animationsRunning = false
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        buttons = [button1!, button2!, button3!, button4!, button5!, button6!]
         createButtons()
     }
     
@@ -23,19 +31,17 @@ class ButtonCollectionController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
     // Create the buttons for displaying answers
     func createButtons() -> Void {
         
         let index = 0
         
-        for button in buttons {
-            buttons[index].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
-            buttons[index].layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
-            buttons[index].titleLabel.adjustsFontSizeToFitWidth = true
-            buttons[index].titleLabel.minimumScaleFactor = 0.5
-            buttons[index].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        for button in buttons! {
+            buttons![index].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
+            buttons![index].layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+            buttons![index].titleLabel.adjustsFontSizeToFitWidth = true
+            buttons![index].titleLabel.minimumScaleFactor = 0.5
+            buttons![index].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
     }
     
@@ -43,38 +49,38 @@ class ButtonCollectionController: UIViewController {
         animateButtonStopAll()
         self.answerSet = answerSet
         for var index = 0; index < answerSet.count; ++index {
-            buttons[index].enabled = true;
-            buttons[index].hidden = false;
-            buttons[index].setTitle(answerSet[index].text, forState: UIControlState.Normal)
-            buttons[index].tag = index
-            buttons[index].backgroundColor = GameConstants.BUTTON_GRAY_DEFAULT_COLOR
-            buttons[index].alpha = 1.0
-            buttons[index].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            buttons![index].enabled = true;
+            buttons![index].hidden = false;
+            buttons![index].setTitle(answerSet[index].text, forState: UIControlState.Normal)
+            buttons![index].tag = index
+            buttons![index].backgroundColor = GameConstants.BUTTON_GRAY_DEFAULT_COLOR
+            buttons![index].alpha = 1.0
+            buttons![index].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
         
         // Hide extra buttons
-        for var indexToHide = answerSet.count; indexToHide < buttons.count; ++indexToHide {
-            buttons[indexToHide].enabled = false
-            buttons[indexToHide].hidden = true;
+        for var indexToHide = answerSet.count; indexToHide < buttons!.count; ++indexToHide {
+            buttons![indexToHide].enabled = false
+            buttons![indexToHide].hidden = true;
         }
     }
     
     func markAnswer(buttonIndex: Int, correct: Bool) {
         
         if correct {
-            buttons[buttonIndex].backgroundColor = GameConstants.BUTTON_GREEN_COLOR
-            for button in buttons {
-                if buttons[buttonIndex] != button {
+            buttons![buttonIndex].backgroundColor = GameConstants.BUTTON_GREEN_COLOR
+            for button in buttons! {
+                if buttons![buttonIndex] != button {
                     button.alpha = 0.7
                 }
                 button.enabled = false
             }
         } else {
             animateButtonStopAll()
-            buttons[buttonIndex].backgroundColor = GameConstants.BUTTON_WRONG_COLOR
+            buttons![buttonIndex].backgroundColor = GameConstants.BUTTON_WRONG_COLOR
         }
-        buttons[buttonIndex].setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        buttons[buttonIndex].enabled = false
+        buttons![buttonIndex].setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        buttons![buttonIndex].enabled = false
         
     }
     
@@ -85,7 +91,7 @@ class ButtonCollectionController: UIViewController {
     
     func animateHigh(#button: UIButton) {
         UIView.animateWithDuration(0.5, animations: {() in
-                button.alpha = 1
+            button.alpha = 1
             }, completion:  { (finished: Bool) in
                 if self.animationsRunning {
                     self.animateLow(button: button)
@@ -95,7 +101,7 @@ class ButtonCollectionController: UIViewController {
     
     func animateLow(#button: UIButton) {
         UIView.animateWithDuration(0.5, animations: {() in
-                button.alpha = 0.4
+            button.alpha = 0.4
             }, completion:  { (finished: Bool) in
                 if self.animationsRunning {
                     self.animateHigh(button: button)
@@ -105,7 +111,7 @@ class ButtonCollectionController: UIViewController {
     
     func animateButtonStopAll() {
         self.animationsRunning = false
-        for button in self.buttons {
+        for button in self.buttons! {
             button.alpha = 1.0
         }
     }
