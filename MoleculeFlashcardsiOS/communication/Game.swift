@@ -89,7 +89,6 @@ class Game {
         request.addParameter(key: "game_session_id", value: sessionId!)
         request.addParameter(key: "game_time", value: gameTime)
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
-            println(request.parameters.description)
             var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             if !error {
                 var rank = responseDict["rank"] as Int
@@ -118,8 +117,7 @@ class Game {
             } else {
                 var isCorrect = response["correct"] as String
                 var score = response["score"] as Int
-                println(response.description)
-                println(isCorrect)
+                
                 if isCorrect == "true" {
                     EventLogger.log("submitted answer \(answer.text) was correct")
                     self.questionIndex++

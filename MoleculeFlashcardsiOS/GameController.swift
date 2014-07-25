@@ -55,24 +55,13 @@ class GameController : UIViewController, UIApplicationDelegate {
         
         moleculeController!.loadingView!.startAnimating()
         
-        println("GameController")
-        var userScreenSize = UIScreen.mainScreen().bounds
-        println (userScreenSize)
-        println (view.bounds)
+        //println("GameController")
+        //var userScreenSize = UIScreen.mainScreen().bounds
+        //println (userScreenSize)
+        //println (view.bounds)
         
         self.start()
     }
-    
-    override func viewDidLayoutSubviews() {
-        println("GameController viewDidLayoutSubviews")
-    }
-    
-    override func viewWillLayoutSubviews() {
-        println("GameController willLayoutSubviews")
-        println (self.view.bounds)
-        println(self.view.frame)
-    }
-
     
     func applicationWillResignActive(application: UIApplication) {
         var gameDescriptionController = navigationController.viewControllers[2] as UIViewController
@@ -168,7 +157,6 @@ class GameController : UIViewController, UIApplicationDelegate {
         if self.timeRemaing != 0 {
             waitTime = self.WAIT_PERIOD
         }
-        println("user: \(self.user!.id)")
         self.game!.end(url: requestURL!, user: self.user!, gameTime: gameTime, onComplete: {(rank: Int, finalScore: Int) in
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, waitTime), dispatch_get_main_queue(), ({
                 var finalController = self.storyboard.instantiateViewControllerWithIdentifier("FinalController") as FinalController

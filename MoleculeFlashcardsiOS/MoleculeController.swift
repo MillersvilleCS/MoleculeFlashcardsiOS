@@ -66,20 +66,10 @@ class MoleculeController: UIViewController {
         gestureRecognizers.addObjectsFromArray(sceneView.gestureRecognizers)
         sceneView.gestureRecognizers = gestureRecognizers
         
-        println("MoleculeController")
-        var userScreenSize = UIScreen.mainScreen().bounds
-        println (view.frame) // This is the current area of the view, which can differ from the bounds based on the orientation of the device
-        println (view.bounds) // This is the total area the view can comprise
-    }
-    
-    override func viewWillLayoutSubviews() {
-        println("MoleculeController viewWillLayoutSubviews")
-        println (self.view.superview.bounds)
-        println(self.view.superview.frame)
-    }
-
-    override func viewDidLayoutSubviews() {
-        println("MoleculeController viewDidLayoutSubviews")
+        //println("MoleculeController")
+        //var userScreenSize = UIScreen.mainScreen().bounds
+        //println (view.frame) // This is the current area of the view, which can differ from the bounds based on the orientation of the device
+        //println (view.bounds) // This is the total area the view can comprise
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,7 +118,6 @@ class MoleculeController: UIViewController {
     }
     
     func setScore(score: Int) {
-        println(score)
         var currentScore = scoreLabel!.text.toInt()
         var scoreChange: Int = score - currentScore!
         

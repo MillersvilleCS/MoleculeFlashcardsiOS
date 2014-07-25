@@ -33,15 +33,12 @@ class ButtonViewController: UIViewController {
     
     // Create the buttons for displaying answers
     func createButtons() -> Void {
-        
-        let index = 0
-        
         for button in buttons! {
-            buttons![index].addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
-            buttons![index].layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
-            buttons![index].titleLabel.adjustsFontSizeToFitWidth = true
-            buttons![index].titleLabel.minimumScaleFactor = 0.5
-            buttons![index].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            button.addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
+            button.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
+            button.titleLabel.adjustsFontSizeToFitWidth = true
+            button.titleLabel.minimumScaleFactor = 0.5
+            button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
     }
     
