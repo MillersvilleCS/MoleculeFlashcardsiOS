@@ -29,6 +29,7 @@
 		1F344F07196EF7CB0032E4CA /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F344F06196EF7CB0032E4CA /* GameConstants.swift */; };
 		1F3B3C031975D26800EFFC73 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B3C021975D26800EFFC73 /* Time.swift */; };
 		1F7DCF65196C686C00035854 /* moleculeData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F7DCF64196C686C00035854 /* moleculeData.txt */; };
+		1F8CF7E21982BAEC004C75C9 /* HighScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8CF7E11982BAEC004C75C9 /* HighScoreCell.swift */; };
 		1F8E973F19742D6100004622 /* HighScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E973E19742D6100004622 /* HighScores.swift */; };
 		1FA9E7D5197412EE00F873FC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9E7D4197412EE00F873FC /* LoginController.swift */; };
 		1FA9E7D71974170400F873FC /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9E7D61974170400F873FC /* RegisterController.swift */; };
@@ -75,6 +76,7 @@
 		1F344F06196EF7CB0032E4CA /* GameConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameConstants.swift; sourceTree = "<group>"; };
 		1F3B3C021975D26800EFFC73 /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		1F7DCF64196C686C00035854 /* moleculeData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = moleculeData.txt; path = assets/moleculeData.txt; sourceTree = "<group>"; };
+		1F8CF7E11982BAEC004C75C9 /* HighScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreCell.swift; sourceTree = "<group>"; };
 		1F8E973E19742D6100004622 /* HighScores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScores.swift; sourceTree = "<group>"; };
 		1FA9E7D4197412EE00F873FC /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1FA9E7D61974170400F873FC /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				1FA9E7D61974170400F873FC /* RegisterController.swift */,
 				1F0D92AE196312630098EB6C /* GameSelectionController.swift */,
 				1FA9E7D8197418FA00F873FC /* HighScoreController.swift */,
+				1F8CF7E11982BAEC004C75C9 /* HighScoreCell.swift */,
 				1F16AC0519645793008BAF6F /* DescriptionController.swift */,
 				1F16AC0719645967008BAF6F /* GameController.swift */,
 				1FDD9E8A19743D520086F5E3 /* FinalController.swift */,
@@ -329,6 +332,7 @@
 				1F2AF5E81964411B00107698 /* Question.swift in Sources */,
 				1F285E731976DF5700B04149 /* LoginInfoManager.swift in Sources */,
 				1F3B3C031975D26800EFFC73 /* Time.swift in Sources */,
+				1F8CF7E21982BAEC004C75C9 /* HighScoreCell.swift in Sources */,
 				1F2AF5F31964411B00107698 /* MoleculeGeometry.swift in Sources */,
 				1F2AF5ED1964411B00107698 /* Molecule.swift in Sources */,
 				1F2AF5EE1964411B00107698 /* SDFParser.swift in Sources */,
