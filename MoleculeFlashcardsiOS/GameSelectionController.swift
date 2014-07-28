@@ -35,28 +35,24 @@ class GameSelectionController: UITableViewController {
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        var controller = self.storyboard.instantiateViewControllerWithIdentifier("DescriptionController") as DescriptionController
+        var descriptionController = self.storyboard.instantiateViewControllerWithIdentifier("DescriptionController") as DescriptionController
         var game = self.games![indexPath.row]
         
-        controller.game = game
-        controller.user = user
-        controller.requestURL = GameConstants.REQUEST_HANDLER_URL
-        controller.mediaURL = GameConstants.GET_MEDIA_URL
-        self.navigationController.pushViewController(controller, animated: true)
+        descriptionController.game = game
+        descriptionController.user = user
+        descriptionController.requestURL = GameConstants.REQUEST_HANDLER_URL
+        descriptionController.mediaURL = GameConstants.GET_MEDIA_URL
+        self.navigationController.pushViewController(descriptionController, animated: true)
         
         // Update the navigation bar's title to the selected game
-        navigationController.topViewController.title = tableView.cellForRowAtIndexPath(indexPath).textLabel.text
+        navigationController.topViewController.title = (tableView.cellForRowAtIndexPath(indexPath) as GameCell).gameLabel!.text
     }
     
     // Limit the number of rows to the number of games.
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.games!.count
     }
-    
-    func numberOfSectionsInTableView(tableView: UITableView!, numberOfSectionsInTable: Int) -> Int {
-        return 1
-    }
-    
+
     // Create a cell consisting of a game name and its associated image.
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
 

@@ -16,7 +16,6 @@ class MoleculeController: UIViewController {
     var molecule: SCNNode?
     
     var currentQuestionCount = 0
-    let SPIN_AMMOUNT: Float = 0.01
     var timer: NSTimer?
     var spinDirection: Float = 1
     
@@ -65,11 +64,6 @@ class MoleculeController: UIViewController {
         gestureRecognizers.addObject(panGesture)
         gestureRecognizers.addObjectsFromArray(sceneView.gestureRecognizers)
         sceneView.gestureRecognizers = gestureRecognizers
-        
-        //println("MoleculeController")
-        //var userScreenSize = UIScreen.mainScreen().bounds
-        //println (view.frame) // This is the current area of the view, which can differ from the bounds based on the orientation of the device
-        //println (view.bounds) // This is the total area the view can comprise
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,11 +106,11 @@ class MoleculeController: UIViewController {
             timer!.invalidate()
             
         }
-        ///SHOULD BE DONE IN APP DELIGATE NOT HERE!
+        // SHOULD BE DONE IN APP DELIGATE NOT HERE!
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
-        
     }
     
+    // Update the current score and display the score for the last response
     func setScore(score: Int) {
         var currentScore = scoreLabel!.text.toInt()
         var scoreChange: Int = score - currentScore!
@@ -140,6 +134,7 @@ class MoleculeController: UIViewController {
         }
     }
     
+    // Animate the score deducted/added for an answered question
     func animateLabel(label: UILabel) {
         label.alpha = 1
         UIView.animateWithDuration(1, delay: 0.5, options: UIViewAnimationOptions.CurveLinear,animations: {() in
@@ -147,14 +142,13 @@ class MoleculeController: UIViewController {
         }, completion:  nil)
     }
     
+    // Update the rotation speed of the molecule
     func update() {
-        var ammount: Float = self.SPIN_AMMOUNT * self.spinDirection
-        var m1  = SCNMatrix4MakeRotation(ammount, 0, 1, 0)
+        var spinAmount: Float = GameConstants.MOLECULE_SPIN_AMOUNT * self.spinDirection
+        var m1  = SCNMatrix4MakeRotation(spinAmount, 0, 1, 0)
         
         self.molecule!.transform = SCNMatrix4Mult(self.molecule!.transform, m1)
     }
-    
-    
     
     func handleZoom(gestureRecognize: UIPinchGestureRecognizer) {
         var pos = self.cameraNode.position

@@ -28,13 +28,12 @@ struct GameConstants {
     static let AMBIENT_LIGHT_NODE_COLOR = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
     static let SCENE_VIEW_BACKGROUND_COLOR = UIColor(red: 0.82, green: 0.82, blue: 0.82, alpha: 1.0)
     
+    static let MOLECULE_SPIN_AMOUNT: Float = 0.01
+    
     // Message constants
     static let WELCOME_MESSAGE = "Thanks for downloading our app! Remember to log in or register by clicking the icon in the upper right-hand corner of the screen."
                                  + "If you would like to add your own question sets, just register, then visit the ExSciTecH website and use our question set editor. Have fun!"
     static let CONFIRM_NO_SCORE_MESSAGE = "\nYour scores will not be saved unless you register. Play anyway?"
     static let CONFIRM_LOGOUT_MESSAGE = ", are you sure you want to log out?"
     static let PASSWORD_ERROR_MESSAGE = "Password's do not match!"
-    
-    // Proportions for resizing of images and controls
-    static let GAME_TEXT_LABEL_INSET_RATIO: CGFloat = 0.475
 }

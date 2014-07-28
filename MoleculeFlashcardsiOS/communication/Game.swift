@@ -55,7 +55,8 @@ class Game {
             } else {
                 self.questionIndex = 0
                 self.sessionId = response["game_session_id"]! as? String
-                //load questions
+                
+                // Load questions
                 var newQuestions = [Question]()
                 var questionsJSON : AnyObject = response["questions"]!
                 for questionJSON : AnyObject in questionsJSON as [AnyObject] {
@@ -64,7 +65,8 @@ class Game {
                     var answersJSON : AnyObject! = questionJSON["answers"]!
                     
                     var answerList = [Answer]()
-                    //load answers
+                    
+                    // Load answers
                     for answerJSON : AnyObject in answersJSON as [AnyObject] {
                         var answerId: Int = answerJSON["id"] as Int
                         var answerText: String = answerJSON["text"] as String
@@ -77,10 +79,8 @@ class Game {
             }
             
             self.state = GameState.READY
-            
         })
     }
-    
     
     func end(#url: String, user: User, gameTime: Int, onComplete: (rank: Int, finalScore: Int) -> Void) {
         var request = Request(url: url)

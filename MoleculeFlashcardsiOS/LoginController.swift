@@ -21,6 +21,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(user, "User must be set in LoginController")
+        
         registerButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         loginButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
@@ -32,6 +33,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    // Advances to the next text field when "Next" is pressed & changes "Next" to "Done" at the last field.
     func textFieldShouldReturn (textField: UITextField) -> Bool {
         var nextTag: NSInteger = textField.tag + 1
         var nextResponder = textField.superview.viewWithTag(nextTag)
@@ -42,7 +44,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
         }
         return false
     }
-    
+
     @IBAction func buttonClicked (sender:UIButton) {
         if (sender.isEqual(registerButton)) {
             var controller = self.storyboard.instantiateViewControllerWithIdentifier("RegisterController") as RegisterController
@@ -54,17 +56,14 @@ class LoginController: UIViewController, UITextFieldDelegate {
                 
                 dispatch_async(dispatch_get_main_queue(), ({
                     if success {
-                        
                         LoginInfoManager.writeInfo(name: name, id: id)
-                        
+                        // Update the button icon displayed on the navigation bar.
                         var mainController = self.navigationController.viewControllers[0] as MainController
                         mainController.navigationItem.setRightBarButtonItem(mainController.logoutButton, animated: true)
                         self.navigationController.popToViewController(mainController, animated: true)
                     } else {
                         var  errorPrompt = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
-                        
                         errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
-                            
                         }))
                         self.presentViewController(errorPrompt, animated: true, completion: nil)
                     }

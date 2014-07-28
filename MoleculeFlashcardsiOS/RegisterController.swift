@@ -34,6 +34,7 @@ class RegisterController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
+    // Advances to the next text field when "Next" is pressed & changes "Next" to "Done" at the last field.
     func textFieldShouldReturn (textField: UITextField) -> Bool {
         var nextTag: NSInteger = textField.tag + 1
         var nextResponder = textField.superview.viewWithTag(nextTag)
@@ -62,7 +63,6 @@ class RegisterController: UIViewController, UITextFieldDelegate {
                         self.navigationController.popToViewController(mainController, animated: true)
                     } else {
                         var  errorPrompt = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
-                        
                         errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
                             self.passwordTextField!.text = ""
                             self.confirmPasswordTextField!.text = ""
@@ -73,11 +73,10 @@ class RegisterController: UIViewController, UITextFieldDelegate {
             })
         } else {
             var  passwordErrorPrompt = UIAlertController(title: "Error", message: GameConstants.PASSWORD_ERROR_MESSAGE, preferredStyle: UIAlertControllerStyle.Alert)
-            
             passwordErrorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
                     self.passwordTextField!.text = ""
                     self.confirmPasswordTextField!.text = ""
-                }))
+            }))
             self.presentViewController(passwordErrorPrompt, animated: true, completion: nil)
         }
     }

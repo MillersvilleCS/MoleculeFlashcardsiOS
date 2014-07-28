@@ -48,7 +48,7 @@ class User {
                 self.status = LoginStatus.LOGGED_IN
                 onComplete(name: self.name!, id: self.id!, success: true, error: "")
             }
-            })
+        })
     }
     
     func register(#url: String, username: String, password: String, email: String, onComplete: (name: String, id: String,success: Bool, error: String) -> Void) {
@@ -78,7 +78,6 @@ class User {
                 self.status = LoginStatus.LOGGED_IN
                 onComplete(name: self.name!, id: self.id!, success: true, error: "")
             }
-            })
+        })
     }
-
 }

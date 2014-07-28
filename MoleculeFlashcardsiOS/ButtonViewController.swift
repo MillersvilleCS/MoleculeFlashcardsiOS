@@ -78,7 +78,6 @@ class ButtonViewController: UIViewController {
         }
         buttons![buttonIndex].setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         buttons![buttonIndex].enabled = false
-        
     }
     
     func animateButton(button: UIButton) {

@@ -48,16 +48,14 @@ class DescriptionController : UIViewController {
     
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
-            var gameTitle = navigationController.topViewController.title
+            var gameController = storyboard.instantiateViewControllerWithIdentifier("GameController") as GameController
+            gameController.game = game!
+            gameController.user = user!
+            gameController.requestURL = requestURL!
+            gameController.mediaURL = mediaURL!
             
-            var controller = storyboard.instantiateViewControllerWithIdentifier("GameController") as GameController
-            controller.game = game!
-            controller.user = user!
-            controller.requestURL = requestURL!
-            controller.mediaURL = mediaURL!
-            
-            navigationController.pushViewController(controller, animated: true)
-            navigationController.topViewController.title = gameTitle
+            navigationController.pushViewController(gameController, animated: true)
+            navigationController.topViewController.title = game!.name
         } else if sender.isEqual(highScoresButton) {
             var controller = self.storyboard.instantiateViewControllerWithIdentifier("HighScoreController") as HighScoreController
             

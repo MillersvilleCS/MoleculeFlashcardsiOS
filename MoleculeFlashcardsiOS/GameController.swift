@@ -55,14 +55,10 @@ class GameController : UIViewController, UIApplicationDelegate {
         
         moleculeController!.loadingView!.startAnimating()
         
-        //println("GameController")
-        //var userScreenSize = UIScreen.mainScreen().bounds
-        //println (userScreenSize)
-        //println (view.bounds)
-        
         self.start()
     }
     
+    // Returns to the Game Description screen if the user exits the app while a game is running.
     func applicationWillResignActive(application: UIApplication) {
         var gameDescriptionController = navigationController.viewControllers[2] as UIViewController
         self.navigationController.popToViewController(gameDescriptionController, animated: false)
@@ -74,12 +70,12 @@ class GameController : UIViewController, UIApplicationDelegate {
     }
     
     func start() {
-        //set time text and start timer (start here with 5 less seconds do to server timing glitch)
+        // Set time text and start timer (start here with 5 less seconds due to server timing glitch)
         self.timeRemaing = self.game!.timeLimit - 5000
         self.moleculeController!.timerLabel!.text = Time.formatTime(ms: self.timeRemaing)
         var timer = NSTimer.scheduledTimerWithTimeInterval(1.0 as NSTimeInterval, target: self, selector: Selector("decreaseTime"), userInfo: nil, repeats: true)
         
-        //load SDF files
+        // Load SDF files
         game!.start(url: requestURL!, user: user!,{(questions: [Question]) in
             var nodeList = [SCNNode]()
 
@@ -96,11 +92,11 @@ class GameController : UIViewController, UIApplicationDelegate {
             }
             self.molecules = nodeList
             
-            //when doing UI updates you must be on the main thread - these async closures in the request API don't happen in the main thread
-            //iOS global dispatch lets us put UI actions on the main thread again
-            //tell it what thread queue to use (main), and what to do (closure)
+            // When doing UI updates you must be on the main thread - these async closures in the request API don't happen in the main thread
+            // iOS global dispatch lets us put UI actions on the main thread again
+            // tell it what thread queue to use (main), and what to do (closure)
             dispatch_async(dispatch_get_main_queue(), ({
-                //timer SHOULD be started here
+                // Timer SHOULD be started here
                 self.nextQuestion()
                 
                 self.moleculeController!.loadingView!.stopAnimating()
@@ -126,18 +122,16 @@ class GameController : UIViewController, UIApplicationDelegate {
         }
         
         moleculeController!.setQuestion(game!.getCurrentQuestion().text, molecule: molecules![game!.questionIndex])
-        
         buttonController!.setButtonAnswers(game!.getAvailableAnswers())
     }
     
     func submitAnswer (response: Answer, buttonIndex: Int) {
         self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: self.game!.timeLimit - self.timeRemaing, {(isCorrect: Bool, scoreModifier: Int) in
             
-            //we need to update the button color in the main thread
+            // We need to update the button color in the main thread
             dispatch_async(dispatch_get_main_queue(), ({
-  
+                
                 self.buttonController!.markAnswer(buttonIndex, correct: isCorrect)
-   
                 self.moleculeController!.setScore(scoreModifier)
                 
                 if isCorrect {
@@ -153,7 +147,7 @@ class GameController : UIViewController, UIApplicationDelegate {
         var waitTime: Int64 = 0
         let gameTime = self.game!.timeLimit - self.timeRemaing
         
-        //if we didn't run out of time, wait 3 seconds before ending game (last question)
+        // If we didn't run out of time, wait 3 seconds before ending game (last question)
         if self.timeRemaing != 0 {
             waitTime = self.WAIT_PERIOD
         }
@@ -163,7 +157,7 @@ class GameController : UIViewController, UIApplicationDelegate {
                 finalController.rank = rank
                 finalController.score = finalScore
                 
-                self.navigationController.pushViewController( finalController as UIViewController, animated: true)
+                self.navigationController.pushViewController(finalController as UIViewController, animated: true)
             }))
         })
     }
