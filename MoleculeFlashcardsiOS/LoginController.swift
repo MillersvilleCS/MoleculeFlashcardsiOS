@@ -62,10 +62,10 @@ class LoginController: UIViewController, UITextFieldDelegate {
                         mainController.navigationItem.setRightBarButtonItem(mainController.logoutButton, animated: true)
                         self.navigationController.popToViewController(mainController, animated: true)
                     } else {
-                        var  errorPrompt = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
-                            errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
-                        }))
-                        self.presentViewController(errorPrompt, animated: true, completion: nil)
+                        var errorPrompt = ErrorPrompt(message: error)
+                        errorPrompt.display(controller: self, onComplete: {() in
+                          
+                        })
                     }
                 }))
             })

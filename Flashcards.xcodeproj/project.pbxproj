@@ -32,6 +32,7 @@
 		1F7DCF65196C686C00035854 /* moleculeData.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F7DCF64196C686C00035854 /* moleculeData.txt */; };
 		1F8CF7E21982BAEC004C75C9 /* HighScoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8CF7E11982BAEC004C75C9 /* HighScoreCell.swift */; };
 		1F8E973F19742D6100004622 /* HighScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E973E19742D6100004622 /* HighScores.swift */; };
+		1F982D7F1986DB8900289F31 /* ErrorPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F982D7E1986DB8900289F31 /* ErrorPrompt.swift */; };
 		1FA9E7D5197412EE00F873FC /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9E7D4197412EE00F873FC /* LoginController.swift */; };
 		1FA9E7D71974170400F873FC /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9E7D61974170400F873FC /* RegisterController.swift */; };
 		1FA9E7D9197418FA00F873FC /* HighScoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9E7D8197418FA00F873FC /* HighScoreController.swift */; };
@@ -80,6 +81,7 @@
 		1F7DCF64196C686C00035854 /* moleculeData.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = moleculeData.txt; path = assets/moleculeData.txt; sourceTree = "<group>"; };
 		1F8CF7E11982BAEC004C75C9 /* HighScoreCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreCell.swift; sourceTree = "<group>"; };
 		1F8E973E19742D6100004622 /* HighScores.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScores.swift; sourceTree = "<group>"; };
+		1F982D7E1986DB8900289F31 /* ErrorPrompt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorPrompt.swift; sourceTree = "<group>"; };
 		1FA9E7D4197412EE00F873FC /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		1FA9E7D61974170400F873FC /* RegisterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		1FA9E7D8197418FA00F873FC /* HighScoreController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoreController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,14 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		1F982D7D1986DB7400289F31 /* prompts */ = {
+			isa = PBXGroup;
+			children = (
+				1F982D7E1986DB8900289F31 /* ErrorPrompt.swift */,
+			);
+			name = prompts;
+			sourceTree = "<group>";
+		};
 		1FB71E891961FBE60054FB44 = {
 			isa = PBXGroup;
 			children = (
@@ -172,6 +182,7 @@
 		1FB71E941961FBE60054FB44 /* MoleculeFlashcardsiOS */ = {
 			isa = PBXGroup;
 			children = (
+				1F982D7D1986DB7400289F31 /* prompts */,
 				1F344F06196EF7CB0032E4CA /* GameConstants.swift */,
 				1FB71E9B1961FBE60054FB44 /* Main.storyboard */,
 				1FB71E971961FBE60054FB44 /* AppDelegate.swift */,
@@ -347,6 +358,7 @@
 				1F8E973F19742D6100004622 /* HighScores.swift in Sources */,
 				1FA9E7D5197412EE00F873FC /* LoginController.swift in Sources */,
 				1F2AF5EC1964411B00107698 /* Bond.swift in Sources */,
+				1F982D7F1986DB8900289F31 /* ErrorPrompt.swift in Sources */,
 				1F0D92B0196312630098EB6C /* GameSelectionController.swift in Sources */,
 				1F2AF5EB1964411B00107698 /* Atom.swift in Sources */,
 				1F2E925C196C264C00549BC0 /* MoleculeController.swift in Sources */,
