@@ -18,6 +18,7 @@ class ButtonViewController: UIViewController {
     @IBOutlet var button6: UIButton?
         
     var buttons: [UIButton]?
+    var buttonChoiceRemaining = [false, false, false, false, false, false]
     var answerSet: [Answer]?
     var animationsRunning = false
         
@@ -54,17 +55,18 @@ class ButtonViewController: UIViewController {
             buttons![index].backgroundColor = GameConstants.BUTTON_GRAY_DEFAULT_COLOR
             buttons![index].alpha = 1.0
             buttons![index].setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+            buttonChoiceRemaining[index] = true
         }
         
         // Hide extra buttons
         for var indexToHide = answerSet.count; indexToHide < buttons!.count; ++indexToHide {
             buttons![indexToHide].enabled = false
             buttons![indexToHide].hidden = true;
+            buttonChoiceRemaining[indexToHide] = false
         }
     }
     
     func markAnswer(buttonIndex: Int, correct: Bool) {
-        
         if correct {
             buttons![buttonIndex].backgroundColor = GameConstants.BUTTON_GREEN_COLOR
             for button in buttons! {
@@ -76,6 +78,13 @@ class ButtonViewController: UIViewController {
         } else {
             animateButtonStopAll()
             buttons![buttonIndex].backgroundColor = GameConstants.BUTTON_WRONG_COLOR
+            
+            // Re-enable remaining answer choices
+            for var index = 0; index < answerSet!.count; ++index {
+                if (buttonChoiceRemaining[index]) {
+                    buttons![index].enabled = true
+                }
+            }
         }
         buttons![buttonIndex].setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         buttons![buttonIndex].enabled = false
@@ -114,7 +123,11 @@ class ButtonViewController: UIViewController {
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
-        
+        // Temporarily disable all buttons to disable multiple button selection
+        for var index = 0; index < answerSet!.count; ++index {
+            buttons![index].enabled = false
+        }
+
         let answerIndex = sender.tag
         (navigationController.topViewController as GameController).submitAnswer(answerSet![answerIndex], buttonIndex: answerIndex)
         
