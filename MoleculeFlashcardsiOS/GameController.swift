@@ -45,6 +45,7 @@ class GameController : UIViewController, UIApplicationDelegate {
             moleculeController = self.childViewControllers[0] as? MoleculeController
             buttonController = self.childViewControllers[1] as? ButtonViewController
         } else {
+            // This is just a precaution in case the storyboard has issues
             buttonController = self.childViewControllers[0] as? ButtonViewController
             moleculeController = self.childViewControllers[1] as? MoleculeController
             println("Warning, this may cause layout issues! Fix the storyboard!")
@@ -86,12 +87,17 @@ class GameController : UIViewController, UIApplicationDelegate {
             for question in questions {
                 var request = Request(url: "\(self.mediaURL!)?gsi=\(self.game!.sessionId!)&mt=0&qid=\(question.id)")
                 var convertedURL = NSURL.URLWithString("\(self.mediaURL!)?gsi=\(self.game!.sessionId!)&mt=0&qid=\(question.id)")
-                var err: NSError?
-                var imageData :NSData = NSData.dataWithContentsOfURL(convertedURL,options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &err)
-                var response: String = NSString(data: imageData, encoding: NSUTF8StringEncoding)
                 
-                var molecule = SDFParser.parse(sdfFileLines: response.componentsSeparatedByString("\n"))
+                // Convert the response to a string
+                var error: NSError?
+                var gameData: NSData = NSData.dataWithContentsOfURL(convertedURL,options: NSDataReadingOptions.DataReadingMappedIfSafe, error: &error)
+                var response: String = NSString(data: gameData, encoding: NSUTF8StringEncoding)
+                
+                // Parse the data
+                var molecule: Molecule = SDFParser.parse(sdfFileLines: response.componentsSeparatedByString("\n"))
+                // Create the geometry
                 var node = MoleculeGeometry.constructWith(molecule)
+                // Add the geometry to the scene
                 nodeList.append(node)
             }
             self.molecules = nodeList
@@ -120,6 +126,7 @@ class GameController : UIViewController, UIApplicationDelegate {
     }
     
     func nextQuestion() {
+        // If the game is finished end the game
         if game!.state == Game.GameState.FINISHED {
             endGame()
             return
@@ -130,24 +137,34 @@ class GameController : UIViewController, UIApplicationDelegate {
     }
     
     func submitAnswer (response: Answer, buttonIndex: Int) {
-        
+        // If the game isn't loaded do nothing
         if game!.state == Game.GameState.WAITING_TO_START {
             return
         }
-        self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: self.game!.timeLimit - self.timeRemaing, {(isCorrect: Bool, scoreModifier: Int) in
-            
-            // We need to update the button color in the main thread
-            dispatch_async(dispatch_get_main_queue(), ({
-                
-                self.buttonController!.markAnswer(buttonIndex, correct: isCorrect)
-                self.moleculeController!.setScore(scoreModifier)
-                
-                if isCorrect {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.WAIT_PERIOD), dispatch_get_main_queue(), ({
-                        self.nextQuestion()
-                    }))
-                }
-            }))
+        
+        self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: self.game!.timeLimit - self.timeRemaing, {(isCorrect: Bool, scoreModifier: Int, error: String!) in
+            if error {
+                // Display a dialog box and return to the description controller if there is an error
+                dispatch_async(dispatch_get_main_queue(), ({
+                    var errorPrompt = ErrorPrompt(message: error!)
+                    errorPrompt.display(controller: self, onComplete: {() in
+                        var gameDescriptionController = self.navigationController.viewControllers[2] as UIViewController
+                        self.navigationController.popToViewController(gameDescriptionController, animated: false)
+                    })
+                }))
+            } else {
+                // Mark the question as either right or wrong and proceed to the next
+                dispatch_async(dispatch_get_main_queue(), ({
+                    self.buttonController!.markAnswer(buttonIndex, correct: isCorrect)
+                    self.moleculeController!.setScore(scoreModifier)
+                    
+                    if isCorrect {
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, self.WAIT_PERIOD), dispatch_get_main_queue(), ({
+                            self.nextQuestion()
+                        }))
+                    }
+                }))
+            }
         })
     }
     
@@ -159,16 +176,29 @@ class GameController : UIViewController, UIApplicationDelegate {
         if self.timeRemaing != 0 {
             waitTime = self.WAIT_PERIOD
         }
-        self.game!.end(url: requestURL!, user: self.user!, gameTime: gameTime, onComplete: {(rank: Int, finalScore: Int) in
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, waitTime), dispatch_get_main_queue(), ({
-                var finalController = self.storyboard.instantiateViewControllerWithIdentifier("FinalController") as FinalController
-                finalController.game = self.game
-                finalController.user = self.user
-                finalController.rank = rank
-                finalController.score = finalScore
+        self.game!.end(url: requestURL!, user: self.user!, gameTime: gameTime, onComplete: {(rank: Int, finalScore: Int, error: String!) in
+            
+            if error {
+                // Display a dialog box and return to the description controller if there is an error
+                dispatch_async(dispatch_get_main_queue(), ({
+                    var errorPrompt = ErrorPrompt(message: error!)
+                    errorPrompt.display(controller: self, onComplete: {() in
+                        var gameDescriptionController = self.navigationController.viewControllers[2] as UIViewController
+                        self.navigationController.popToViewController(gameDescriptionController, animated: false)
+                    })
+                }))
+            } else {
+                // End the game and go to the final controller
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, waitTime), dispatch_get_main_queue(), ({
+                    var finalController = self.storyboard.instantiateViewControllerWithIdentifier("FinalController") as FinalController
+                    finalController.game = self.game
+                    finalController.user = self.user
+                    finalController.rank = rank
+                    finalController.score = finalScore
                 
-                self.navigationController.pushViewController(finalController as UIViewController, animated: true)
-            }))
+                    self.navigationController.pushViewController(finalController as UIViewController, animated: true)
+                }))
+            }
         })
     }
 }

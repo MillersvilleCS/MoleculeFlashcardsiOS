@@ -7,6 +7,8 @@
 //
 import UIKit
 
+typealias GameState = Game.GameState
+
 class Game {
     
     enum GameState {
@@ -84,7 +86,7 @@ class Game {
         })
     }
     
-    func end(#url: String, user: User, gameTime: Int, onComplete: (rank: Int, finalScore: Int) -> Void) {
+    func end(#url: String, user: User, gameTime: Int, onComplete: (rank: Int, finalScore: Int, error: String!) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "end_flashcard_game")
         request.addParameter(key: "authenticator", value: user.id!)
@@ -93,19 +95,23 @@ class Game {
         
         // End the game and perfom the on complete closure
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
+            if !responseData {
+                onComplete(rank: 0, finalScore: 0, error: "Response data was not returned")
+            }
             var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
+            
             if !error {
-                var rank = responseDict["rank"] as Int
-                var score = responseDict["final_score"] as Int
+                var rank = responseDict["rank"] as HighscoresRank
+                var score = responseDict["final_score"] as HighscoresScore
                 
-                onComplete(rank: rank, finalScore: score)
+                onComplete(rank: rank, finalScore: score, error: nil)
             } else {
-                println("Failed to end Game \(error)")
+                onComplete(rank: 0, finalScore: 0, error: error.description)
             }
         })
     }
     
-    func submit(#url: String, user: User, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int) -> Void) {
+    func submit(#url: String, user: User, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int, error: String!) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "submit_flashcard_answer")
         request.addParameter(key: "authenticator", value: user.id!)
@@ -115,7 +121,12 @@ class Game {
         request.addParameter(key: "game_time", value: time)
         
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
+            if !responseData {
+                onComplete(isCorrect: false, scoreModifier: 0, error: "Response data was not returned")
+            }
+            
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
+            
             
             //if there isnt an error proceed
             if !error {
@@ -124,17 +135,23 @@ class Game {
                 
                 if isCorrect == "true" {
                     //answer was correct
-                    self.questionIndex++
-                    if self.questionIndex >= self.questions!.count {
-                        self.state = GameState.FINISHED
-                    }
-                    onComplete(isCorrect: true, scoreModifier: score)
+                    self.nextQuestion()
+                    onComplete(isCorrect: true, scoreModifier: score, error: nil)
                 } else {
                     //answer was incorrect
-                    onComplete(isCorrect: false, scoreModifier: score)
+                    onComplete(isCorrect: false, scoreModifier: score, error: nil)
                 }
+            } else {
+                onComplete(isCorrect: false, scoreModifier: 0, error: error.description)
             }
         })
+    }
+    
+    func nextQuestion() {
+        ++self.questionIndex
+        if self.questionIndex >= self.getNumberOfQuestions() {
+            self.state = GameState.FINISHED
+        }
     }
     
     func setGameState(state: GameState) {
