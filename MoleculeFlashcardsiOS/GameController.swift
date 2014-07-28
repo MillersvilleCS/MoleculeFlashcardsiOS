@@ -54,6 +54,10 @@ class GameController : UIViewController, UIApplicationDelegate {
         assert(buttonController, "'buttonController' could not be found on GameController")
         
         moleculeController!.loadingView!.startAnimating()
+
+  
+        // Keep the screen on while playing the game.
+        UIApplication.sharedApplication().idleTimerDisabled = true
         
         self.start()
     }
