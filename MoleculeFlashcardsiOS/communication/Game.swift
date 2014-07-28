@@ -101,7 +101,7 @@ class Game {
             }
         })
     }
-    s
+    
     func submit(#url: String, user: User, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "submit_flashcard_answer")
