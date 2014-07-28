@@ -8,30 +8,36 @@
 
 import Foundation
 
+typealias HighscoresRank = Int
+typealias HighscoresScore = Int
+typealias HighscoresUsername = String
+
+typealias HighscoresEntry = HighScores.HighscoresEntry
+
 class HighScores {
     
-    struct Entry {
-        var rank: Int
-        var score: Int
-        var username: String
+    struct HighscoresEntry {
+        var rank: HighscoresRank
+        var score: HighscoresScore
+        var username: HighscoresUsername
         
-        init(rank: Int, score: Int, username: String) {
+        init(rank: HighscoresRank, score: HighscoresScore, username: HighscoresUsername) {
             self.rank = rank
             self.score = score
             self.username = username
         }
     }
     
-    var entries: [Entry] = [Entry]()
+    var entries: [HighscoresEntry] = [HighscoresEntry]()
     
     init(json: [AnyObject]) {
         
         for entryJson in json {
+            var rank = entryJson["rank"] as HighscoresRank
+            var score = entryJson["score"] as HighscoresScore
+            var username = entryJson["username"] as HighscoresUsername
             
-            var rank = entryJson["rank"] as Int
-            var score = entryJson["score"] as Int
-            var username = entryJson["username"] as String
-            entries.append(Entry(rank: rank, score: score, username: username))
+            entries.append(HighscoresEntry(rank: rank, score: score, username: username))
         }
     }
     

@@ -91,6 +91,7 @@ class Game {
         request.addParameter(key: "game_session_id", value: sessionId!)
         request.addParameter(key: "game_time", value: gameTime)
         
+        // End the game and perfom the on complete closure
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             if !error {

@@ -8,6 +8,9 @@
 
 import Foundation
 
+typealias Username = String
+typealias UserId = String
+
 typealias LoginStatus = User.LoginStatus
 
 class User {
@@ -16,8 +19,8 @@ class User {
         case LOGGED_OUT, LOGGING_IN, LOGGED_IN, FAILED
     }
     
-    var name: String?
-    var id: String?
+    var name: Username?
+    var id: UserId?
     var status = LoginStatus.LOGGED_OUT
     
     init() {
@@ -33,20 +36,16 @@ class User {
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            println(response.description)
             
             if error {
-                println("Failed to log in, \(error.description)")
                 onComplete(name: "", id: "", success: false, error: error.description)
                 self.status = LoginStatus.FAILED
             } else if response["success"] is String { // Server returns String if failed int if succes. Someone needs to fix that
-                println("Failed to log in,  invalid username or password")
                 onComplete(name: "", id: "",success: false, error: response["error"] as String)
                 self.status = LoginStatus.FAILED
             } else {
-                println("Logged in successfully")
-                self.name = response["username"] as? NSString
-                self.id = response["auth"] as? NSString
+                self.name = response["username"] as? Username
+                self.id = response["auth"] as? UserId
                 self.status = LoginStatus.LOGGED_IN
                 onComplete(name: self.name!, id: self.id!, success: true, error: "")
             }
@@ -63,20 +62,17 @@ class User {
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            println(response.description)
+            
             if error {
-                println("Failed to register, \(error.description)")
                 self.status = LoginStatus.FAILED
                 onComplete(name: "", id: "", success: false, error: error.description)
             } else if response["success"] is String {
-                println("Failed to register")
                 self.status = LoginStatus.FAILED
                 var errorString = response["error"] as String
                 onComplete(name: "", id: "", success: false, error: errorString)
             } else {
-                println("registered successfully")
-                self.name = response["username"] as? NSString
-                self.id = response["auth"] as? NSString
+                self.name = response["username"] as? Username
+                self.id = response["auth"] as? UserId
                 self.status = LoginStatus.LOGGED_IN
                 onComplete(name: self.name!, id: self.id!, success: true, error: "")
             }
