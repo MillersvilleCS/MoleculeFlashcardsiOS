@@ -34,13 +34,13 @@ class FinalController : UIViewController {
         rankLabel!.text = "Rank: #\(rank!)"
         
         if rank <= GameConstants.HIGHSCORE_ENTRIES_TO_SHOW  && user!.status == LoginStatus.LOGGED_IN {
-            updateHighScoresEntries(HighScores.Entry(rank: rank!, score: score!, username: user!.name!))
+            updateHighScoresEntries(HighscoresEntry(rank: rank!, score: score!, username: user!.name!))
         }
         
         navigationItem.hidesBackButton = true
     }
     
-    func updateHighScoresEntries(newHighScore: HighScores.Entry) {
+    func updateHighScoresEntries(newHighScore: HighscoresEntry) {
         
         var newEntry = newHighScore
         let highscores = game!.highscores
