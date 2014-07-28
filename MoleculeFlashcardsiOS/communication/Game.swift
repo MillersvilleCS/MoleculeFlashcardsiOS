@@ -58,6 +58,7 @@ class Game {
                 // Load questions
                 var newQuestions = [Question]()
                 var questionsJSON : AnyObject = response["questions"]!
+                
                 for questionJSON : AnyObject in questionsJSON as [AnyObject] {
                     var questionId: Int = questionJSON["id"] as Int
                     var questionText: String = questionJSON["text"] as String
@@ -87,6 +88,7 @@ class Game {
         request.addParameter(key: "authenticator", value: user.id!)
         request.addParameter(key: "game_session_id", value: sessionId!)
         request.addParameter(key: "game_time", value: gameTime)
+        
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             if !error {
@@ -95,11 +97,11 @@ class Game {
                 
                 onComplete(rank: rank, finalScore: score)
             } else {
-                EventLogger.logError("Failed to end Game \(error)")
+                println("Failed to end Game \(error)")
             }
         })
     }
-    
+    s
     func submit(#url: String, user: User, answer: Answer, time: Int, onComplete: (isCorrect: Bool, scoreModifier: Int) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "submit_flashcard_answer")
