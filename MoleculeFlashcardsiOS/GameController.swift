@@ -158,6 +158,8 @@ class GameController : UIViewController, UIApplicationDelegate {
         self.game!.end(url: requestURL!, user: self.user!, gameTime: gameTime, onComplete: {(rank: Int, finalScore: Int) in
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, waitTime), dispatch_get_main_queue(), ({
                 var finalController = self.storyboard.instantiateViewControllerWithIdentifier("FinalController") as FinalController
+                finalController.game = self.game
+                finalController.user = self.user
                 finalController.rank = rank
                 finalController.score = finalScore
                 

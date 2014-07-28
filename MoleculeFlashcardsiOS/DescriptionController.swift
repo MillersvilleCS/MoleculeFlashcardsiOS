@@ -27,10 +27,10 @@ class DescriptionController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(game)
-        assert(user)
-        assert(requestURL)
-        assert(mediaURL)
+        assert(game, "'game' not set in DescriptionController")
+        assert(user, "'user' not set in DescriptionController")
+        assert(requestURL, "'requestURL' not set in DescriptionController")
+        assert(mediaURL, "'mediaURL' not set in DescriptionController")
         
         imageView!.image = ImageLoader.load(url: game!.imageURL)
         

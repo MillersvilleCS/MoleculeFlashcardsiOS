@@ -18,7 +18,7 @@ class ButtonViewController: UIViewController {
     @IBOutlet var button6: UIButton?
         
     var buttons: [UIButton]?
-    var answerSet : [Answer]?
+    var answerSet: [Answer]?
     var animationsRunning = false
         
     override func viewDidLoad() {

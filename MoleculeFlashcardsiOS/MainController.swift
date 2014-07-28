@@ -43,7 +43,7 @@ class MainController : UIViewController {
         if loginInfo && loginInfo!.count == 2 {
             user.name = loginInfo![0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             user.id = loginInfo![1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            user.status = User.LoginStatus.LOGGED_IN
+            user.status = LoginStatus.LOGGED_IN
             navigationItem.setRightBarButtonItem(logoutButton, animated: true)
         } else {
             self.navigationItem.setRightBarButtonItem(loginButton, animated: true)
@@ -68,7 +68,7 @@ class MainController : UIViewController {
                         self.navigationController.pushViewController(controller, animated: true)
                     }))
                     self.presentViewController(confirmNoScorePrompt, animated: true, completion: nil)
-                    }))
+                }))
             } else {
                 dispatch_async(dispatch_get_main_queue(), ({
                     self.playButton!.titleLabel.alpha = 0.3
@@ -88,7 +88,7 @@ class MainController : UIViewController {
     
     
     @IBAction func registerButtonClicked (sender: UIBarButtonItem) {
-        if user.status == User.LoginStatus.LOGGED_IN {
+        if user.status == LoginStatus.LOGGED_IN {
 
             // Display lougout prompt
             dispatch_async(dispatch_get_main_queue(), ({

@@ -8,6 +8,8 @@
 
 import Foundation
 
+typealias LoginStatus = User.LoginStatus
+
 class User {
     
     enum LoginStatus {

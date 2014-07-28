@@ -38,6 +38,7 @@ class Game {
         self.highscores = highscores
     }
     
+    
     func start(#url: String, user: User, onComplete: (questions: [Question]) -> Void) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "load_flashcard_game")
@@ -48,10 +49,7 @@ class Game {
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             
-            if error != nil {
-                EventLogger.logError("Could not load game: \(error.description)")
-                self.state = GameState.FAILED_TO_LOAD
-            } else {
+            if !error {
                 self.questionIndex = 0
                 self.sessionId = response["game_session_id"]! as? String
                 
@@ -60,22 +58,26 @@ class Game {
                 var questionsJSON : AnyObject = response["questions"]!
                 
                 for questionJSON : AnyObject in questionsJSON as [AnyObject] {
-                    var questionId: Int = questionJSON["id"] as Int
-                    var questionText: String = questionJSON["text"] as String
-                    var answersJSON : AnyObject! = questionJSON["answers"]!
                     
+                    var questionId: QuestionID = questionJSON["id"] as QuestionID
+                    var questionText: QuestionText = questionJSON["text"] as QuestionText
+                    
+                    var answersJSON: AnyObject! = questionJSON["answers"]!
                     var answerList = [Answer]()
                     
                     // Load answers
                     for answerJSON : AnyObject in answersJSON as [AnyObject] {
-                        var answerId: Int = answerJSON["id"] as Int
-                        var answerText: String = answerJSON["text"] as String
+                        var answerId: AnswerID = answerJSON["id"] as AnswerID
+                        var answerText: AnswerText = answerJSON["text"] as AnswerText
+                        
                         answerList.append(Answer(id: answerId, text: answerText))
                     }
                     newQuestions.append(Question(id: questionId, text: questionText, answers: answerList))
                 }
                 self.questions = newQuestions
                 onComplete(questions: self.questions!)
+            } else {
+                self.state = GameState.FAILED_TO_LOAD
             }
             
             self.state = GameState.READY
@@ -113,21 +115,21 @@ class Game {
         
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
-            if error != nil {
-                EventLogger.logError("Could not submit answer '\(answer.text)': \(error.description)")
-            } else {
-                var isCorrect = response["correct"] as String
-                var score = response["score"] as Int
+            
+            //if there isnt an error proceed
+            if !error {
+                var isCorrect: String = response["correct"] as String
+                var score: Int = response["score"] as Int
                 
                 if isCorrect == "true" {
-                    EventLogger.log("submitted answer \(answer.text) was correct")
+                    //answer was correct
                     self.questionIndex++
                     if self.questionIndex >= self.questions!.count {
                         self.state = GameState.FINISHED
                     }
                     onComplete(isCorrect: true, scoreModifier: score)
                 } else {
-                    EventLogger.log("submitted answer \(answer.text) was incorrect")
+                    //answer was incorrect
                     onComplete(isCorrect: false, scoreModifier: score)
                 }
             }

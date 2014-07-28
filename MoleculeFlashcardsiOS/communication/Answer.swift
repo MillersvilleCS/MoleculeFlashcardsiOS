@@ -6,12 +6,15 @@
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
+typealias AnswerID = Int
+typealias AnswerText = String
+
 struct Answer {
     
-    var id: Int
-    var text: String
+    var id: AnswerID
+    var text: AnswerText
     
-    init(id: Int, text: String) {
+    init(id: AnswerID, text: AnswerText) {
         self.id = id
         self.text = text
     }

@@ -19,6 +19,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         assert(user, "User must be set in LoginController")
         
         registerButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
@@ -62,7 +63,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
                         self.navigationController.popToViewController(mainController, animated: true)
                     } else {
                         var  errorPrompt = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
-                        errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
+                            errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
                         }))
                         self.presentViewController(errorPrompt, animated: true, completion: nil)
                     }

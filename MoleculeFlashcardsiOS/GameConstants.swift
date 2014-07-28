@@ -30,6 +30,9 @@ struct GameConstants {
     
     static let MOLECULE_SPIN_AMOUNT: Float = 0.01
     
+    
+    static let HIGHSCORE_ENTRIES_TO_SHOW = 10
+    
     // Message constants
     static let WELCOME_MESSAGE = "Thanks for downloading our app! Remember to log in or register by clicking the icon in the upper right-hand corner of the screen."
                                  + "If you would like to add your own question sets, just register, then visit the ExSciTecH website and use our question set editor. Have fun!"
