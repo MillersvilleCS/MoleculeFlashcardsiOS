@@ -53,9 +53,10 @@ class DescriptionController : UIViewController {
             navigationController.pushViewController(gameController, animated: true)
             navigationController.topViewController.title = game!.name
         } else if sender.isEqual(highScoresButton) {
-            var controller = self.storyboard.instantiateViewControllerWithIdentifier("HighScoreController") as HighScoreController
+            var highsocreController = self.storyboard.instantiateViewControllerWithIdentifier("HighScoreController") as HighScoreController
             
-            self.navigationController.pushViewController(controller, animated: true)
+            navigationController.pushViewController(highsocreController, animated: true)
+            navigationController.topViewController.title = "Highscores"
         }
     }
 }
