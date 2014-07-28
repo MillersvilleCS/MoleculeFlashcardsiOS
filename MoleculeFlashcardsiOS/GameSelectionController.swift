@@ -9,15 +9,12 @@
 import UIKit
 import QuartzCore
 
-class GameSelectionController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    @IBOutlet var tableView : UITableView?
+class GameSelectionController: UITableViewController {
     
     var user: User?
     
     var loaded = false
     var games: [Game]?
-    var nib = UINib(nibName: "UITableViewCell", bundle: nil)
     var reuseIdentifier = "gameCell"
     
     override func viewDidLoad() {
@@ -32,12 +29,10 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         
         // Adding a footer ensures the table does not display unneeded cells.
         self.tableView!.tableFooterView = UIView (frame: CGRectZero)
-        
-        self.tableView!.rowHeight = self.tableView!.bounds.height / (CGFloat(self.games!.count) + CGFloat (1.0))
     }
     
     // Create a GameDescription controller for the selected game.
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         var controller = self.storyboard.instantiateViewControllerWithIdentifier("DescriptionController") as DescriptionController
@@ -54,7 +49,7 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     // Limit the number of rows to the number of games.
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         return self.games!.count
     }
     
@@ -63,30 +58,15 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     // Create a cell consisting of a game name and its associated image.
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
 
         var cell = self.tableView!.dequeueReusableCellWithIdentifier(reuseIdentifier) as GameCell
         
         var game = self.games![indexPath.row]
-        var cellText = game.name
-        var cellImage = ImageLoader.load(url: game.imageURL)
-        cell.gameLabel!.text = cellText
-        cell.gameImageView!.image = cellImage
+        cell.gameLabel!.text = game.name
+        cell.gameImageView!.image = ImageLoader.load(url: game.imageURL)
         
         return cell
-    }
-
-    override func viewDidLayoutSubviews() {
-        dispatch_async(dispatch_get_main_queue(), ({
-            var gameCells = self.tableView!.visibleCells() as [UITableViewCell]
-            for cell in gameCells {
-                // Position the cell's image and text
-                var imageInset = (cell.frame.height - cell.imageView.frame.height) / 2
-                cell.imageView.frame.size = CGSizeMake(cell.frame.size.width * 0.38, cell.frame.width * 0.38 * 0.82)
-                cell.imageView.center = CGPointMake(cell.imageView.frame.width / 2 + imageInset, cell.frame.height / 2)
-                cell.textLabel.frame = CGRectMake(GameConstants.GAME_TEXT_LABEL_INSET_RATIO * cell.frame.width, 0, cell.frame.width / 0.67, cell.frame.height)
-            }
-        }))
     }
     
     // Retrieve the games from the server.
@@ -123,5 +103,14 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillDisappear(animated: Bool)  {
         var mainController = navigationController.viewControllers[0] as MainController
         mainController.playButton!.titleLabel.alpha = 1.0
+    }
+    
+    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        //if iPad make cells taller
+        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
+            return 220
+        } else {
+            return 136
+        }
     }
 }
