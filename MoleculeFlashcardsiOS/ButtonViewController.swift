@@ -113,6 +113,7 @@ class ButtonViewController: UIViewController {
     }
     
     @IBAction func buttonClicked(sender: UIButton) {
+        
         let answerIndex = sender.tag
         (navigationController.topViewController as GameController).submitAnswer(answerSet![answerIndex], buttonIndex: answerIndex)
         

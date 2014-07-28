@@ -126,6 +126,10 @@ class GameController : UIViewController, UIApplicationDelegate {
     }
     
     func submitAnswer (response: Answer, buttonIndex: Int) {
+        
+        if game!.state == Game.GameState.WAITING_TO_START {
+            return
+        }
         self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: self.game!.timeLimit - self.timeRemaing, {(isCorrect: Bool, scoreModifier: Int) in
             
             // We need to update the button color in the main thread
