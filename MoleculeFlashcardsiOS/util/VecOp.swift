@@ -1,12 +1,11 @@
 //
 //  VecOp.swift
-//  HelloWorldSwift
+//  MoleculeFlashcardsiOS
 //
 //  Created by exscitech on 6/30/14.
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
-import Foundation
 import SceneKit
 
 struct VecOp {

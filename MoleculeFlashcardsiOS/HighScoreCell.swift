@@ -1,6 +1,6 @@
 //
 //  HighScoreCell.swift
-//  Flashcards
+//  MoleculeFlashcardsiOS
 //
 //  Created by exscitech on 7/25/14.
 //  Copyright (c) 2014 exscitech. All rights reserved.

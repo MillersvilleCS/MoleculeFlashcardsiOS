@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
-
 import Foundation
 
 class HighScores {

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 class LoginController: UIViewController, UITextFieldDelegate {
     @IBOutlet var loginButton: UIButton?

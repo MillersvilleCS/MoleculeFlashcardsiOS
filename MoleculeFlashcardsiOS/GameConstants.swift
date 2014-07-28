@@ -36,4 +36,7 @@ struct GameConstants {
     static let CONFIRM_NO_SCORE_MESSAGE = "\nYour scores will not be saved unless you register. Play anyway?"
     static let CONFIRM_LOGOUT_MESSAGE = ", are you sure you want to log out?"
     static let PASSWORD_ERROR_MESSAGE = "Password's do not match!"
+    
+    // To hold the username and userid
+    static let LOGIN_INFO_FILE = "loginInfo.txt"
 }

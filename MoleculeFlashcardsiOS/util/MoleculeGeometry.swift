@@ -1,12 +1,11 @@
 //
 //  MoleculeGeometry.swift
-//  HelloWorldSwift
+//  MoleculeFlashcardsiOS
 //
 //  Created by exscitech on 6/30/14.
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
-import Foundation
 import SceneKit
 
 struct MoleculeGeometry {
@@ -14,7 +13,7 @@ struct MoleculeGeometry {
     static func constructWith(molecule: Molecule) -> SCNNode {
         var moleculeData = _loadMoleculeData()
         var rootMolecule = SCNNode()
-        var add = rootMolecule.addChildNode //shorthand
+        var add = rootMolecule.addChildNode
         
         for atom in molecule.atoms {
             add(_buildAtom(atom, withColors: moleculeData.0, withSizes: moleculeData.1))
@@ -41,18 +40,16 @@ struct MoleculeGeometry {
         let sphereNode = SCNNode()
         var color = colors[atom.type] as [CGFloat]
         var size = sizes[atom.type] as CGFloat
-        
+
         var sphere = SCNSphere(radius: (size * 0.25))
         sphere.segmentCount = 12
         sphereNode.geometry = sphere
         sphereNode.position = atom.position
         
         let material = SCNMaterial()
-        
         var rgb = CGColorSpaceCreateDeviceRGB()
         var colors: [CGFloat] = [color[0], color[1], color[2], 1.0]
         material.diffuse.contents = CGColorCreate(rgb, colors)
-        //CGColorSpaceRelease(rgb)
         sphereNode.geometry.firstMaterial = material
         
         return sphereNode
@@ -72,7 +69,7 @@ struct MoleculeGeometry {
         cylinder.height    = CGFloat(VecOp.distance(fromPos, toPos))
         bondNode.position  = fromPos
         bondNode.geometry  = cylinder
-        //translate rotation point from middle of model to bottom of model
+        // Translate rotation point from middle of model to bottom of model
         bondNode.pivot = SCNMatrix4Translate (bondNode.pivot, xOffset, Float (cylinder.height / 2), 0)
         
         var down  = VecOp.UP
@@ -83,7 +80,7 @@ struct MoleculeGeometry {
         var rMatrix = SCNMatrix4MakeRotation(angle, rot.x, rot.y, rot.z)
         bondNode.transform  = SCNMatrix4Mult(rMatrix, bondNode.transform)
         
-        //temporarily set all bonds to the color of the atom they are going towards
+        // Temporarily set all bonds to the color of the atom they are going towards
         var color1 = colors[fromAtom.type] as [CGFloat]
         var color2 = colors[toAtom.type] as [CGFloat]
         var materials = [SCNMaterial]()
@@ -92,9 +89,6 @@ struct MoleculeGeometry {
         var rgb = CGColorSpaceCreateDeviceRGB()
         var colors: [CGFloat] = [color2[0], color2[1], color2[2], 1.0]
         materials[0].diffuse.contents = CGColorCreate(rgb, colors)
-        //  CGColorSpaceRelease(rgb)
-        //  materials[0].diffuse.contents = CGColorCreateGenericRGB(color2[0], color2[1], color2[2], 1.0)
-        
         bondNode.geometry.materials = materials
         
         return bondNode
@@ -127,6 +121,5 @@ struct MoleculeGeometry {
         var sizeDict  = NSDictionary(objects: sizes, forKeys: keys)
         
         return (colorDict, sizeDict)
-        
     }
 }

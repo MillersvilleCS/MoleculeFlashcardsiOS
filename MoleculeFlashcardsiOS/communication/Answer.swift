@@ -6,8 +6,6 @@
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
-import Foundation
-
 struct Answer {
     
     var id: Int

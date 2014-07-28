@@ -9,20 +9,16 @@
 import Foundation
 
 struct LoginInfoManager {
-    
-    static let file = "loginInfo.txt"
-    
     static func writeInfo(#name: String, id: String) {
-        var data: String = "\(name)\n\(id)"
-        let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
+        var userData: String = "\(name)\n\(id)"
+        let userDirectories: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
 
-        if dirs {
-            let directories:[String] = dirs!;
-            let dir = directories[0]; //documents directory
-            let path = dir.stringByAppendingPathComponent(file);
+        if userDirectories {
+            let directories:[String] = userDirectories!;
+            let documentsDirectory = directories[0];
+            let path = documentsDirectory.stringByAppendingPathComponent(GameConstants.LOGIN_INFO_FILE);
             
-            //writing
-            data.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding, error: nil);
+            userData.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding, error: nil);
         }
     }
     
@@ -30,9 +26,9 @@ struct LoginInfoManager {
         let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
         
         if dirs {
-            let directories:[String] = dirs!;
-            let dir = directories[0]; //documents directory
-            let path = dir.stringByAppendingPathComponent(file);
+            let userDirectories:[String] = dirs!;
+            let documentsDirectory = userDirectories[0];
+            let path = documentsDirectory.stringByAppendingPathComponent(GameConstants.LOGIN_INFO_FILE);
             
             return String.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
         }
@@ -44,11 +40,10 @@ struct LoginInfoManager {
         let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
         
         if dirs {
-            let directories:[String] = dirs!;
-            let dir = directories[0]; //documents directory
-            let path = dir.stringByAppendingPathComponent(file);
+            let userDirectories:[String] = dirs!;
+            let documentsDirectory = userDirectories[0];
+            let path = documentsDirectory.stringByAppendingPathComponent(GameConstants.LOGIN_INFO_FILE);
             
-            //writing
             data.writeToFile(path, atomically: false, encoding: NSUTF8StringEncoding, error: nil);
         }
     }

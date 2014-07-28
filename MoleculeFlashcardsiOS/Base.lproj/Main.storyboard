@@ -2628,7 +2628,6 @@
                         <outlet property="imageView" destination="XnP-5V-hPm" id="H1q-em-36u"/>
                         <outlet property="numberOfQuestionsLabel" destination="ZuH-dU-bJZ" id="rlf-nd-tiP"/>
                         <outlet property="playButton" destination="5gv-wP-riK" id="4mK-Mv-mjm"/>
-                        <outlet property="scroller" destination="8nb-0D-CvW" id="vRV-Zm-cMJ"/>
                         <outlet property="timeLimitLabel" destination="XT7-aB-Hc3" id="1cD-d9-Ruu"/>
                     </connections>
                 </viewController>

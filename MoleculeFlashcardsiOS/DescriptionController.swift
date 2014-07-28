@@ -6,9 +6,7 @@
 //  Copyright (c) 2014 exscitech. All rights reserved.
 //
 
-
 import UIKit
-import Foundation
 
 class DescriptionController : UIViewController {
     
@@ -20,9 +18,7 @@ class DescriptionController : UIViewController {
     @IBOutlet var timeLimitLabel: UILabel?
     @IBOutlet var numberOfQuestionsLabel: UILabel?
     @IBOutlet var gameDescriptionTextView: UITextView?
-    
-    @IBOutlet var scroller: UIScrollView?
-    
+        
     var game: Game?
     var user: User?
     var requestURL: String?
