@@ -25,9 +25,6 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
         
         assert(user, "user must be set in GameSelectionController")
         
-        self.tableView!.registerNib(nib, forCellReuseIdentifier: reuseIdentifier)
-        self.tableView!.registerClass(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        
         getGames(url: GameConstants.REQUEST_HANDLER_URL, user: user!)
         while !loaded {
             usleep(10)
@@ -68,13 +65,13 @@ class GameSelectionController: UIViewController, UITableViewDelegate, UITableVie
     // Create a cell consisting of a game name and its associated image.
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
 
-        var cell:UITableViewCell = self.tableView!.dequeueReusableCellWithIdentifier(reuseIdentifier) as UITableViewCell
+        var cell = self.tableView!.dequeueReusableCellWithIdentifier(reuseIdentifier) as GameCell
         
         var game = self.games![indexPath.row]
         var cellText = game.name
         var cellImage = ImageLoader.load(url: game.imageURL)
-        cell.textLabel!.text = cellText
-        cell.imageView!.image = cellImage
+        cell.gameLabel!.text = cellText
+        cell.gameImageView!.image = cellImage
         
         return cell
     }

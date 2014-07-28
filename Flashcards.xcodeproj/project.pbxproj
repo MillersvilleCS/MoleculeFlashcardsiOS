@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F03C5111986932500FDB99F /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F03C5101986932500FDB99F /* GameCell.swift */; };
 		1F0D92B0196312630098EB6C /* GameSelectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0D92AE196312630098EB6C /* GameSelectionController.swift */; };
 		1F119B651981AA9700C4DDB8 /* ButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F119B641981AA9700C4DDB8 /* ButtonViewController.swift */; };
 		1F16AC0619645793008BAF6F /* DescriptionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F16AC0519645793008BAF6F /* DescriptionController.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F03C5101986932500FDB99F /* GameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameCell.swift; sourceTree = "<group>"; };
 		1F0D92AE196312630098EB6C /* GameSelectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSelectionController.swift; sourceTree = "<group>"; };
 		1F119B641981AA9700C4DDB8 /* ButtonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonViewController.swift; sourceTree = "<group>"; };
 		1F16AC0519645793008BAF6F /* DescriptionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				1FA9E7D4197412EE00F873FC /* LoginController.swift */,
 				1FA9E7D61974170400F873FC /* RegisterController.swift */,
 				1F0D92AE196312630098EB6C /* GameSelectionController.swift */,
+				1F03C5101986932500FDB99F /* GameCell.swift */,
 				1FA9E7D8197418FA00F873FC /* HighScoreController.swift */,
 				1F8CF7E11982BAEC004C75C9 /* HighScoreCell.swift */,
 				1F16AC0519645793008BAF6F /* DescriptionController.swift */,
@@ -349,6 +352,7 @@
 				1F2E925C196C264C00549BC0 /* MoleculeController.swift in Sources */,
 				1FA9E7D9197418FA00F873FC /* HighScoreController.swift in Sources */,
 				1F119B651981AA9700C4DDB8 /* ButtonViewController.swift in Sources */,
+				1F03C5111986932500FDB99F /* GameCell.swift in Sources */,
 				1F2AF5EA1964411B00107698 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
