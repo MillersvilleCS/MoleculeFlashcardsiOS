@@ -22,6 +22,7 @@ class ButtonViewController: UIViewController {
     var answerSet: [Answer]?
     var animationsRunning = false
     var timeOfLastAnswer = NSNumber?()
+    let MINIMUM_TIME_BETWEEN_ANSWERS = 0.31459
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,7 @@ class ButtonViewController: UIViewController {
         }
     }
     
+    // Set the button text to possible answer choices
     func setButtonAnswers (answerSet: [Answer]) {
         animateButtonStopAll()
         self.answerSet = answerSet
@@ -68,6 +70,7 @@ class ButtonViewController: UIViewController {
         }
     }
     
+    // Change the color of the button to reflect correct/incorrect answers
     func markAnswer(buttonIndex: Int, correct: Bool) {
         
         if correct {
@@ -82,10 +85,10 @@ class ButtonViewController: UIViewController {
         } else {
             animateButtonStopAll()
             buttons![buttonIndex].backgroundColor = GameConstants.BUTTON_WRONG_COLOR
-            buttons![buttonIndex].setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            buttons![buttonIndex].enabled = false
-            buttons![buttonIndex].userInteractionEnabled = false
         }
+        buttons![buttonIndex].setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        buttons![buttonIndex].enabled = false
+        buttons![buttonIndex].userInteractionEnabled = false
     }
     
     func animateButton(button: UIButton) {
@@ -122,9 +125,9 @@ class ButtonViewController: UIViewController {
     
     @IBAction func buttonClicked(sender: UIButton) {
         var timeOfCurrentAnswer = CACurrentMediaTime()
-        if (timeOfCurrentAnswer - timeOfLastAnswer!) >= 0.31459 {
+        // Only process answers after a short delay to disable multiple button selection
+        if (timeOfCurrentAnswer - timeOfLastAnswer!) >= MINIMUM_TIME_BETWEEN_ANSWERS {
             timeOfLastAnswer = timeOfCurrentAnswer
-            
             let answerIndex = sender.tag
             (navigationController.topViewController as GameController).submitAnswer(answerSet![answerIndex], buttonIndex: answerIndex)
             animateButton(sender)
