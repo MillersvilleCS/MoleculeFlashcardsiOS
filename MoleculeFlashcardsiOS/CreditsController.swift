@@ -31,7 +31,7 @@ class CreditsController : UIViewController {
         } else if sender.isEqual(connorButton) {
             url = NSURL(string: "http://connormahaffey.com/")
         } else if sender.isEqual(willButton) {
-            url = NSURL(string: "https://github.com/GameGeazer")
+            url = NSURL(string: "https://github.com/GameGeezer")
         } else if sender.isEqual(kimButton) {
             url = NSURL(string: "https://github.com/kbroskie")
         } else if sender.isEqual(samButton) {
