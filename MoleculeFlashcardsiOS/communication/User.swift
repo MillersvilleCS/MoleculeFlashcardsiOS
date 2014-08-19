@@ -40,7 +40,7 @@ class User {
             if error {
                 onComplete(name: "", id: "", success: false, error: error.description)
                 self.status = LoginStatus.FAILED
-            } else if response["success"] is String { // Server returns String if failed int if succes. Someone needs to fix that
+            } else if !response["success"] { // Server returns String if failed int if succes. Someone needs to fix that
                 onComplete(name: "", id: "",success: false, error: response["error"] as String)
                 self.status = LoginStatus.FAILED
             } else {
@@ -66,7 +66,7 @@ class User {
             if error {
                 self.status = LoginStatus.FAILED
                 onComplete(name: "", id: "", success: false, error: error.description)
-            } else if response["success"] is String {
+            } else if !response["success"] {
                 self.status = LoginStatus.FAILED
                 var errorString = response["error"] as String
                 onComplete(name: "", id: "", success: false, error: errorString)

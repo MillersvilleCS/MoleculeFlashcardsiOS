@@ -130,10 +130,10 @@ class Game {
             
             //if there isnt an error proceed
             if !error {
-                var isCorrect: String = response["correct"] as String
+                var isCorrect: Bool = response["correct"] as Bool
                 var score: Int = response["score"] as Int
                 
-                if isCorrect == "true" {
+                if isCorrect {
                     //answer was correct
                     self.nextQuestion()
                     onComplete(isCorrect: true, scoreModifier: score, error: nil)
