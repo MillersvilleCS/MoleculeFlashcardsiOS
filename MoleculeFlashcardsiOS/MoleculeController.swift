@@ -27,13 +27,20 @@ class MoleculeController: UIViewController {
     @IBOutlet var questionProgressView: UIProgressView?
     @IBOutlet var loadingView: UIActivityIndicatorView?
     
-    var questionFormatStartTags: NSString = "<b><p style=\"font-size:10; font-family: Helvetica\" >"
-    var questionFormatEndTags: NSString = "</p></b>"
+    var questionFormatStartTags: NSString = "<p style=\"font-size: 15px; font-family: Helvetica; position: absolute; bottom: -10px;\"><b>"
+    let questionFormatEndTags: NSString = "</b></p>"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //load bigger font for the iPad
+        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
+            questionFormatStartTags = "<p style=\"font-size: 25px; font-family: Helvetica; position: absolute; bottom: -10px;\"><b>"
+        }
+        
         var loadingString = "Loading..."
-        questionWebView!.loadHTMLString("\(questionFormatStartTags)\(loadingString)\(questionFormatEndTags)", baseURL: nil)
+        self.questionWebView!.loadHTMLString("\(self.questionFormatStartTags)\(loadingString)\(self.questionFormatEndTags)", baseURL: nil)
+        self.questionWebView!.scrollView.scrollEnabled = false;
         
         cameraNode.camera = SCNCamera()
         scene.rootNode.addChildNode(cameraNode)
@@ -108,7 +115,6 @@ class MoleculeController: UIViewController {
         
         if timer {
             timer!.invalidate()
-            
         }
         // SHOULD BE DONE IN APP DELIGATE NOT HERE!
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
