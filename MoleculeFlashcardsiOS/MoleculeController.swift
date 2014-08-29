@@ -21,15 +21,20 @@ class MoleculeController: UIViewController {
     
     @IBOutlet var scoreLabel: UILabel?
     @IBOutlet var timerLabel: UILabel?
-    @IBOutlet var questionLabel: UILabel?
     @IBOutlet var scoreChangeLabel: UILabel?
+    @IBOutlet var questionWebView: UIWebView?
     
     @IBOutlet var questionProgressView: UIProgressView?
     @IBOutlet var loadingView: UIActivityIndicatorView?
     
+    var questionFormatStartTags: NSString = "<b><p style=\"font-size:10; font-family: Helvetica\" >"
+    var questionFormatEndTags: NSString = "</p></b>"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-  
+        var loadingString = "Loading..."
+        questionWebView!.loadHTMLString("\(questionFormatStartTags)\(loadingString)\(questionFormatEndTags)", baseURL: nil)
+        
         cameraNode.camera = SCNCamera()
         scene.rootNode.addChildNode(cameraNode)
         cameraNode.position = SCNVector3(x: 0, y: 0, z: 22)
@@ -91,9 +96,9 @@ class MoleculeController: UIViewController {
         questionProgressView!.setProgress(currentQuestion / questionCount, animated: true)
         
         if question == nil {
-            self.questionLabel!.text = ""
+           self.questionWebView!.loadHTMLString("\(questionFormatStartTags)\(questionFormatEndTags)", baseURL: nil)
         } else {
-            self.questionLabel!.text = question
+            self.questionWebView!.loadHTMLString("\(questionFormatStartTags)\(question)\(questionFormatEndTags)", baseURL: nil)
         }
         if self.molecule {
             self.molecule!.removeFromParentNode()

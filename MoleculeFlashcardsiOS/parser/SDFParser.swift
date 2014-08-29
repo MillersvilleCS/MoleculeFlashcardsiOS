@@ -10,7 +10,7 @@ import Foundation
 
 struct SDFParser {
     
-    static let HEADER_INDEX = 4
+    static let HEADER_INDEX = 4 as Int
     
     // Note: Input passed here should only contain text before "M  END"
     static func parse(sdfFileLines content: [String]) -> Molecule {
@@ -24,7 +24,7 @@ struct SDFParser {
             line = content[index]
         }
         
-        while(index < content.count && content[index] != "M  END") {
+        while(index < content.count && (content[index] as NSString).substringToIndex(6) != "M  END" && (content[index] as NSString).substringToIndex(6) != "M  CHG") {
             line = content[index]
             molecule.add(parseBond(line))
             index++
