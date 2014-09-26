@@ -49,16 +49,16 @@ class MoleculeController: UIViewController {
         // directional light
         let lightNode = SCNNode()
         lightNode.light = SCNLight()
-        lightNode.light.type = SCNLightTypeOmni
-        lightNode.light.color = GameConstants.LIGHT_NODE_COLOR
+        lightNode.light?.type = SCNLightTypeOmni
+        lightNode.light?.color = GameConstants.LIGHT_NODE_COLOR
         lightNode.position = SCNVector3(x: -25, y: 0, z: 0)
         scene.rootNode.addChildNode(lightNode)
         
         // ambient light
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light.type = SCNLightTypeAmbient
-        ambientLightNode.light.color = GameConstants.AMBIENT_LIGHT_NODE_COLOR
+        ambientLightNode.light?.type = SCNLightTypeAmbient
+        ambientLightNode.light?.color = GameConstants.AMBIENT_LIGHT_NODE_COLOR
         scene.rootNode.addChildNode(ambientLightNode)
         
         // set scene to view
@@ -74,7 +74,6 @@ class MoleculeController: UIViewController {
         let gestureRecognizers = NSMutableArray()
         gestureRecognizers.addObject(zoomGesture)
         gestureRecognizers.addObject(panGesture)
-        gestureRecognizers.addObjectsFromArray(sceneView.gestureRecognizers)
         sceneView.gestureRecognizers = gestureRecognizers
     }
 
@@ -95,25 +94,25 @@ class MoleculeController: UIViewController {
     }
     
     func setQuestion (question: String, molecule: SCNNode) {
-        var gameController = navigationController.topViewController as GameController
+        var gameController = navigationController?.topViewController as GameController
         
         var questionCount = Float(gameController.game!.questionCount)
         var currentQuestion = Float(gameController.game!.questionIndex + 1)
         
         questionProgressView!.setProgress(currentQuestion / questionCount, animated: true)
         
-        if question == nil {
+        if question.isEmpty {
            self.questionWebView!.loadHTMLString("\(questionFormatStartTags)\(questionFormatEndTags)", baseURL: nil)
         } else {
             self.questionWebView!.loadHTMLString("\(questionFormatStartTags)\(question)\(questionFormatEndTags)", baseURL: nil)
         }
-        if self.molecule {
+        if (self.molecule != nil) {
             self.molecule!.removeFromParentNode()
         }
         self.molecule = molecule
         scene.rootNode.addChildNode(molecule)
         
-        if timer {
+        if (timer != nil) {
             timer!.invalidate()
         }
         // SHOULD BE DONE IN APP DELIGATE NOT HERE!
@@ -122,7 +121,7 @@ class MoleculeController: UIViewController {
     
     // Update the current score and display the score for the last response
     func setScore(score: Int) {
-        var currentScore = scoreLabel!.text.toInt()
+        var currentScore = scoreLabel!.text?.toInt()
         var scoreChange: Int = score - currentScore!
         
         self.scoreLabel!.text = "\(score)"

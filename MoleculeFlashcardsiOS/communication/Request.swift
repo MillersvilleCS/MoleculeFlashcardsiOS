@@ -23,7 +23,7 @@ class Request {
     func performPost(#onComplete: (response:NSURLResponse!, responseData:NSData!, error: NSError!) -> Void) {
         var request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
-        var data: NSData = NSJSONSerialization.dataWithJSONObject(parameters, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
+        var data: NSData = NSJSONSerialization.dataWithJSONObject(parameters, options: NSJSONWritingOptions.PrettyPrinted, error: nil)!
         request.HTTPBody = data
         var queue: NSOperationQueue = NSOperationQueue()
         

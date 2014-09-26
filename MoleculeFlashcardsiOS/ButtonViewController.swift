@@ -41,8 +41,8 @@ class ButtonViewController: UIViewController {
         for button in buttons! {
             button.addTarget(self, action: Selector("buttonClicked:"), forControlEvents: .TouchUpInside)
             button.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
-            button.titleLabel.adjustsFontSizeToFitWidth = true
-            button.titleLabel.minimumScaleFactor = 0.5
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.titleLabel?.minimumScaleFactor = 0.5
             button.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         }
     }
@@ -129,7 +129,7 @@ class ButtonViewController: UIViewController {
         if (timeOfCurrentAnswer - timeOfLastAnswer!) >= MINIMUM_TIME_BETWEEN_ANSWERS {
             timeOfLastAnswer = timeOfCurrentAnswer
             let answerIndex = sender.tag
-            (navigationController.topViewController as GameController).submitAnswer(answerSet![answerIndex], buttonIndex: answerIndex)
+            (navigationController?.topViewController as GameController).submitAnswer(answerSet![answerIndex], buttonIndex: answerIndex)
             animateButton(sender)
         }
     }

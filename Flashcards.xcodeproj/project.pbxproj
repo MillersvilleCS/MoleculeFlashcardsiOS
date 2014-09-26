@@ -505,7 +505,7 @@
 		1FB71EB21961FBE60054FB44 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MoleculeFlashcardsiOS.app/MoleculeFlashcardsiOS";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Flashcards.app/Flashcards";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -525,7 +525,7 @@
 		1FB71EB31961FBE60054FB44 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MoleculeFlashcardsiOS.app/MoleculeFlashcardsiOS";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Flashcards.app/Flashcards";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

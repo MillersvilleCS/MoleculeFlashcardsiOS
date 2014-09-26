@@ -37,10 +37,10 @@ class User {
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             
-            if error {
+            if (error != nil) {
                 onComplete(name: "", id: "", success: false, error: error.description)
                 self.status = LoginStatus.FAILED
-            } else if !response["success"] { // Server returns String if failed int if succes. Someone needs to fix that
+            } else if !(response["success"] as Bool) {
                 onComplete(name: "", id: "",success: false, error: response["error"] as String)
                 self.status = LoginStatus.FAILED
             } else {
@@ -63,10 +63,10 @@ class User {
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             
-            if error {
+            if (error != nil) {
                 self.status = LoginStatus.FAILED
                 onComplete(name: "", id: "", success: false, error: error.description)
-            } else if !response["success"] {
+            } else if !(response["success"] as Bool) {
                 self.status = LoginStatus.FAILED
                 var errorString = response["error"] as String
                 onComplete(name: "", id: "", success: false, error: errorString)

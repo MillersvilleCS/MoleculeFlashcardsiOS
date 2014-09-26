@@ -27,11 +27,6 @@ class DescriptionController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(game, "'game' not set in DescriptionController")
-        assert(user, "'user' not set in DescriptionController")
-        assert(requestURL, "'requestURL' not set in DescriptionController")
-        assert(mediaURL, "'mediaURL' not set in DescriptionController")
-        
         imageView!.image = ImageLoader.load(url: game!.imageURL)
         
         highScoresButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
@@ -44,19 +39,19 @@ class DescriptionController : UIViewController {
     
     @IBAction func buttonClicked(sender: UIButton) {
         if sender.isEqual(playButton) {
-            var gameController = storyboard.instantiateViewControllerWithIdentifier("GameController") as GameController
+            var gameController = storyboard?.instantiateViewControllerWithIdentifier("GameController") as GameController
             gameController.game = game!
             gameController.user = user!
             gameController.requestURL = requestURL!
             gameController.mediaURL = mediaURL!
             
-            navigationController.pushViewController(gameController, animated: true)
-            navigationController.topViewController.title = game!.name
+            navigationController?.pushViewController(gameController, animated: true)
+            navigationController?.topViewController.title = game!.name
         } else if sender.isEqual(highScoresButton) {
-            var highsocreController = self.storyboard.instantiateViewControllerWithIdentifier("HighScoreController") as HighScoreController
+            var highsocreController = self.storyboard?.instantiateViewControllerWithIdentifier("HighScoreController") as HighScoreController
             
-            navigationController.pushViewController(highsocreController, animated: true)
-            navigationController.topViewController.title = "Highscores"
+            navigationController?.pushViewController(highsocreController, animated: true)
+            navigationController?.topViewController.title = "Highscores"
         }
     }
 }

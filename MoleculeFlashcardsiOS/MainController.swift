@@ -40,7 +40,7 @@ class MainController : UIViewController {
         var loginInfo = LoginInfoManager.getInfo()?.componentsSeparatedByString("\n")
         
         // Ensure there is no extra whitespace.
-        if loginInfo && loginInfo!.count == 2 {
+        if (loginInfo != nil && loginInfo!.count == 2) {
             user.name = loginInfo![0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             user.id = loginInfo![1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
             user.status = LoginStatus.LOGGED_IN
@@ -56,33 +56,33 @@ class MainController : UIViewController {
             if user.status != User.LoginStatus.LOGGED_IN {
                 // Display a dialog box warning the player if they aren't logged in
                 dispatch_async(dispatch_get_main_queue(), ({
-                    self.playButton!.titleLabel.alpha = 0.3
+                    self.playButton!.titleLabel?.alpha = 0.3
 
                     var confirmNoScorePrompt = UIAlertController(title: "Warning!", message: GameConstants.CONFIRM_NO_SCORE_MESSAGE, preferredStyle: UIAlertControllerStyle.Alert)
                     confirmNoScorePrompt.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: { action in
-                        self.playButton!.titleLabel.alpha = 1.0
+                        self.playButton!.titleLabel!.alpha = 1.0
                     }))
-                    confirmNoScorePrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: {action in
-                        var controller = self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
+                    confirmNoScorePrompt.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Default, handler: { action in
+                        var controller = self.storyboard?.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
                         controller.user = self.user
-                        self.navigationController.pushViewController(controller, animated: true)
+                        self.navigationController?.pushViewController(controller, animated: true)
                     }))
                     self.presentViewController(confirmNoScorePrompt, animated: true, completion: nil)
                 }))
             } else {
                 dispatch_async(dispatch_get_main_queue(), ({
-                    self.playButton!.titleLabel.alpha = 0.3
-                    var gameSelectionController = self.storyboard.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
+                    self.playButton!.titleLabel?.alpha = 0.3
+                    var gameSelectionController = self.storyboard?.instantiateViewControllerWithIdentifier("GameSelectionController") as GameSelectionController
                     gameSelectionController.user = self.user
-                    self.navigationController.pushViewController(gameSelectionController, animated: true)
+                    self.navigationController?.pushViewController(gameSelectionController, animated: true)
                 }))
             }
         // Tutorial button clicked
         } else if sender.isEqual(tutorialButton) {
-            navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("TutorialController") as UIViewController, animated: true)
+            navigationController?.pushViewController(self.storyboard?.instantiateViewControllerWithIdentifier("TutorialController") as UIViewController, animated: true)
         // Credits button clicked
         } else {
-            navigationController.pushViewController(self.storyboard.instantiateViewControllerWithIdentifier("CreditsController") as UIViewController, animated: true)
+            navigationController?.pushViewController(self.storyboard?.instantiateViewControllerWithIdentifier("CreditsController") as UIViewController, animated: true)
         }
     }
     
@@ -104,9 +104,9 @@ class MainController : UIViewController {
             }))
         // Display login screen
         } else {
-            var controller = self.storyboard.instantiateViewControllerWithIdentifier("LoginController") as LoginController
+            var controller = self.storyboard?.instantiateViewControllerWithIdentifier("LoginController") as LoginController
             controller.user = user
-            navigationController.pushViewController(controller, animated: true)
+            navigationController?.pushViewController(controller, animated: true)
         }
     }
 }

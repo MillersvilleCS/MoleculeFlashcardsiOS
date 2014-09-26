@@ -50,7 +50,7 @@ struct MoleculeGeometry {
         var rgb = CGColorSpaceCreateDeviceRGB()
         var colors: [CGFloat] = [color[0], color[1], color[2], 1.0]
         material.diffuse.contents = CGColorCreate(rgb, colors)
-        sphereNode.geometry.firstMaterial = material
+        sphereNode.geometry?.firstMaterial = material
         
         return sphereNode
     }
@@ -89,14 +89,14 @@ struct MoleculeGeometry {
         var rgb = CGColorSpaceCreateDeviceRGB()
         var colors: [CGFloat] = [color2[0], color2[1], color2[2], 1.0]
         materials[0].diffuse.contents = CGColorCreate(rgb, colors)
-        bondNode.geometry.materials = materials
+        bondNode.geometry?.materials = materials
         
         return bondNode
     }
     
     static func _loadMoleculeData() -> (NSDictionary, NSDictionary) {
         var path = NSBundle.mainBundle().pathForResource("moleculeData", ofType: ".txt")
-        var moleculeText: String = NSString.stringWithContentsOfFile(path, encoding: NSUTF8StringEncoding, error: nil)
+        var moleculeText: String = NSString.stringWithContentsOfFile(path!, encoding: NSUTF8StringEncoding, error: nil)
         
         var lines = moleculeText.componentsSeparatedByString("\n")
         var keys = [String]()

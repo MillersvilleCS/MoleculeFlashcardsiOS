@@ -19,8 +19,6 @@ class GameSelectionController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(user, "user must be set in GameSelectionController")
-        
         getGames(url: GameConstants.REQUEST_HANDLER_URL, user: user!)
         while !loaded {
             usleep(10)
@@ -31,29 +29,29 @@ class GameSelectionController: UITableViewController {
     }
     
     // Create a GameDescription controller for the selected game.
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        var descriptionController = self.storyboard.instantiateViewControllerWithIdentifier("DescriptionController") as DescriptionController
+        var descriptionController = self.storyboard?.instantiateViewControllerWithIdentifier("DescriptionController") as DescriptionController
         var game = self.games![indexPath.row]
         
         descriptionController.game = game
         descriptionController.user = user
         descriptionController.requestURL = GameConstants.REQUEST_HANDLER_URL
         descriptionController.mediaURL = GameConstants.GET_MEDIA_URL
-        self.navigationController.pushViewController(descriptionController, animated: true)
+        self.navigationController?.pushViewController(descriptionController, animated: true)
         
         // Update the navigation bar's title to the selected game
-        navigationController.topViewController.title = (tableView.cellForRowAtIndexPath(indexPath) as GameCell).gameLabel!.text
+        navigationController?.topViewController.title = (tableView.cellForRowAtIndexPath(indexPath) as GameCell).gameLabel!.text
     }
     
     // Limit the number of rows to the number of games.
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.games!.count
     }
 
     // Create a cell consisting of a game name and its associated image.
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 
         var cell = self.tableView!.dequeueReusableCellWithIdentifier(reuseIdentifier) as GameCell
         
@@ -68,11 +66,11 @@ class GameSelectionController: UITableViewController {
     func getGames(#url: String, user: User) {
         var request = Request(url: url)
         request.addParameter(key: "request_type", value: "get_avail_flashcard_games")
-        request.addParameter(key: "authenticator", value: !user.id)
+        request.addParameter(key: "authenticator", value: user.id!)
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
-            if error {
+            if (error != nil) {
                 println("Error loading games \(error.description)")
             } else {
                 var gameList = [Game]()
@@ -83,7 +81,7 @@ class GameSelectionController: UITableViewController {
                     var description = gameJSON["description"] as String
                     var questionCount = gameJSON["mol_count"] as Int
                     var timeLimit = gameJSON["time_limit"] as String
-                    var imageURL = "https://exscitech.org" + gameJSON["image"].description
+                    var imageURL = "https://exscitech.org" + (gameJSON["image"] as String)
                     var highScores = gameJSON["high_scores"] as [AnyObject]
                     
                     gameList.append(Game(id: id, name: name, description: description, timeLimit: timeLimit.toInt()!, questionCount: questionCount, imageURL: imageURL, highscores: HighScores(json: highScores)))
@@ -96,11 +94,11 @@ class GameSelectionController: UITableViewController {
     
     // Change the transparency of play button in the main controller to indicate an unpressed state.
     override func viewWillDisappear(animated: Bool)  {
-        var mainController = navigationController.viewControllers[0] as MainController
-        mainController.playButton!.titleLabel.alpha = 1.0
+        var mainController = navigationController?.viewControllers[0] as MainController
+        mainController.playButton!.titleLabel!.alpha = 1.0
     }
     
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         //if iPad make cells taller
         if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
             return 220

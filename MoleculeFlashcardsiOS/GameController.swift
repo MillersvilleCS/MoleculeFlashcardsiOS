@@ -11,7 +11,7 @@ import SceneKit
 
 class GameController : UIViewController, UIApplicationDelegate {
     
-    let WAIT_PERIOD: Int64 = 3 * NSEC_PER_SEC.asSigned()
+    let WAIT_PERIOD: Int64 = 3000000000 // 3 billion nano seconds aka 3 seconds
         
     var game: Game?
     var user: User?
@@ -35,11 +35,6 @@ class GameController : UIViewController, UIApplicationDelegate {
         
         navigationItem.hidesBackButton = true
         
-        assert(game, "'game' not set on GameController")
-        assert(user, "'user' not set on GameController")
-        assert(requestURL, "'requestURL' not set on GameController")
-        assert(mediaURL, "'mediaURL' not set on GameController")
-        
         var controller = self.childViewControllers[0] as UIViewController
         if controller.restorationIdentifier == "MoleculeController" {
             moleculeController = self.childViewControllers[0] as? MoleculeController
@@ -50,9 +45,6 @@ class GameController : UIViewController, UIApplicationDelegate {
             moleculeController = self.childViewControllers[1] as? MoleculeController
             println("Warning, this may cause layout issues! Fix the storyboard!")
         }
-        
-        assert(moleculeController, "'moleculeController' could not be found on GameController")
-        assert(buttonController, "'buttonController' could not be found on GameController")
         
         moleculeController!.loadingView!.startAnimating()
 
@@ -65,8 +57,8 @@ class GameController : UIViewController, UIApplicationDelegate {
     
     // Returns to the Game Description screen if the user exits the app while a game is running.
     func applicationWillResignActive(application: UIApplication) {
-        var gameDescriptionController = navigationController.viewControllers[2] as UIViewController
-        self.navigationController.popToViewController(gameDescriptionController, animated: false)
+        var gameDescriptionController = navigationController?.viewControllers[2] as UIViewController
+        self.navigationController?.popToViewController(gameDescriptionController, animated: false)
     }
     
     func applicationWillTerminate(application: UIApplication!) {
@@ -143,13 +135,13 @@ class GameController : UIViewController, UIApplicationDelegate {
         }
         
         self.game!.submit(url: requestURL!, user: self.user!, answer: response, time: self.game!.timeLimit - self.timeRemaing, {(isCorrect: Bool, scoreModifier: Int, error: String!) in
-            if error {
+            if (error != nil) {
                 // Display a dialog box and return to the description controller if there is an error
                 dispatch_async(dispatch_get_main_queue(), ({
                     var errorPrompt = ErrorPrompt(message: error!)
                     errorPrompt.display(controller: self, onComplete: {() in
-                        var gameDescriptionController = self.navigationController.viewControllers[2] as UIViewController
-                        self.navigationController.popToViewController(gameDescriptionController, animated: false)
+                        var gameDescriptionController = self.navigationController?.viewControllers[2] as UIViewController
+                        self.navigationController?.popToViewController(gameDescriptionController, animated: false)
                     })
                 }))
             } else {
@@ -178,25 +170,25 @@ class GameController : UIViewController, UIApplicationDelegate {
         }
         self.game!.end(url: requestURL!, user: self.user!, gameTime: gameTime, onComplete: {(rank: Int, finalScore: Int, error: String!) in
             
-            if error {
+            if (error != nil) {
                 // Display a dialog box and return to the description controller if there is an error
                 dispatch_async(dispatch_get_main_queue(), ({
                     var errorPrompt = ErrorPrompt(message: error!)
                     errorPrompt.display(controller: self, onComplete: {() in
-                        var gameDescriptionController = self.navigationController.viewControllers[2] as UIViewController
-                        self.navigationController.popToViewController(gameDescriptionController, animated: false)
+                        var gameDescriptionController = self.navigationController?.viewControllers[2] as UIViewController
+                        self.navigationController?.popToViewController(gameDescriptionController, animated: false)
                     })
                 }))
             } else {
                 // End the game and go to the final controller
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, waitTime), dispatch_get_main_queue(), ({
-                    var finalController = self.storyboard.instantiateViewControllerWithIdentifier("FinalController") as FinalController
+                    var finalController = self.storyboard?.instantiateViewControllerWithIdentifier("FinalController") as FinalController
                     finalController.game = self.game
                     finalController.user = self.user
                     finalController.rank = rank
                     finalController.score = finalScore
                 
-                    self.navigationController.pushViewController(finalController as UIViewController, animated: true)
+                    self.navigationController?.pushViewController(finalController as UIViewController, animated: true)
                 }))
             }
         })

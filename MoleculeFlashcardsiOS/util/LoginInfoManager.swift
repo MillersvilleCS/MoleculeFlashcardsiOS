@@ -13,7 +13,7 @@ struct LoginInfoManager {
         var userData: String = "\(name)\n\(id)"
         let userDirectories: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
 
-        if userDirectories {
+        if (userDirectories != nil) {
             let directories:[String] = userDirectories!;
             let documentsDirectory = directories[0];
             let path = documentsDirectory.stringByAppendingPathComponent(GameConstants.LOGIN_INFO_FILE);
@@ -25,7 +25,7 @@ struct LoginInfoManager {
     static func getInfo() -> String? {
         let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
         
-        if dirs {
+        if (dirs != nil) {
             let userDirectories:[String] = dirs!;
             let documentsDirectory = userDirectories[0];
             let path = documentsDirectory.stringByAppendingPathComponent(GameConstants.LOGIN_INFO_FILE);
@@ -39,7 +39,7 @@ struct LoginInfoManager {
         var data: String = ""
         let dirs: [String]? = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true) as? [String]
         
-        if dirs {
+        if (dirs != nil) {
             let userDirectories:[String] = dirs!;
             let documentsDirectory = userDirectories[0];
             let path = documentsDirectory.stringByAppendingPathComponent(GameConstants.LOGIN_INFO_FILE);

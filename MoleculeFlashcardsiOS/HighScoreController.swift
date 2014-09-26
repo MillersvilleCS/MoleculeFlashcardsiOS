@@ -17,7 +17,7 @@ class HighScoreController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var controller: DescriptionController = navigationController.viewControllers[2] as DescriptionController
+        var controller: DescriptionController = navigationController?.viewControllers[2] as DescriptionController
         self.highScores = controller.game!.highscores
         
         // Adding a footer ensures the table does not display unneeded cells.
@@ -28,11 +28,11 @@ class HighScoreController: UITableViewController {
         super.didReceiveMemoryWarning()
     }
     
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.highScores!.entryCount()
     }
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell? {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath: indexPath) as HighScoreCell
         var highScore = self.highScores!.entries[indexPath.row]
         
@@ -43,7 +43,7 @@ class HighScoreController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         //if iPad make cells taller
         if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
             return 70

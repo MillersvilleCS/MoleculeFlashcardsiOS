@@ -51,7 +51,7 @@ class Game {
             
             var response: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             
-            if !error {
+            if error == nil {
                 self.questionIndex = 0
                 self.sessionId = response["game_session_id"]! as? String
                 
@@ -95,12 +95,12 @@ class Game {
         
         // End the game and perfom the on complete closure
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
-            if !responseData {
+            if !(responseData != nil) {
                 onComplete(rank: 0, finalScore: 0, error: "Response data was not returned")
             }
             var responseDict: NSDictionary = NSJSONSerialization.JSONObjectWithData(responseData,options: NSJSONReadingOptions.MutableContainers, error:nil) as NSDictionary
             
-            if !error {
+            if (error == nil) {
                 var rank = responseDict["rank"] as HighscoresRank
                 var score = responseDict["final_score"] as HighscoresScore
                 
@@ -121,7 +121,7 @@ class Game {
         request.addParameter(key: "game_time", value: time)
         
         request.performPost(onComplete:{(response:NSURLResponse!, responseData:NSData!, error: NSError!) in
-            if !responseData {
+            if responseData == nil {
                 onComplete(isCorrect: false, scoreModifier: 0, error: "Response data was not returned")
             }
             
@@ -129,7 +129,7 @@ class Game {
             
             
             //if there isnt an error proceed
-            if !error {
+            if (error == nil) {
                 var isCorrect: Bool = response["correct"] as Bool
                 var score: Int = response["score"] as Int
                 

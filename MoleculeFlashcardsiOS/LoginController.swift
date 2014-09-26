@@ -20,8 +20,6 @@ class LoginController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(user, "User must be set in LoginController")
-        
         registerButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         loginButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
@@ -36,9 +34,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
     // Advances to the next text field when "Next" is pressed & changes "Next" to "Done" at the last field.
     func textFieldShouldReturn (textField: UITextField) -> Bool {
         var nextTag: NSInteger = textField.tag + 1
-        var nextResponder = textField.superview.viewWithTag(nextTag)
-        if (nextResponder) {
-            nextResponder.becomeFirstResponder()
+        var nextResponder = textField.superview?.viewWithTag(nextTag)
+        if (nextResponder != nil) {
+            nextResponder?.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
         }
@@ -47,9 +45,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
 
     @IBAction func buttonClicked (sender:UIButton) {
         if (sender.isEqual(registerButton)) {
-            var controller = self.storyboard.instantiateViewControllerWithIdentifier("RegisterController") as RegisterController
+            var controller = self.storyboard?.instantiateViewControllerWithIdentifier("RegisterController") as RegisterController
             controller.user = user
-            navigationController.pushViewController(controller, animated: true)
+            navigationController?.pushViewController(controller, animated: true)
         }
         if sender.isEqual(loginButton) {
             user!.login(url: GameConstants.REQUEST_HANDLER_URL, username: usernameField!.text, password: passwordField!.text, onComplete: {(name: String, id: String, success: Bool, error: String) in
@@ -58,9 +56,9 @@ class LoginController: UIViewController, UITextFieldDelegate {
                     if success {
                         LoginInfoManager.writeInfo(name: name, id: id)
                         // Update the button icon displayed on the navigation bar.
-                        var mainController = self.navigationController.viewControllers[0] as MainController
+                        var mainController = self.navigationController?.viewControllers[0] as MainController
                         mainController.navigationItem.setRightBarButtonItem(mainController.logoutButton, animated: true)
-                        self.navigationController.popToViewController(mainController, animated: true)
+                        self.navigationController?.popToViewController(mainController, animated: true)
                     } else {
                         var errorPrompt = ErrorPrompt(message: error)
                         errorPrompt.display(controller: self, onComplete: {() in

@@ -21,7 +21,6 @@ class RegisterController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assert(user, "User must be set in RegisterController")
         registerButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
         emailTextField!.delegate = self
@@ -37,9 +36,9 @@ class RegisterController: UIViewController, UITextFieldDelegate {
     // Advances to the next text field when "Next" is pressed & changes "Next" to "Done" at the last field.
     func textFieldShouldReturn (textField: UITextField) -> Bool {
         var nextTag: NSInteger = textField.tag + 1
-        var nextResponder = textField.superview.viewWithTag(nextTag)
-        if (nextResponder) {
-            nextResponder.becomeFirstResponder()
+        var nextResponder = textField.superview?.viewWithTag(nextTag)
+        if (nextResponder != nil) {
+            nextResponder?.becomeFirstResponder()
         } else {
             textField.resignFirstResponder()
         }
@@ -52,15 +51,15 @@ class RegisterController: UIViewController, UITextFieldDelegate {
         var password = passwordTextField!.text
         var passwordConfirm = confirmPasswordTextField!.text
         
-        if password.compare(passwordConfirm) == 0  {
+        if password == passwordConfirm {
             user!.register(url: GameConstants.REQUEST_HANDLER_URL, username: username, password: password, email: email,onComplete: {(name: String, id: String, success: Bool, error: String) in
                 
                 dispatch_async(dispatch_get_main_queue(), ({
                     if success {
                         LoginInfoManager.writeInfo(name: name, id: id)
-                        var mainController = self.navigationController.viewControllers[0] as MainController
+                        var mainController = self.navigationController?.viewControllers[0] as MainController
                         mainController.navigationItem.setRightBarButtonItem(mainController.logoutButton, animated: true)
-                        self.navigationController.popToViewController(mainController, animated: true)
+                        self.navigationController?.popToViewController(mainController, animated: true)
                     } else {
                         var  errorPrompt = UIAlertController(title: "Error", message: error, preferredStyle: UIAlertControllerStyle.Alert)
                         errorPrompt.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in

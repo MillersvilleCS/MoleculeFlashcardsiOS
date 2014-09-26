@@ -23,11 +23,6 @@ class FinalController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(game, "'game' not set in FinalController")
-        assert(user, "'user' not set in FinalController")
-        assert(score, "'score' not set in FinalController")
-        assert(rank, "'rank' not set in FinalController")
-        
         backButton!.layer.cornerRadius = GameConstants.BUTTON_ROUNDNESS
         
         scoreLabel!.text = "Score: \(score!)"
@@ -56,7 +51,7 @@ class FinalController : UIViewController {
     
     // Return to the Game Description screen.
     @IBAction func buttonClicked(sender: UIButton) {
-        var descriptionController = navigationController.viewControllers[2] as DescriptionController
-        navigationController.popToViewController(descriptionController, animated: true)
+        var descriptionController = navigationController?.viewControllers[2] as DescriptionController
+        navigationController?.popToViewController(descriptionController, animated: true)
     }
 }
